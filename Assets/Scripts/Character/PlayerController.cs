@@ -12,10 +12,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask solidObjectsLayer;
     public LayerMask interactableLayer;
 
+    CharacterAnimator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<CharacterAnimator>();
     }
 
     // Update is called once per frame
@@ -32,12 +34,12 @@ public class PlayerController : MonoBehaviour
 
             if(input != Vector2.zero)
             {
-                // animator.SetFloat("MoveX", input.x);
-                // animator.SetFloat("MoveY", input.y);
+                animator.MoveX = input.x;
+                animator.MoveY = input.y;
 
                 var targetPos = transform.position;
-                //sonradan 4le böldüm
 
+                //sonradan 4le böldüm
                 targetPos.x += (input.x / 4.0f);
                 targetPos.y += (input.y / 4.0f);
 
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //animator.SetBool("IsMoving", isMoving);
+        animator.IsMoving = isMoving;
 
         // if(Input.GetKeyDown(KeyCode.Z))
         //     Interact();
@@ -81,4 +83,5 @@ public class PlayerController : MonoBehaviour
 
         return true;
     }
+
 }

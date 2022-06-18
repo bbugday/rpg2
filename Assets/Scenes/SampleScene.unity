@@ -7304,8 +7304,9 @@ GameObject:
   m_Component:
   - component: {fileID: 478115593}
   - component: {fileID: 478115592}
+  - component: {fileID: 478115594}
   m_Layer: 7
-  m_Name: FCharacter1_0
+  m_Name: Npc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7376,6 +7377,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &478115594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478115591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4cf18c968a5fda4681629b954c07ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -6178155591863270677, guid: d1164f50fae281640addacecbb82135c, type: 3}
+  - {fileID: 6583600756756611747, guid: d1164f50fae281640addacecbb82135c, type: 3}
+  - {fileID: 3379336747707340745, guid: d1164f50fae281640addacecbb82135c, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -7470,6 +7487,7 @@ GameObject:
   - component: {fileID: 606989404}
   - component: {fileID: 606989403}
   - component: {fileID: 606989405}
+  - component: {fileID: 606989406}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -7536,7 +7554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606989402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.69, y: -0.51, z: 0}
+  m_LocalPosition: {x: 5, y: -1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7554,10 +7572,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224bfa50d10888f43bd13e70d8c36d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 7
   solidObjectsLayer:
     serializedVersion: 2
     m_Bits: 64
   interactableLayer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &606989406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606989402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276a7880551e5e54c9c29a0c94dcabf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkDownSprites:
+  - {fileID: -6591925860651156232, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: 75079355365963165, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: -6591925860651156232, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: 2098729635752531919, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  walkUpSprites:
+  - {fileID: 1917301900323716124, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: 1558891163219500844, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: 1917301900323716124, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: -1046014937141379634, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  walkRightSprites:
+  - {fileID: 346297276555127155, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: 3314512960162532605, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: 346297276555127155, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: -572691917245999561, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  walkLeftSprites:
+  - {fileID: 2445777792253743207, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: 5634381408186480692, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: 2445777792253743207, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
+  - {fileID: 6775177232680775588, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
