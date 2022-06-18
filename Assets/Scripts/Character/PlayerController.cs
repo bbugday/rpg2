@@ -39,15 +39,21 @@ public class PlayerController : MonoBehaviour
 
                 var targetPos = transform.position;
 
-                //sonradan 4le böldüm
+                Vector3 xMovement = new Vector3(targetPos.x + input.x, targetPos.y, targetPos.z);
+                Vector3 yMovement = new Vector3(targetPos.x, targetPos.y + input.y, targetPos.z);
+
                 targetPos.x += (input.x / 4.0f);
                 targetPos.y += (input.y / 4.0f);
 
-                // targetPos.x += input.x;
-                // targetPos.y += input.y;
+                // Duvar sağımızda diyelim duvara yapışıkken sağ üste basınca aynı yerde 
+                // kalıyor üste doğru gitmesini sağlamak için else ifleri kullanıyoruz. 
 
                 if (IsWalkable(targetPos))
                     StartCoroutine(Move(targetPos));
+                else if(IsWalkable(xMovement))
+                    StartCoroutine(Move(xMovement));
+                else if(IsWalkable(yMovement))
+                    StartCoroutine(Move(yMovement));
             }
         }
 
@@ -83,7 +89,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Physics2D.OverlapCircle(new Vector3(targetPos.x, targetPos.y - 1.5f, 0), 0.3f, solidObjectsLayer | interactableLayer) != null)
             return false;
-            
+
         return true;
     }
 
