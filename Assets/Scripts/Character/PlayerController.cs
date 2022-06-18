@@ -73,14 +73,17 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - 1.5f, 0), 0.3f);
+    }
+
     private bool IsWalkable(Vector3 targetPos)
     {
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 0.49f),
-         (Vector2)(targetPos - transform.position), 1f, solidObjectsLayer | interactableLayer);
-
-        if(hit.collider != null)
+        if(Physics2D.OverlapCircle(new Vector3(targetPos.x, targetPos.y - 1.5f, 0), 0.3f, solidObjectsLayer | interactableLayer) != null)
             return false;
-
+            
         return true;
     }
 
