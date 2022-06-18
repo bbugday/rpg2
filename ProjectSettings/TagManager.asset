@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Solid Objects
+  - Interactable
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 2892990993
+    locked: 0
+  - name: Player
+    uniqueID: 3570160683
     locked: 0

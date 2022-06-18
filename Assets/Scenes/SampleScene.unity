@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 8968845}
   - component: {fileID: 8968847}
   - component: {fileID: 8968846}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7304,7 +7304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 478115593}
   - component: {fileID: 478115592}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FCharacter1_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7469,8 +7469,9 @@ GameObject:
   m_Component:
   - component: {fileID: 606989404}
   - component: {fileID: 606989403}
+  - component: {fileID: 606989405}
   m_Layer: 0
-  m_Name: MCharacter1_48
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7513,8 +7514,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1401976303
-  m_SortingLayer: 2
+  m_SortingLayerID: -724806613
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 75079355365963165, guid: 7926552db06e60041804ff7afe0e5fc2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7541,3 +7542,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &606989405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606989402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224bfa50d10888f43bd13e70d8c36d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 128
