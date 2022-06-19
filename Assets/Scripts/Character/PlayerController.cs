@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     CharacterAnimator animator;
 
+    float footOffset = -1.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,8 +85,7 @@ public class PlayerController : MonoBehaviour
 
     bool IsWalkable(Vector3 targetPos)
     {
-        //1.5f
-        if(Physics2D.OverlapCircle(new Vector3(targetPos.x, targetPos.y - 1.5f, 0), 0.3f, solidObjectsLayer | interactableLayer) != null)
+        if(Physics2D.OverlapCircle(new Vector3(targetPos.x, targetPos.y + footOffset, 0), 0.3f, solidObjectsLayer | interactableLayer) != null)
             return false;
 
         return true;
@@ -93,23 +94,31 @@ public class PlayerController : MonoBehaviour
     void Interact()
     {
         var facingDir = new Vector3(animator.MoveX, animator.MoveY);
-        var interactPos = transform.position + facingDir;
+
+        var footPos = new Vector3(transform.position.x, transform.position.y + footOffset, 0);
+
+        var interactPos = footPos + facingDir;
         
-        //1.5f
-        var collider = Physics2D.OverlapCircle(new Vector3(interactPos.x, interactPos.y - 1.5f, 0), 1f, interactableLayer);
+        var collider = Physics2D.OverlapCircle(interactPos, 0.75f, interactableLayer);
 
         if(collider != null)
         {
             collider.GetComponent<Interactable>()?.Interact();
         }
-
-        Debug.DrawLine(transform.position, interactPos, Color.black, 0.5f);
     }
 
+    //interact's circle
     // void OnDrawGizmos()
     // {
     //     Gizmos.color = Color.black;
-    //     Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - 1.5f, 0), 0.3f);
+
+    //     var facingDir = new Vector3(animator.MoveX, animator.MoveY);
+
+    //     var footPos = new Vector3(transform.position.x, transform.position.y + footOffset, 0);
+
+    //     var interactPos = footPos + facingDir;
+
+    //     Gizmos.DrawSphere(interactPos, 0.75f);
     // }
 
 }
