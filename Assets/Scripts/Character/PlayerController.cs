@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed;
 
-    private bool isMoving = false;
+    bool isMoving = false;
 
     public LayerMask solidObjectsLayer;
     public LayerMask interactableLayer;
@@ -59,8 +59,8 @@ public class PlayerController : MonoBehaviour
 
         animator.IsMoving = isMoving;
 
-        // if(Input.GetKeyDown(KeyCode.Z))
-        //     Interact();
+        if(Input.GetKeyDown(KeyCode.Z))
+            Interact();
     }
 
     IEnumerator Move(Vector3 targetPos)
@@ -79,18 +79,37 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.black;
-        Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - 1.5f, 0), 0.3f);
-    }
 
-    private bool IsWalkable(Vector3 targetPos)
+
+    bool IsWalkable(Vector3 targetPos)
     {
+        //1.5f
         if(Physics2D.OverlapCircle(new Vector3(targetPos.x, targetPos.y - 1.5f, 0), 0.3f, solidObjectsLayer | interactableLayer) != null)
             return false;
 
         return true;
     }
+
+    void Interact()
+    {
+        var facingDir = new Vector3(animator.MoveX, animator.MoveY);
+        var interactPos = transform.position + facingDir;
+        
+        //1.5f
+        var collider = Physics2D.OverlapCircle(new Vector3(interactPos.x, interactPos.y - 1.5f, 0), 1f, interactableLayer);
+
+        if(collider != null)
+        {
+            collider.GetComponent<Interactable>()?.Interact();
+        }
+
+        Debug.DrawLine(transform.position, interactPos, Color.black, 0.5f);
+    }
+
+    // void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.black;
+    //     Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - 1.5f, 0), 0.3f);
+    // }
 
 }
