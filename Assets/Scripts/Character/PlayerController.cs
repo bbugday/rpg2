@@ -22,8 +22,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<CharacterAnimator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HandleUpdate()
     {
         Vector2 input;
 
@@ -64,7 +63,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Z))
             Interact();
     }
-
+    
     IEnumerator Move(Vector3 targetPos)
     {
         isMoving = true;
