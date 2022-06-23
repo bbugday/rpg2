@@ -823,7 +823,12 @@ MonoBehaviour:
       npc: {fileID: 478115594}
       dialogue:
         lines:
-        - AAAAAAAAAAAAAA
+        - QuestPart1
+    - questType: 0
+      npc: {fileID: 478115594}
+      dialogue:
+        lines:
+        - QuestPart2
 --- !u!4 &68759062
 Transform:
   m_ObjectHideFlags: 0

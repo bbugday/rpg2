@@ -23,8 +23,9 @@ public class QuestPart
 
     void finished()
     {
-        Debug.Log("finished");
-        //questmanager.questpartdone();
+        npc.dialogue = null;
+        npc.onFinishDialog -= finished;
+        QuestManager.Instance.questPartDone();
     }
 
     //triggeri buraya koy npcde çalıştır?

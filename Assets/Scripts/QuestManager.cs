@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class QuestManager : MonoBehaviour
+public class QuestManager : Singleton<QuestManager>
 {
     [SerializeField] List<Quest> quests;
+
+    public override void Awake()
+    {
+        base.Awake();
+    }
     
     //Activequest tutmaya gerek yok, quest[0] zaten activequest.
     //2 quest birden alma?
@@ -13,7 +18,7 @@ public class QuestManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        quests[0].doSettings();
+        CurrentQuest.doSettings();
     }
 
     // Update is called once per frame
@@ -24,10 +29,25 @@ public class QuestManager : MonoBehaviour
 
     public void questPartDone()
     {
-        //questpart.pop();
+        CurrentQuest.questPartDone();
+        if(CurrentQuest.isFinished())
+        {
+            QuestDone();
+        }
         //if(questparts boş değil) { questpart.ayarlamalarıyap()}
         //if(questparts boş)
         //quest.pop();
         //yeniquest.ayarlamalarıyap
     }
+
+    void QuestDone()
+    {
+        quests.RemoveAt(0);
+    }
+
+    Quest CurrentQuest
+    {
+        get {return quests[0];}
+    } 
+
 }

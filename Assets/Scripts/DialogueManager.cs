@@ -26,7 +26,10 @@ public class DialogueManager : Singleton<DialogueManager>
     
     public void showDialog(Dialogue dialogue)
     {
-        Debug.Log("Show dialog");
+        foreach(string line in dialogue.Lines)
+        {
+            Debug.Log(line);
+        }
     }
 
 }

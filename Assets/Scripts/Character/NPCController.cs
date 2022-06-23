@@ -11,7 +11,8 @@ public class NPCController : MonoBehaviour, Interactable
 
     public void Interact()
     {
+        if(dialogue == null) return; 
         DialogueManager.Instance.showDialog(dialogue);
-        onFinishDialog();
+        onFinishDialog(); //not here, diyalog başlayınca değil bitince triggerla(diyalogmanagera aktar?)
     }
 }
