@@ -11,9 +11,6 @@ public class QuestManager : Singleton<QuestManager>
     {
         base.Awake();
     }
-    
-    //Activequest tutmaya gerek yok, quest[0] zaten activequest.
-    //2 quest birden alma?
 
     // Start is called before the first frame update
     void Start()
@@ -30,24 +27,25 @@ public class QuestManager : Singleton<QuestManager>
     public void questPartDone()
     {
         CurrentQuest.questPartDone();
-        if(CurrentQuest.isFinished())
-        {
-            QuestDone();
-        }
-        //if(questparts boş değil) { questpart.ayarlamalarıyap()}
-        //if(questparts boş)
-        //quest.pop();
-        //yeniquest.ayarlamalarıyap
     }
 
-    void QuestDone()
+    public void QuestDone()
     {
         quests.RemoveAt(0);
+        if(!IsAllQuestsOver())
+        {
+            CurrentQuest.doSettings();
+        }
     }
 
     Quest CurrentQuest
     {
         get {return quests[0];}
     } 
+
+    public bool IsAllQuestsOver()
+    {
+        return quests.Count == 0;
+    }
 
 }

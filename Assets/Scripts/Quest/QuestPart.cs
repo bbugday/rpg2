@@ -16,6 +16,9 @@ public class QuestPart
     {
         if(questType == QuestType.Dialog)
         {
+            //QuestManager.Instance.addQuestPartToNPC(npc, this);
+
+
             npc.dialogue = dialogue;
             npc.onFinishDialog += finished;
         }
@@ -23,6 +26,7 @@ public class QuestPart
 
     void finished()
     {
+        //questpart reward
         npc.dialogue = null;
         npc.onFinishDialog -= finished;
         QuestManager.Instance.questPartDone();

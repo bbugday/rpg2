@@ -24,12 +24,13 @@ public class DialogueManager : Singleton<DialogueManager>
     }
 
     
-    public void showDialog(Dialogue dialogue)
+    public void showDialog(Dialogue dialogue, NPCController npc)
     {
         foreach(string line in dialogue.Lines)
         {
             Debug.Log(line);
         }
+        npc.onFinishDialog();
     }
 
 }
