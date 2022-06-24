@@ -48,4 +48,9 @@ public class QuestManager : Singleton<QuestManager>
         return quests.Count == 0;
     }
 
+    public void AddQuestPartToNPC(NPCController npc, QuestPart questPart)
+    {
+        npc.AddQuestPart(questPart);
+    }
+
 }

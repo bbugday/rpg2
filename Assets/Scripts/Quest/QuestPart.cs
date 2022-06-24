@@ -12,27 +12,25 @@ public class QuestPart
     [SerializeField] NPCController npc;
     [SerializeField] Dialogue dialogue;
 
+    public void CompleteQuestPart()
+    {
+        if(questType == QuestType.Dialog)
+            npc.RemoveQuestPart();
+            
+        QuestManager.Instance.questPartDone();
+    }
+
     public void doSettings()
     {
         if(questType == QuestType.Dialog)
         {
-            //QuestManager.Instance.addQuestPartToNPC(npc, this);
-
-
-            npc.dialogue = dialogue;
-            npc.onFinishDialog += finished;
+            QuestManager.Instance.AddQuestPartToNPC(npc, this);
         }
     }
 
-    void finished()
+    public Dialogue QuestDialogue
     {
-        //questpart reward
-        npc.dialogue = null;
-        npc.onFinishDialog -= finished;
-        QuestManager.Instance.questPartDone();
+        get {return dialogue;}
     }
 
-    //triggeri buraya koy npcde çalıştır?
-
-    //onfinish
 }

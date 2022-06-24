@@ -5,21 +5,30 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour, Interactable
 {
-    public Action onFinishDialog;
-
-    public Dialogue dialogue;
+    QuestPart questPart;
 
     public void Interact()
     {
-        if(dialogue == null) return; 
-        DialogueManager.Instance.showDialog(dialogue, this);
-        //onFinishDialog(); //not here, diyalog başlayınca değil bitince triggerla(diyalogmanagera aktar?)
+        //quest
+        if(questPart != null)
+        {
+            DialogueManager.Instance.ShowQuestDialog(questPart.QuestDialogue, this);
+        }
     }
 
-    
-    // public void AddQuestPart(Dialogue dialogue)
-    // {
-    //     this.dialogue = dialogue;
+    public void RemoveQuestPart()
+    {
+        questPart = null;
+    }
 
-    // }
+    public void AddQuestPart(QuestPart questPart)
+    {
+        this.questPart = questPart;
+    }
+
+    public QuestPart QuestPart
+    {   
+        get{return questPart;}
+    }
+
 }
