@@ -5,30 +5,40 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour, Interactable
 {
-    Quest quest;//quest yap interactta seçtir
+    List<Quest> quests;//quest yap interactta seçtir
 
     public void Interact()
     {
         //quest
-        if(quest != null)
+        if(quests != null)
         {
-            DialogueManager.Instance.ShowQuestDialog(quest.CurrentQuestPart.QuestDialogue, this);
+            DialogueManager.Instance.ShowQuestDialog(quests[0].CurrentQuestPart.QuestDialogue, quests[0]);
+
+            //Foreach tehlikeli! döngü bitmeden görevler editleniyor bu yüzden bozulabilir. Menüyle yap.
+
+            // foreach(Quest quest in quests)
+            // {
+            //     DialogueManager.Instance.ShowQuestDialog(quest.CurrentQuestPart.QuestDialogue, quest);
+            // }
         }
     }
 
-    public void RemoveQuest()
+    public void RemoveQuest(Quest quest)
     {
-        quest = null;
+        quests.Remove(quest);
     }
 
     public void AddQuest(Quest quest)
     {
-        this.quest = quest;
+        if(quests == null)
+            quests = new List<Quest>();
+
+        quests.Add(quest);
     }
 
-    public Quest Quest
-    {   
-        get{return quest;}
-    }
+    // public Quest Quest
+    // {   
+    //     get{return quest;}
+    // }
 
 }

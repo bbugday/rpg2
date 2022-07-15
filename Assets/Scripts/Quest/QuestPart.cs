@@ -9,7 +9,8 @@ public class QuestPart
 {
     [SerializeField] QuestType questType;
 
-    [SerializeField] NPCController npc;
+    [SerializeField] string npcName;
+    //[SerializeField] NPCController npc;//Serialize field yerine ismiyle al
     [SerializeField] Dialogue dialogue;
 
     public Dialogue QuestDialogue
@@ -22,9 +23,13 @@ public class QuestPart
         get {return questType;}
     }
 
-    public NPCController Npc
+    public NPCController Npc //böyle yapmak yerine oyunun başında eşleştir. her seferinde aramasın
     {
-        get {return npc;}
+        get {return GameObject.Find(npcName).GetComponent<NPCController>();}
+    }
+
+    public QuestPart Clone() {
+        return new QuestPart {questType = this.questType, npcName = this.npcName, dialogue = this.dialogue};
     }
 
 }
