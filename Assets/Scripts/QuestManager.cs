@@ -24,11 +24,6 @@ public class QuestManager : Singleton<QuestManager>
         
     }
 
-    public void questPartDone()
-    {
-        CurrentQuest.questPartDone();
-    }
-
     public void QuestDone()
     {
         quests.RemoveAt(0);
@@ -48,9 +43,9 @@ public class QuestManager : Singleton<QuestManager>
         return quests.Count == 0;
     }
 
-    public void AddQuestPartToNPC(NPCController npc, QuestPart questPart)
+    public void AddQuestToNPC(NPCController npc, Quest quest)
     {
-        npc.AddQuestPart(questPart);
+        npc.AddQuest(quest);
     }
 
 }

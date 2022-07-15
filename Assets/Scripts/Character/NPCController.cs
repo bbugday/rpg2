@@ -5,30 +5,30 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour, Interactable
 {
-    QuestPart questPart;
+    Quest quest;//quest yap interactta seçtir
 
     public void Interact()
     {
         //quest
-        if(questPart != null)
+        if(quest != null)
         {
-            DialogueManager.Instance.ShowQuestDialog(questPart.QuestDialogue, this);
+            DialogueManager.Instance.ShowQuestDialog(quest.CurrentQuestPart.QuestDialogue, this);
         }
     }
 
-    public void RemoveQuestPart()
+    public void RemoveQuest()
     {
-        questPart = null;
+        quest = null;
     }
 
-    public void AddQuestPart(QuestPart questPart)
+    public void AddQuest(Quest quest)
     {
-        this.questPart = questPart;
+        this.quest = quest;
     }
 
-    public QuestPart QuestPart
+    public Quest Quest
     {   
-        get{return questPart;}
+        get{return quest;}
     }
 
 }
