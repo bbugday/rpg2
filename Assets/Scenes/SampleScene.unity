@@ -817,24 +817,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722379862a4466e4c824e287f649a6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quests:
-  - questParts:
-    - questType: 0
-      npc: {fileID: 478115594}
-      dialogue:
-        lines:
-        - QUEST1PART1 DIALOGUE
-    - questType: 0
-      npc: {fileID: 478115594}
-      dialogue:
-        lines:
-        - QUEST1PART2 DIALOGUE
-  - questParts:
-    - questType: 0
-      npc: {fileID: 478115594}
-      dialogue:
-        lines:
-        - QUEST2PART1 DIALOGUE
+  firstQuest:
+    questData: {fileID: 11400000, guid: 8624bb8b039317a439998fde51e07469, type: 2}
+  activeQuests: []
 --- !u!4 &68759062
 Transform:
   m_ObjectHideFlags: 0
@@ -7679,7 +7664,7 @@ GameObject:
   - component: {fileID: 478115595}
   - component: {fileID: 478115596}
   m_Layer: 7
-  m_Name: Npc
+  m_Name: Npc1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7762,8 +7747,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4cf18c968a5fda4681629b954c07ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    lines: []
 --- !u!50 &478115595
 Rigidbody2D:
   serializedVersion: 4

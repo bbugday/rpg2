@@ -24,13 +24,13 @@ public class DialogueManager : Singleton<DialogueManager>
     }
 
     
-    public void ShowQuestDialog(Dialogue dialogue, NPCController npc)
+    public void ShowQuestDialog(Dialogue dialogue, Quest quest)
     {
         foreach(string line in dialogue.Lines)
         {
             Debug.Log(line);
         }
-        npc.QuestPart.CompleteQuestPart();
+        quest.questPartDone();
     }
 
 }

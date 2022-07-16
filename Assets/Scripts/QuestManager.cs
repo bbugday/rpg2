@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class QuestManager : Singleton<QuestManager>
 {
-    [SerializeField] List<Quest> quests;
+    [SerializeField] Quest firstQuest;
+    [SerializeField] List<Quest> activeQuests;
 
     public override void Awake()
     {
@@ -15,7 +16,7 @@ public class QuestManager : Singleton<QuestManager>
     // Start is called before the first frame update
     void Start()
     {
-        CurrentQuest.doSettings();
+        firstQuest.doSettings();
     }
 
     // Update is called once per frame
@@ -24,33 +25,45 @@ public class QuestManager : Singleton<QuestManager>
         
     }
 
-    public void questPartDone()
+    public void QuestDone(Quest quest)
     {
-        CurrentQuest.questPartDone();
-    }
+        List<QuestSO> nextQuests = quest.NextQuests;
 
-    public void QuestDone()
-    {
-        quests.RemoveAt(0);
-        if(!IsAllQuestsOver())
+        foreach(QuestSO next in nextQuests)
         {
-            CurrentQuest.doSettings();
+            if(IsQuestReady(next))
+            {
+                Quest newQuest = new Quest(next);
+                newQuest.doSettings();
+            }
+
         }
     }
 
-    Quest CurrentQuest
+    private bool IsQuestReady(QuestSO quest)
     {
-        get {return quests[0];}
-    } 
+        foreach(QuestSO prev in quest.prevQuests)
+        {
+            if(prev.done == false)
+                return false;
+        }
 
-    public bool IsAllQuestsOver()
-    {
-        return quests.Count == 0;
+        return true;
     }
 
-    public void AddQuestPartToNPC(NPCController npc, QuestPart questPart)
+    // Quest CurrentQuest
+    // {
+    //     get {return quests[0];}
+    // } 
+
+    // public bool IsAllQuestsOver()
+    // {
+    //     return quests.Count == 0;
+    // }
+
+    public void AddQuestToNPC(NPCController npc, Quest quest)
     {
-        npc.AddQuestPart(questPart);
+        npc.AddQuest(quest);
     }
 
 }
