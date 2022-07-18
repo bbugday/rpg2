@@ -817,8 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722379862a4466e4c824e287f649a6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstQuest:
-    questData: {fileID: 11400000, guid: 8624bb8b039317a439998fde51e07469, type: 2}
+  firstQuestSO: {fileID: 11400000, guid: 8624bb8b039317a439998fde51e07469, type: 2}
   activeQuests: []
 --- !u!4 &68759062
 Transform:

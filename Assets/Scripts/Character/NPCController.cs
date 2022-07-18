@@ -7,6 +7,11 @@ public class NPCController : MonoBehaviour, Interactable
 {
     List<Quest> quests;//quest yap interactta seçtir
 
+    //dialoguequest alsın quest yerine
+    //böyle yapınca dialoguemanager hangi questin bittiğini bilemiyor
+    //quest questpartları/dialoguemanageri dinlesin? event/action
+
+
     public void Interact()
     {
         //quest

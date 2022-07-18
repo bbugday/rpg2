@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Quest
 {
+
     private List<QuestPart> questParts;
 
     [SerializeField] QuestSO questData;
@@ -12,25 +13,19 @@ public class Quest
     public Quest(QuestSO data)
     {
         questData = data;
+        questParts = questData.questParts.ConvertAll(q => q.Clone()); //to prevent scriptable objects deleted
     }
+
 
     public void doSettings()
     {
-        questParts = questData.questParts.ConvertAll(q => q.Clone());
-
-        //questParts = questData.questParts;//deep copy instead
-
-        if(CurrentQuestPart.QuestType == QuestType.Dialog)
-        {
-            QuestManager.Instance.AddQuestToNPC(CurrentQuestPart.Npc, this);
-        }
+        CurrentQuestPart.doSettings(this);
     }
 
     //run when questpart is done
-    public void questPartDone()
+    public void doneQuestPart()
     {
-        if(questParts[0].QuestType == QuestType.Dialog)
-            questParts[0].Npc.RemoveQuest(this);
+        CurrentQuestPart.doneQuestPart(this);
 
         questParts.RemoveAt(0); //remove that quest part
         if(!IsAllQuestPartsOver())

@@ -10,17 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2c4d372dfdb4c642990e1fe4b5529f3, type: 3}
-  m_Name: Quest1
+  m_Name: Quest4
   m_EditorClassIdentifier: 
   questParts:
-  - questType: 0
-    npcName: Npc1
-    dialogue:
-      lines:
-      - AAAAAAAAAAAA
+  - {fileID: 11400000, guid: e47408526849dc64a835e266064a5cde, type: 2}
   prevQuests:
-  - {fileID: 0}
-  nextQuests:
   - {fileID: 11400000, guid: d8a0d1c0c7a10c940bbf7be470534eb5, type: 2}
   - {fileID: 11400000, guid: 21c50e1804662254a9723f0702b50642, type: 2}
+  nextQuests: []
   done: 0

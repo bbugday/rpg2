@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class QuestManager : Singleton<QuestManager>
 {
-    [SerializeField] Quest firstQuest;
+    [SerializeField] QuestSO firstQuestSO;
     [SerializeField] List<Quest> activeQuests;
 
     public override void Awake()
@@ -16,6 +16,7 @@ public class QuestManager : Singleton<QuestManager>
     // Start is called before the first frame update
     void Start()
     {
+        Quest firstQuest = new Quest(firstQuestSO);
         firstQuest.doSettings();
     }
 

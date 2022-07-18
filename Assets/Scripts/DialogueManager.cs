@@ -30,7 +30,6 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             Debug.Log(line);
         }
-        quest.questPartDone();
+        quest.doneQuestPart();
     }
-
 }
