@@ -7,17 +7,16 @@ public class NPCController : MonoBehaviour, Interactable
 {
     List<Quest> quests;//quest yap interactta seçtir
 
-    //dialoguequest alsın quest yerine
-    //böyle yapınca dialoguemanager hangi questin bittiğini bilemiyor
-    //quest questpartları/dialoguemanageri dinlesin? event/action
-
-
     public void Interact()
     {
         //quest
         if(quests != null)
         {
-            DialogueManager.Instance.ShowQuestDialog(quests[0].CurrentQuestPart.QuestDialogue, quests[0]);
+            //maybe Use visitor pattern instead of type casting: https://www.youtube.com/watch?v=xy94_4L832A
+            DialogueQuest dialogueQuest = quests[0].CurrentQuestPart as DialogueQuest; 
+
+            DialogueManager.Instance.ShowQuestDialog(dialogueQuest.QuestDialogue);
+            quests[0].doneQuestPart();
 
             //Foreach tehlikeli! döngü bitmeden görevler editleniyor bu yüzden bozulabilir. Menüyle yap.
 
@@ -40,10 +39,5 @@ public class NPCController : MonoBehaviour, Interactable
 
         quests.Add(quest);
     }
-
-    // public Quest Quest
-    // {   
-    //     get{return quest;}
-    // }
 
 }

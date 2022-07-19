@@ -15,7 +15,7 @@ public class DialogueQuest : QuestPart
 
     [SerializeField] string npcName;
 
-    //[SerializeField] Dialogue dialogue;
+    [SerializeField] Dialogue dialogue;
 
     public override void doSettings(Quest quest)
     {
@@ -30,5 +30,10 @@ public class DialogueQuest : QuestPart
     public NPCController Npc //böyle yapmak yerine oyunun başında eşleştir. her seferinde aramasın
     {
         get {return GameObject.Find(npcName).GetComponent<NPCController>();}
+    }
+
+    public Dialogue QuestDialogue
+    {
+        get {return dialogue;}
     }
 }

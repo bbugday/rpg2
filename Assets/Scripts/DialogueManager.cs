@@ -24,12 +24,11 @@ public class DialogueManager : Singleton<DialogueManager>
     }
 
     
-    public void ShowQuestDialog(Dialogue dialogue, Quest quest)
+    public void ShowQuestDialog(Dialogue dialogue)
     {
         foreach(string line in dialogue.Lines)
         {
             Debug.Log(line);
         }
-        quest.doneQuestPart();
     }
 }

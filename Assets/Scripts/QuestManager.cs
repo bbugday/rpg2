@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class QuestManager : Singleton<QuestManager>
 {
     [SerializeField] QuestSO firstQuestSO;
     [SerializeField] List<Quest> activeQuests;
+
 
     public override void Awake()
     {
