@@ -10,7 +10,7 @@ public class NPCController : MonoBehaviour, Interactable
     public void Interact()
     {
         //quest
-        if(quests != null)
+        if(quests.Count != 0)
         {
             //maybe Use visitor pattern instead of type casting: https://www.youtube.com/watch?v=xy94_4L832A
             DialogueQuest dialogueQuest = quests[0].CurrentQuestPart as DialogueQuest; 
