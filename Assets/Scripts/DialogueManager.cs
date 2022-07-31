@@ -53,6 +53,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     private void DisplayChoices()
     {
+        dialogueText.text = "";
         List<Choice> currentChoices = currentStory.currentChoices;
         if (currentChoices.Count > choices.Length)
         {
