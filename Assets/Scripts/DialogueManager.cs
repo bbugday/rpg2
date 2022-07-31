@@ -20,8 +20,12 @@ public class DialogueManager : Singleton<DialogueManager>
 
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
+    
+    //using this because mouse click breaks selected choice
+    GameObject lastselect;
 
     Story currentStory;
+
 
     public override void Awake()
     {
@@ -52,6 +56,16 @@ public class DialogueManager : Singleton<DialogueManager>
             else
                 DisplayChoices();
         }
+
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            EventSystem.current.SetSelectedGameObject(lastselect);
+        }
+        else
+        {
+            lastselect = EventSystem.current.currentSelectedGameObject;
+        }
+
     }
 
     private void DisplayChoices()
@@ -94,13 +108,13 @@ public class DialogueManager : Singleton<DialogueManager>
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
         EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+        lastselect = choices[0].gameObject;
     }
 
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
         choicesPanel.SetActive(false);
-        //ContinueStory();
     }
 
     public void ShowInkDialog(TextAsset inkJSON)

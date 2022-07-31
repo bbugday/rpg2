@@ -17,8 +17,6 @@ public class DialogueQuest : QuestPart
         this.dialogue = dialogue;
     }
 
-
-
     public override void doSettings(Quest quest)
     {
         QuestManager.Instance.AddQuestToNPC(Npc, quest);
