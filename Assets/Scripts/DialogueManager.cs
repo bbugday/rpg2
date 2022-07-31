@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
 using TMPro;
-
+using UnityEngine.EventSystems;
 
 //use singleton??
 public class DialogueManager : Singleton<DialogueManager>
@@ -76,6 +76,18 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             choices[i].gameObject.SetActive(false);
         }
+
+        StartCoroutine(SelectFirstChoice());
+
+    }
+
+    private IEnumerator SelectFirstChoice() 
+    {
+        // Event System requires we clear it first, then wait
+        // for at least one frame before we set the current selected object.
+        EventSystem.current.SetSelectedGameObject(null);
+        yield return new WaitForEndOfFrame();
+        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
     }
 
     public void ShowInkDialog(TextAsset inkJSON)
