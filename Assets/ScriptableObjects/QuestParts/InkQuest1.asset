@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: InkQuest1
   m_EditorClassIdentifier: 
   npcName: Npc2
-  inkDialogue: {fileID: 4900000, guid: d9db35f102ca1f6428eb713ba1618773, type: 3}
+  inkDialogue: {fileID: 4900000, guid: 111a2e29c9653f747aed8329b264705c, type: 3}
