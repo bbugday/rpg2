@@ -140,14 +140,4 @@ public class DialogueManager : Singleton<DialogueManager>
         dialoguePanel.SetActive(false);
         dialogueText.text = "";    
     }
-    
-    public void ShowQuestDialog(Dialogue dialogue)
-    {
-        dialoguePanel.SetActive(true);
-
-        foreach(string line in dialogue.Lines)
-        {
-            Debug.Log(line);
-        }
-    }
 }

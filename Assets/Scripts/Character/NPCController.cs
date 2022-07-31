@@ -31,10 +31,12 @@ public class NPCController : MonoBehaviour, Interactable
 
     public void Interact()
     {
+        //birden fazla quest varsa onları da göster
+
         if(quests != null && quests.Count != 0)
         {
-            InkQuest inkQuest = quests[0].CurrentQuestPart as InkQuest;
-            DialogueManager.Instance.ShowInkDialog(inkQuest.InkDialogue);
+            DialogueQuest dialogueQuest = quests[0].CurrentQuestPart as DialogueQuest;
+            DialogueManager.Instance.ShowInkDialog(dialogueQuest.InkDialogue);
             quests[0].doneQuestPart();
         }
     }

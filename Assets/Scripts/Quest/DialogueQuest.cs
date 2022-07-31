@@ -6,15 +6,14 @@ using UnityEngine;
 
 public class DialogueQuest : QuestPart
 {
-
     [SerializeField] string npcName;
 
-    [SerializeField] Dialogue dialogue;
+    [SerializeField] TextAsset inkDialogue;
 
-    public DialogueQuest(string npcName, Dialogue dialogue)
+    public DialogueQuest(string npcName, TextAsset inkDialogue)
     {
         this.npcName = npcName;
-        this.dialogue = dialogue;
+        this.inkDialogue = inkDialogue;
     }
 
     public override void doSettings(Quest quest)
@@ -32,8 +31,8 @@ public class DialogueQuest : QuestPart
         get {return GameObject.Find(npcName).GetComponent<NPCController>();}
     }
 
-    public Dialogue QuestDialogue
+    public TextAsset InkDialogue
     {
-        get {return dialogue;}
+        get {return inkDialogue;}
     }
 }

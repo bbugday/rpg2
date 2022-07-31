@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: QuestInkDeneme
   m_EditorClassIdentifier: 
   questParts:
-  - {fileID: 11400000, guid: d8b410c4c55500c4e910e227e7f55031, type: 2}
+  - {fileID: 11400000, guid: 310771c4ddbfde749a87c86211e351be, type: 2}
   prevQuests: []
   nextQuests: []
-  done: 0
+  done: 1
