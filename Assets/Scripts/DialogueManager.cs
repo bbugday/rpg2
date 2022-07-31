@@ -13,6 +13,8 @@ public class DialogueManager : Singleton<DialogueManager>
     //bool dialogueIsPlaying? to handle inputs
 
     [SerializeField] GameObject dialoguePanel;
+
+    [SerializeField] GameObject choicesPanel;
     
     [SerializeField] Text dialogueText;
 
@@ -30,6 +32,7 @@ public class DialogueManager : Singleton<DialogueManager>
     void Start()
     {
         dialoguePanel.SetActive(false);
+        choicesPanel.SetActive(false);
 
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
@@ -43,7 +46,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void HandleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.Z)){
+        if(Input.GetKeyDown(KeyCode.Space) && !choicesPanel.activeInHierarchy){
             if(currentStory.currentChoices.Count == 0)
                 ContinueStory();
             else
@@ -53,8 +56,11 @@ public class DialogueManager : Singleton<DialogueManager>
 
     private void DisplayChoices()
     {
+        choicesPanel.SetActive(true);
+        
         dialogueText.text = "";
         List<Choice> currentChoices = currentStory.currentChoices;
+
         if (currentChoices.Count > choices.Length)
         {
             Debug.LogError("More choices were given than the UI can support. Number of choices given: " 
@@ -88,6 +94,13 @@ public class DialogueManager : Singleton<DialogueManager>
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
         EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+    }
+
+    public void MakeChoice(int choiceIndex)
+    {
+        currentStory.ChooseChoiceIndex(choiceIndex);
+        choicesPanel.SetActive(false);
+        //ContinueStory();
     }
 
     public void ShowInkDialog(TextAsset inkJSON)

@@ -6,12 +6,13 @@ using TMPro;
 
 public class DialogueButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
-    [SerializeField] TextMeshProUGUI text;
+    TextMeshProUGUI text;
 
     Color defaultColor;
     
     void Start()
     {
+        text = this.GetComponentInChildren<TextMeshProUGUI>();
         defaultColor = text.color;
     }
 
@@ -20,7 +21,7 @@ public class DialogueButton : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         text.color = Color.red;
     }
-    
+
     public void OnDeselect(BaseEventData eventData)
     {
         text.color = defaultColor;
