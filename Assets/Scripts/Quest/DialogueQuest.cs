@@ -7,15 +7,17 @@ using UnityEngine;
 public class DialogueQuest : QuestPart
 {
 
+    [SerializeField] string npcName;
+
+    [SerializeField] Dialogue dialogue;
+
     public DialogueQuest(string npcName, Dialogue dialogue)
     {
         this.npcName = npcName;
         this.dialogue = dialogue;
     }
 
-    [SerializeField] string npcName;
 
-    [SerializeField] Dialogue dialogue;
 
     public override void doSettings(Quest quest)
     {

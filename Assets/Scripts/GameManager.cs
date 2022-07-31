@@ -35,4 +35,9 @@ public class GameManager : Singleton<GameManager>
             dialogueManager.HandleUpdate();
         }
     }
+
+    public void setState(GameState newState)
+    {
+        state = newState;
+    }
 }
