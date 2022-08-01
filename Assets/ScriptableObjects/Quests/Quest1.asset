@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Quest1
   m_EditorClassIdentifier: 
   questParts:
-  - {fileID: 11400000, guid: e47408526849dc64a835e266064a5cde, type: 2}
-  - {fileID: 11400000, guid: 860700d0799dc3049a4b6b95b1bbcd14, type: 2}
+  - {fileID: 11400000, guid: 310771c4ddbfde749a87c86211e351be, type: 2}
   prevQuests: []
   nextQuests:
   - {fileID: 11400000, guid: d8a0d1c0c7a10c940bbf7be470534eb5, type: 2}
   - {fileID: 11400000, guid: 21c50e1804662254a9723f0702b50642, type: 2}
-  done: 0
+  done: 1

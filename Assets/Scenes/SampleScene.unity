@@ -951,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722379862a4466e4c824e287f649a6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstQuestSO: {fileID: 11400000, guid: 017c957d153d00e4494d4f6913ee0e18, type: 2}
+  firstQuestSO: {fileID: 11400000, guid: 8624bb8b039317a439998fde51e07469, type: 2}
   activeQuests: []
 --- !u!4 &68759062
 Transform:
@@ -7727,14 +7727,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at nisi
-    eleifend, aliquet ante et, eleifend felis. In sodales pulvinar tellus, tempus
-    tincidunt dolor mattis vitae. Vestibulum quis est dapibus, vestibulum nunc id,
-    luctus risus. Nullam malesuada ornare ultricies. Pellentesque lobortis fermentum
-    mauris, at aliquet neque gravida ut. In ultrices velit augue, sit amet eleifend
-    lacus volutpat mattis. Nunc nisi odio, tincidunt eu egestas tincidunt, ultrices
-    vel orci. Aliquam condimentum, quam et tempor rhoncus, turpis mauris luctus mi,
-    id eff
+  m_Text: 
 --- !u!222 &282748483
 CanvasRenderer:
   m_ObjectHideFlags: 0

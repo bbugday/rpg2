@@ -16,7 +16,6 @@ public class DialogueButton : MonoBehaviour, ISelectHandler, IDeselectHandler
         defaultColor = text.color;
     }
 
-    //Do this when the selectable UI object is selected.
     public void OnSelect(BaseEventData eventData)
     {
         text.color = Color.red;
