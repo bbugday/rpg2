@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2c4d372dfdb4c642990e1fe4b5529f3, type: 3}
-  m_Name: Quest1
+  m_Name: 1
   m_EditorClassIdentifier: 
   questParts:
   - {fileID: 11400000, guid: 310771c4ddbfde749a87c86211e351be, type: 2}
   prevQuests: []
   nextQuests:
-  - {fileID: 11400000, guid: d8a0d1c0c7a10c940bbf7be470534eb5, type: 2}
-  - {fileID: 11400000, guid: 21c50e1804662254a9723f0702b50642, type: 2}
-  done: 1
+  - {fileID: 11400000, guid: 49c508455e0fbc644ac61660cc932e32, type: 2}
+  - {fileID: 11400000, guid: eed756a4f8b30ce4e8093a2c1412b529, type: 2}
+  done: 0

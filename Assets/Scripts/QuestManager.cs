@@ -16,8 +16,19 @@ public class QuestManager : Singleton<QuestManager>
 
     void Start()
     {
+        setPreviousForQuestData(firstQuestSO);
         Quest firstQuest = new Quest(firstQuestSO);
         firstQuest.doSettings();
+    }
+
+    void setPreviousForQuestData(QuestSO questData)
+    {
+        foreach(QuestSO nextquest in questData.nextQuests)
+        {
+            if(!nextquest.prevQuests.Contains(questData))
+                nextquest.prevQuests.Add(questData);
+            setPreviousForQuestData(nextquest);
+        }
     }
 
     public void QuestDone(Quest quest)
