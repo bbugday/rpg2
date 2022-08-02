@@ -12,5 +12,6 @@ public class QuestSO : ScriptableObject
     public List<QuestSO> prevQuests;
     public List<QuestSO> nextQuests;
 
+    public bool started = false;
     public bool done = false;
 }

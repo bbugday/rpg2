@@ -39,6 +39,7 @@ public class QuestManager : Singleton<QuestManager>
         {
             if(IsQuestReady(next))
             {
+                next.started = true;
                 Quest newQuest = new Quest(next);
                 newQuest.doSettings();
             }
@@ -48,6 +49,9 @@ public class QuestManager : Singleton<QuestManager>
 
     private bool IsQuestReady(QuestSO quest)
     {
+        if(quest.started)
+            return false;
+
         foreach(QuestSO prev in quest.prevQuests)
         {
             if(prev.done == false)
