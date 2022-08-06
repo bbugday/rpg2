@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UIElements;
+using UnityEditor.UIElements;
+
 
 public class QuestNodeGraphEditor : EditorWindow
 {
-    private GUIStyle questNodeStyle;
 
-    private const float nodeWidth = 160f;
-    private const float nodeHeight = 75f;
-    private const int nodePadding = 25;
-    private const int nodeBorder = 12;
+    private QuestGraphView graphView;
 
     [MenuItem("Quest Node Graph Editor", menuItem = "Window/Quest Editor/Quest Node Graph Editor")]
     private static void OpenWindow()
@@ -20,21 +19,34 @@ public class QuestNodeGraphEditor : EditorWindow
     
     private void OnEnable()
     {
-        questNodeStyle = new GUIStyle();
-        questNodeStyle.normal.background = EditorGUIUtility.Load("node1") as Texture2D;
-        questNodeStyle.normal.textColor = Color.white;
-        questNodeStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
-        questNodeStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+        ContructGraphView();
+        GenerateToolbar();
+    }
+
+    private void ContructGraphView()
+    {
+        graphView = new QuestGraphView{name = "Quest Graph"};
+
+        graphView.StretchToParentSize();
+        rootVisualElement.Add(graphView);
+    }
+
+    private void GenerateToolbar()
+    {
+        var toolbar = new Toolbar();
+        var nodeCreateButton = new Button(() => {graphView.createNode("Quest Node");});
+        nodeCreateButton.text = "Create Node";
+        toolbar.Add(nodeCreateButton);
+        rootVisualElement.Add(toolbar);
+    }
+
+    private void OnDisable()
+    {
+        rootVisualElement.Remove(graphView);
     }
 
     private void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(new Vector2(100f, 100f), new Vector2(nodeWidth, nodeHeight)), questNodeStyle);
-        EditorGUILayout.LabelField("Node1");
-        GUILayout.EndArea();
 
-        GUILayout.BeginArea(new Rect(new Vector2(300f, 300f), new Vector2(nodeWidth, nodeHeight)), questNodeStyle);
-        EditorGUILayout.LabelField("Node2");
-        GUILayout.EndArea();
     }
 }
