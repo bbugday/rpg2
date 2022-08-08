@@ -6,6 +6,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using System;
+using UnityEditor.UIElements;
 
 public class QuestGraphView : GraphView
 {
@@ -24,8 +25,6 @@ public class QuestGraphView : GraphView
         var grid = new GridBackground();
         Insert(0, grid);
         grid.StretchToParentSize();
-
-        AddElement(GenerateEntryPointNode());
     }
 
     public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
@@ -46,29 +45,29 @@ public class QuestGraphView : GraphView
         return node.InstantiatePort(Orientation.Horizontal, portDirection, capacity, typeof(float));
     }
 
-    private QuestNode GenerateEntryPointNode()
-    {
-        var node = new QuestNode()
-        {
-            title = "Start",
-            GUID = Guid.NewGuid().ToString(),
-            DenemeText = "entrypoint",
-            EntryPoint = true
-        };
+    // private QuestNode GenerateEntryPointNode()
+    // {
+    //     var node = new QuestNode()
+    //     {
+    //         title = "Start",
+    //         GUID = Guid.NewGuid().ToString(),
+    //         DenemeText = "entrypoint",
+    //         EntryPoint = true
+    //     };
 
-        var generatedPort = GeneratePort(node, Direction.Output);
+    //     var generatedPort = GeneratePort(node, Direction.Output);
 
-        generatedPort.portName = "Next";
+    //     generatedPort.portName = "Next";
 
-        node.outputContainer.Add(generatedPort);
+    //     node.outputContainer.Add(generatedPort);
         
-        node.RefreshExpandedState();
-        node.RefreshPorts();
+    //     node.RefreshExpandedState();
+    //     node.RefreshPorts();
 
-        node.SetPosition(new Rect(100, 200, 100, 100));
+    //     node.SetPosition(new Rect(100, 200, 100, 100));
 
-        return node;
-    }
+    //     return node;
+    // }
 
     public void createNode(string nodeName)
     {
@@ -81,12 +80,74 @@ public class QuestGraphView : GraphView
         {
             title = nodeName,
             DenemeText = "denemetext",
-            GUID = Guid.NewGuid().ToString()
+            GUID = Guid.NewGuid().ToString(),
+            questParts = new List<QuestPart>()
         };
 
+        var outputPort = GeneratePort(questNode, Direction.Output, Port.Capacity.Multi);
+        outputPort.portName = "Next";
+
         var inputPort = GeneratePort(questNode, Direction.Input, Port.Capacity.Multi);
-        inputPort.portName = "Input";
+        inputPort.portName = "Prev";
+
+        questNode.inputContainer.Add(outputPort);
         questNode.inputContainer.Add(inputPort);
+
+        /* SO FIELD 
+
+        var questPartField = new ObjectField
+        {
+            objectType = typeof(QuestPart),
+            allowSceneObjects = false,
+            value = questPart,
+        };
+
+        questPartField.RegisterValueChangedCallback(v =>
+        {
+            questPart = questPartField.value as QuestPart;
+        });
+
+        questNode.Add(questPartField);
+
+        */
+
+        /* TEXT FIELD
+        var textField = new TextField("Npc");
+        textField.RegisterValueChangedCallback(evt =>
+        {
+            questNode.DenemeText = evt.newValue;
+        });
+        textField.SetValueWithoutNotify(questNode.DenemeText);
+        questNode.Add(textField);
+        
+        */
+
+        List<QuestPart> questParts = new List<QuestPart>(); 
+        
+        questNode.questParts = questParts;
+
+        var button = new UnityEngine.UIElements.Button(() => {
+            QuestPart questPart = null;
+            questParts.Add(questPart); 
+
+            var questPartField = new ObjectField
+            {
+                objectType = typeof(QuestPart),
+                allowSceneObjects = false,
+                value = questPart,
+            };
+
+            questPartField.RegisterValueChangedCallback(v =>
+            {
+                questParts[questParts.IndexOf(questPart)] = questPartField.value as QuestPart;
+            });
+
+            questNode.Add(questPartField);
+        });
+        
+        button.text = "Add New Quest Part";
+        questNode.titleContainer.Add(button);
+
         questNode.RefreshExpandedState();
         questNode.RefreshPorts();
         questNode.SetPosition(new Rect(Vector2.zero, defaultNodeSize));
