@@ -79,7 +79,6 @@ public class QuestGraphView : GraphView
         var questNode = new QuestNode
         {
             title = nodeName,
-            DenemeText = "denemetext",
             GUID = Guid.NewGuid().ToString(),
             questParts = new List<QuestPart>()
         };

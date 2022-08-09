@@ -11,6 +11,8 @@ public class QuestNodeGraphEditor : EditorWindow
 
     private QuestGraphView graphView;
 
+    private string filename = "ScriptableObjects/Quests";
+
     [MenuItem("Quest Node Graph Editor", menuItem = "Window/Quest Editor/Quest Node Graph Editor")]
     private static void OpenWindow()
     {
@@ -34,11 +36,39 @@ public class QuestNodeGraphEditor : EditorWindow
     private void GenerateToolbar()
     {
         var toolbar = new Toolbar();
+
+        var fileNameTextField = new TextField("File Name:");
+        fileNameTextField.SetValueWithoutNotify(filename);
+        fileNameTextField.MarkDirtyRepaint();
+        fileNameTextField.RegisterValueChangedCallback(evt => filename = evt.newValue);
+        toolbar.Add(fileNameTextField);
+
+        toolbar.Add(new Button(() => SaveData()){text = "Save Data"});
+        toolbar.Add(new Button(() => LoadData()){text = "Load Data"});
+
         var nodeCreateButton = new Button(() => {graphView.createNode("Quest Node");});
         nodeCreateButton.text = "Create Node";
         toolbar.Add(nodeCreateButton);
+
         rootVisualElement.Add(toolbar);
     }
+
+    private void LoadData()
+    {
+        var quests = Resources.LoadAll<QuestSO>(filename);
+
+        foreach(QuestSO quest in quests)
+        {
+            Debug.Log(quest);
+        }
+    }
+
+
+    private void SaveData()
+    {
+
+    }
+
 
     private void OnDisable()
     {
