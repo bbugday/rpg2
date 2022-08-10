@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class QuestSO : ScriptableObject
 {
+    public string questTitle;
+
     public List<QuestPart> questParts;
 
     public List<QuestSO> prevQuests;

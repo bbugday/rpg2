@@ -12,6 +12,10 @@ public class QuestGraphView : GraphView
 {
     private readonly Vector2 defaultNodeSize = new Vector2(150, 200);
 
+    private Dictionary<QuestSO, QuestNode> questToNode;
+
+    private List<QuestNode> currentNodes;
+
     public QuestGraphView()
     {
         styleSheets.Add(Resources.Load<StyleSheet>("QuestGraph"));
@@ -25,6 +29,9 @@ public class QuestGraphView : GraphView
         var grid = new GridBackground();
         Insert(0, grid);
         grid.StretchToParentSize();
+
+        currentNodes = new List<QuestNode>();
+        questToNode = new Dictionary<QuestSO, QuestNode>();
     }
 
     public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
@@ -69,15 +76,105 @@ public class QuestGraphView : GraphView
     //     return node;
     // }
 
-    public void createNode(string nodeName)
+    public void addNode(string nodeName)
     {
         AddElement(createQuestNode(nodeName));
     }
 
+    public void addQuestNodeFromData(QuestSO questData)
+    {
+        QuestNode questNode = new QuestNode(questData);
+
+        questToNode.Add(questData, questNode);
+
+        var outputPort = GeneratePort(questNode, Direction.Output, Port.Capacity.Multi);
+        outputPort.portName = "Next";
+
+        var inputPort = GeneratePort(questNode, Direction.Input, Port.Capacity.Multi);
+        inputPort.portName = "Prev";
+
+        questNode.inputContainer.Add(outputPort);
+        questNode.inputContainer.Add(inputPort);
+
+        questNode.inputPort = inputPort;
+        questNode.outputPort = outputPort;
+
+        //List<QuestPart> questParts = new List<QuestPart>(); 
+        
+        //questNode.questParts = questParts;
+
+        var button = new UnityEngine.UIElements.Button(() => {
+            QuestPart questPart = null;
+            questNode.questParts.Add(questPart); 
+
+            var questPartField = new ObjectField
+            {
+                objectType = typeof(QuestPart),
+                allowSceneObjects = false,
+                value = questPart,
+            };
+
+            questPartField.RegisterValueChangedCallback(v =>
+            {
+                questNode.questParts[questNode.questParts.IndexOf(questPart)] = questPartField.value as QuestPart;
+            });
+
+            questNode.Add(questPartField);
+        });
+
+        button.text = "Add New Quest Part";
+        questNode.titleContainer.Add(button);
+
+
+        foreach(QuestPart questPart in questData.questParts)
+        {   
+            var questPartField = new ObjectField
+            {
+                objectType = typeof(QuestPart),
+                allowSceneObjects = false,
+                value = questPart,
+            };
+
+            questPartField.RegisterValueChangedCallback(v =>
+            {
+                questNode.questParts[questNode.questParts.IndexOf(questPart)] = questPartField.value as QuestPart;
+            });
+
+            questNode.Add(questPartField);  
+        }
+
+
+        questNode.RefreshExpandedState();
+        questNode.RefreshPorts();
+        questNode.SetPosition(new Rect(Vector2.zero, defaultNodeSize));
+
+        currentNodes.Add(questNode);
+        AddElement(questNode);
+    }
+
+    //to reach node from edge: node.outputPort.node
+    public void makeConnections()
+    {
+        foreach(QuestNode node in currentNodes)
+        {
+            foreach(QuestSO next in node.questData.nextQuests)
+            {
+                var edge = node.outputPort.ConnectTo(questToNode[next].inputPort);
+
+                AddElement(edge);
+
+                //Debug.Log(node.outputPort.connections); //returns edge, not node!
+            }
+        }
+    }
+    
+
+    //repeating!
     public QuestNode createQuestNode(string nodeName)
     {
         var questNode = new QuestNode
         {
+            questData = null, // create questso 
             title = nodeName,
             GUID = Guid.NewGuid().ToString(),
             questParts = new List<QuestPart>()
@@ -125,6 +222,9 @@ public class QuestGraphView : GraphView
         
         questNode.questParts = questParts;
 
+
+        //*************** TO DO ***********************
+        //butonu oluşturulan yeni questSO'ya bağla
         var button = new UnityEngine.UIElements.Button(() => {
             QuestPart questPart = null;
             questParts.Add(questPart); 

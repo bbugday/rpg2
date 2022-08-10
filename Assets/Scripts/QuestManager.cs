@@ -47,12 +47,12 @@ public class QuestManager : Singleton<QuestManager>
         }
     }
 
-    private bool IsQuestReady(QuestSO quest)
+    private bool IsQuestReady(QuestSO questData)
     {
-        if(quest.started)
+        if(questData.started)
             return false;
 
-        foreach(QuestSO prev in quest.prevQuests)
+        foreach(QuestSO prev in questData.prevQuests)
         {
             if(prev.done == false)
                 return false;

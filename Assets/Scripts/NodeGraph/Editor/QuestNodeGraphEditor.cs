@@ -46,7 +46,7 @@ public class QuestNodeGraphEditor : EditorWindow
         toolbar.Add(new Button(() => SaveData()){text = "Save Data"});
         toolbar.Add(new Button(() => LoadData()){text = "Load Data"});
 
-        var nodeCreateButton = new Button(() => {graphView.createNode("Quest Node");});
+        var nodeCreateButton = new Button(() => {graphView.addNode("Quest Node");});
         nodeCreateButton.text = "Create Node";
         toolbar.Add(nodeCreateButton);
 
@@ -57,10 +57,12 @@ public class QuestNodeGraphEditor : EditorWindow
     {
         var quests = Resources.LoadAll<QuestSO>(filename);
 
-        foreach(QuestSO quest in quests)
+        foreach(QuestSO questData in quests)
         {
-            Debug.Log(quest);
+            graphView.addQuestNodeFromData(questData);
         }
+
+        graphView.makeConnections();
     }
 
 

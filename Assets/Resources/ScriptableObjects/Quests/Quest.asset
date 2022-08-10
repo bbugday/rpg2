@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c4d372dfdb4c642990e1fe4b5529f3, type: 3}
   m_Name: Quest
   m_EditorClassIdentifier: 
-  questParts: []
+  questTitle: Birinci Gorev
+  questParts:
+  - {fileID: 11400000, guid: 310771c4ddbfde749a87c86211e351be, type: 2}
   prevQuests: []
-  nextQuests: []
+  nextQuests:
+  - {fileID: 11400000, guid: e5b52ced0b21e614c971c281fff9d31a, type: 2}
+  - {fileID: 11400000, guid: 142c7a4f8353f4c4c8424741e0662167, type: 2}
   started: 0
   done: 0
