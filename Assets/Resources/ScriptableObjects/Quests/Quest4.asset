@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c4d372dfdb4c642990e1fe4b5529f3, type: 3}
   m_Name: Quest4
   m_EditorClassIdentifier: 
-  questTitle: 
+  questTitle: "D\xF6rt"
   questParts: []
   prevQuests: []
   nextQuests: []

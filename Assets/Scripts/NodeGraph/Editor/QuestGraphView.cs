@@ -105,7 +105,7 @@ public class QuestGraphView : GraphView
 
         var button = new UnityEngine.UIElements.Button(() => {
             QuestPart questPart = null;
-            questNode.questParts.Add(questPart); 
+            questNode.questData.questParts.Add(questPart); 
 
             var questPartField = new ObjectField
             {
@@ -113,10 +113,11 @@ public class QuestGraphView : GraphView
                 allowSceneObjects = false,
                 value = questPart,
             };
-
+            
+            //gets bugged when quest part used twice
             questPartField.RegisterValueChangedCallback(v =>
             {
-                questNode.questParts[questNode.questParts.IndexOf(questPart)] = questPartField.value as QuestPart;
+                questNode.questData.questParts[questNode.questData.questParts.IndexOf(questPart)] = questPartField.value as QuestPart;
             });
 
             questNode.Add(questPartField);
@@ -126,7 +127,7 @@ public class QuestGraphView : GraphView
         questNode.titleContainer.Add(button);
 
 
-        foreach(QuestPart questPart in questData.questParts)
+        foreach(QuestPart questPart in questNode.questData.questParts)
         {   
             var questPartField = new ObjectField
             {
@@ -135,9 +136,10 @@ public class QuestGraphView : GraphView
                 value = questPart,
             };
 
-            questPartField.RegisterValueChangedCallback(v =>
+            //gets bugged when quest part used twice
+            questPartField.RegisterValueChangedCallback(evt =>
             {
-                questNode.questParts[questNode.questParts.IndexOf(questPart)] = questPartField.value as QuestPart;
+                questNode.questData.questParts[questNode.questData.questParts.IndexOf(questPart)] = evt.newValue as QuestPart;
             });
 
             questNode.Add(questPartField);  
@@ -177,7 +179,7 @@ public class QuestGraphView : GraphView
             questData = null, // create questso 
             title = nodeName,
             GUID = Guid.NewGuid().ToString(),
-            questParts = new List<QuestPart>()
+            //questParts = new List<QuestPart>()
         };
 
         var outputPort = GeneratePort(questNode, Direction.Output, Port.Capacity.Multi);
@@ -220,7 +222,7 @@ public class QuestGraphView : GraphView
 
         List<QuestPart> questParts = new List<QuestPart>(); 
         
-        questNode.questParts = questParts;
+        //questNode.questParts = questParts;
 
 
         //*************** TO DO ***********************
