@@ -15,10 +15,12 @@ public class QuestNode : Node
 
 	public QuestNode(QuestSO questData)
 	{
-		this.questData = questData;
+		this.questData = questData.Clone<QuestSO>();
 
 		this.title = questData.questTitle;
 		this.GUID = Guid.NewGuid().ToString();
+
+		this.position = questData.position;
 	}
 
 	public QuestSO questData;
@@ -27,4 +29,6 @@ public class QuestNode : Node
 	public Port outputPort;
 
 	public string GUID;
+
+	public Vector2 position;
 }

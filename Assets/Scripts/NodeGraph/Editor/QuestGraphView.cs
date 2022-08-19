@@ -113,7 +113,7 @@ public class QuestGraphView : GraphView
                 allowSceneObjects = false,
                 value = questPart,
             };
-            
+
             //gets bugged when quest part used twice
             questPartField.RegisterValueChangedCallback(v =>
             {
@@ -148,9 +148,10 @@ public class QuestGraphView : GraphView
 
         questNode.RefreshExpandedState();
         questNode.RefreshPorts();
-        questNode.SetPosition(new Rect(Vector2.zero, defaultNodeSize));
+        questNode.SetPosition(new Rect(questNode.position, defaultNodeSize));
 
         currentNodes.Add(questNode);
+        
         AddElement(questNode);
     }
 

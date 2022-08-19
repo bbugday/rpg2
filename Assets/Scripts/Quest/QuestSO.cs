@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [CreateAssetMenu(fileName = "Quest", menuName = "ScriptableObjects/QuestScriptableObject", order = 1)]
 [System.Serializable]
@@ -16,4 +17,6 @@ public class QuestSO : ScriptableObject
 
     public bool started = false;
     public bool done = false;
+
+    public Vector2 position = Vector2.zero;
 }
