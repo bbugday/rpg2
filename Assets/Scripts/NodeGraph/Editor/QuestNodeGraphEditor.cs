@@ -68,7 +68,7 @@ public class QuestNodeGraphEditor : EditorWindow
 
     private void SaveData()
     {
-
+        graphView.SaveData();
     }
 
 

@@ -18,5 +18,6 @@ public class QuestSO : ScriptableObject
     public bool started = false;
     public bool done = false;
 
-    public Vector2 position = Vector2.zero;
+    public Rect position = new Rect(0, 0, 150, 200);
+
 }

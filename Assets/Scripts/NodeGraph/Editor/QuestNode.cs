@@ -40,5 +40,5 @@ public class QuestNode : Node
 
 	public string GUID;
 
-	public Vector2 position;
+	public Rect position;
 }

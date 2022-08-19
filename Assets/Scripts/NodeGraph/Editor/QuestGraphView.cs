@@ -81,6 +81,14 @@ public class QuestGraphView : GraphView
         AddElement(createQuestNode(nodeName));
     }
 
+    public void SaveData()
+    {
+        foreach(QuestNode node in currentNodes)
+        {
+            node.questData.position = node.GetPosition();
+        }
+    }
+
     public void addQuestNodeFromData(QuestSO questData)
     {
         QuestNode questNode = new QuestNode(questData);
@@ -148,7 +156,7 @@ public class QuestGraphView : GraphView
 
         questNode.RefreshExpandedState();
         questNode.RefreshPorts();
-        questNode.SetPosition(new Rect(questNode.position, defaultNodeSize));
+        questNode.SetPosition(questNode.position);
 
         currentNodes.Add(questNode);
         
@@ -160,7 +168,7 @@ public class QuestGraphView : GraphView
     {
         foreach(QuestNode node in currentNodes)
         {
-            foreach(QuestSO next in node.nextQuests)
+            foreach(QuestSO next in node.questData.nextQuests)
             {
                 var edge = node.outputPort.ConnectTo(questToNode[next].inputPort);
 
