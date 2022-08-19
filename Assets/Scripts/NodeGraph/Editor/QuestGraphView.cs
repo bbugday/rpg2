@@ -105,7 +105,7 @@ public class QuestGraphView : GraphView
 
         var button = new UnityEngine.UIElements.Button(() => {
             QuestPart questPart = null;
-            questNode.questData.questParts.Add(questPart); 
+            questNode.questParts.Add(questPart); 
 
             var questPartField = new ObjectField
             {
@@ -117,7 +117,7 @@ public class QuestGraphView : GraphView
             //gets bugged when quest part used twice
             questPartField.RegisterValueChangedCallback(v =>
             {
-                questNode.questData.questParts[questNode.questData.questParts.IndexOf(questPart)] = questPartField.value as QuestPart;
+                questNode.questParts[questNode.questParts.IndexOf(questPart)] = questPartField.value as QuestPart;
             });
 
             questNode.Add(questPartField);
@@ -127,7 +127,7 @@ public class QuestGraphView : GraphView
         questNode.titleContainer.Add(button);
 
 
-        foreach(QuestPart questPart in questNode.questData.questParts)
+        foreach(QuestPart questPart in questNode.questParts)
         {   
             var questPartField = new ObjectField
             {
@@ -139,7 +139,7 @@ public class QuestGraphView : GraphView
             //gets bugged when quest part used twice
             questPartField.RegisterValueChangedCallback(evt =>
             {
-                questNode.questData.questParts[questNode.questData.questParts.IndexOf(questPart)] = evt.newValue as QuestPart;
+                questNode.questParts[questNode.questParts.IndexOf(questPart)] = evt.newValue as QuestPart;
             });
 
             questNode.Add(questPartField);  
@@ -160,7 +160,7 @@ public class QuestGraphView : GraphView
     {
         foreach(QuestNode node in currentNodes)
         {
-            foreach(QuestSO next in node.questData.nextQuests)
+            foreach(QuestSO next in node.nextQuests)
             {
                 var edge = node.outputPort.ConnectTo(questToNode[next].inputPort);
 
