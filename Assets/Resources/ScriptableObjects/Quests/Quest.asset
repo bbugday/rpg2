@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questTitle: Birinci Gorev
   questParts:
-  - {fileID: 11400000, guid: 585707d6ae07dd543afd45f075a726a6, type: 2}
-  - {fileID: 11400000, guid: febd1760c1d87824eaac539798d56ec1, type: 2}
-  - {fileID: 11400000, guid: febd1760c1d87824eaac539798d56ec1, type: 2}
-  - {fileID: 11400000, guid: 585707d6ae07dd543afd45f075a726a6, type: 2}
+  - {fileID: 11400000, guid: 310771c4ddbfde749a87c86211e351be, type: 2}
   prevQuests: []
   nextQuests:
   - {fileID: 11400000, guid: e5b52ced0b21e614c971c281fff9d31a, type: 2}
   - {fileID: 11400000, guid: 142c7a4f8353f4c4c8424741e0662167, type: 2}
   started: 0
   done: 0
+  position:
+    serializedVersion: 2
+    x: -95
+    y: 54
+    width: 246
+    height: 181

@@ -86,6 +86,19 @@ public class QuestGraphView : GraphView
         foreach(QuestNode node in currentNodes)
         {
             node.questData.position = node.GetPosition();
+
+            //there must be better solution for here, check later
+            node.questData.questParts.Clear();
+            // node.questData.nextQuests.Clear();
+
+            foreach(QuestPart part in node.questParts)
+            {
+                node.questData.questParts.Add(part);
+            }
+
+            // Debug.Log(node.outputPort.connections); //returns edge, not node! //to reach node from edge: node.outputPort.node
+            // //look connections and make create nexts
+
         }
     }
 
@@ -112,6 +125,7 @@ public class QuestGraphView : GraphView
         //questNode.questParts = questParts;
 
         var button = new UnityEngine.UIElements.Button(() => {
+
             QuestPart questPart = null;
             questNode.questParts.Add(questPart); 
 
@@ -119,7 +133,7 @@ public class QuestGraphView : GraphView
             {
                 objectType = typeof(QuestPart),
                 allowSceneObjects = false,
-                value = questPart,
+                value = questPart
             };
 
             //gets bugged when quest part used twice

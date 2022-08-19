@@ -21,11 +21,25 @@ public class QuestNode : Node
 		this.GUID = Guid.NewGuid().ToString();
 
 		this.position = questData.position;
+		
+		this.questParts = new List<QuestPart>();
+		this.nextQuests = new List<QuestSO>();
 
-		this.questParts = questData.questParts.ConvertAll<QuestPart>(questPart => questPart.Clone<QuestPart>());
+		foreach(QuestPart part in questData.questParts)
+		{
+			this.questParts.Add(part);
+		}
 
-		this.prevQuests = questData.prevQuests.ConvertAll<QuestSO>(prevQuest => prevQuest.Clone<QuestSO>());
-		this.nextQuests = questData.nextQuests.ConvertAll<QuestSO>(nextQuest => nextQuest.Clone<QuestSO>());
+		foreach(QuestSO next in questData.nextQuests)
+		{
+			this.nextQuests.Add(next);
+		}
+
+		//do with extension?
+		//this.questParts = questData.questParts.ConvertAll<QuestPart>(questPart => questPart.Clone<QuestPart>());
+
+		// this.prevQuests = questData.prevQuests.ConvertAll<QuestSO>(prevQuest => prevQuest.Clone<QuestSO>());
+		// this.nextQuests = questData.nextQuests.ConvertAll<QuestSO>(nextQuest => nextQuest.Clone<QuestSO>());
 	}
 
 	public QuestSO questData;

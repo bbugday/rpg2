@@ -8,6 +8,13 @@ using System;
 
 public class QuestSO : ScriptableObject
 {
+    void OnEnable()
+    {
+        prevQuests.Clear();
+        started = false;
+        done = false;
+    }
+
     public string questTitle;
 
     public List<QuestPart> questParts;
