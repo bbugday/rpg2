@@ -65,20 +65,13 @@ public class QuestNodeGraphEditor : EditorWindow
         graphView.makeConnections();
     }
 
-
     private void SaveData()
     {
         graphView.SaveData();
     }
 
-
     private void OnDisable()
     {
         rootVisualElement.Remove(graphView);
-    }
-
-    private void OnGUI()
-    {
-
     }
 }

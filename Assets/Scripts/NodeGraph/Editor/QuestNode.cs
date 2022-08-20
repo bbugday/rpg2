@@ -34,12 +34,6 @@ public class QuestNode : Node
 		{
 			this.nextQuests.Add(next);
 		}
-
-		//do with extension?
-		//this.questParts = questData.questParts.ConvertAll<QuestPart>(questPart => questPart.Clone<QuestPart>());
-
-		// this.prevQuests = questData.prevQuests.ConvertAll<QuestSO>(prevQuest => prevQuest.Clone<QuestSO>());
-		// this.nextQuests = questData.nextQuests.ConvertAll<QuestSO>(nextQuest => nextQuest.Clone<QuestSO>());
 	}
 
 	public QuestSO questData;
