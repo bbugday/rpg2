@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Quest2
   m_EditorClassIdentifier: 
   questTitle: "\u0130kinci Gorev"
-  questParts: []
-  prevQuests: []
+  questParts:
+  - {fileID: 11400000, guid: 585707d6ae07dd543afd45f075a726a6, type: 2}
+  prevQuests:
+  - {fileID: 11400000, guid: 5c8c12b49c76feb4392c9440469db71f, type: 2}
   nextQuests:
   - {fileID: 11400000, guid: 499d59f44eef3dd448e3b417a66f6840, type: 2}
-  started: 0
-  done: 0
+  started: 1
+  done: 1
   position:
     serializedVersion: 2
     x: 313
-    y: -11
+    y: -4
     width: 241
-    height: 141
+    height: 121

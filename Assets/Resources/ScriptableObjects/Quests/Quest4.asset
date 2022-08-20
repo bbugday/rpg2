@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Quest4
   m_EditorClassIdentifier: 
   questTitle: "D\xF6rt"
-  questParts:
-  - {fileID: 0}
-  - {fileID: 0}
+  questParts: []
   prevQuests: []
   nextQuests: []
   started: 0
@@ -24,5 +22,5 @@ MonoBehaviour:
     serializedVersion: 2
     x: 614
     y: 117
-    width: 223
-    height: 141
+    width: 198
+    height: 101

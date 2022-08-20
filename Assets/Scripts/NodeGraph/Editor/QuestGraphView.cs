@@ -87,18 +87,19 @@ public class QuestGraphView : GraphView
         {
             node.questData.position = node.GetPosition();
 
-            //there must be better solution for here, check later
             node.questData.questParts.Clear();
-            // node.questData.nextQuests.Clear();
+            node.questData.nextQuests.Clear();
 
             foreach(QuestPart part in node.questParts)
             {
                 node.questData.questParts.Add(part);
             }
 
-            // Debug.Log(node.outputPort.connections); //returns edge, not node! //to reach node from edge: node.outputPort.node
-            // //look connections and make create nexts
-
+            foreach(Edge edge in node.outputPort.connections)
+            {
+                QuestNode nextQuestNode = edge.input.node as QuestNode;
+                node.questData.nextQuests.Add(nextQuestNode.questData);
+            }
         }
     }
 
@@ -119,10 +120,6 @@ public class QuestGraphView : GraphView
 
         questNode.inputPort = inputPort;
         questNode.outputPort = outputPort;
-
-        //List<QuestPart> questParts = new List<QuestPart>(); 
-        
-        //questNode.questParts = questParts;
 
         var button = new UnityEngine.UIElements.Button(() => {
 
@@ -177,7 +174,6 @@ public class QuestGraphView : GraphView
         AddElement(questNode);
     }
 
-    //to reach node from edge: node.outputPort.node
     public void makeConnections()
     {
         foreach(QuestNode node in currentNodes)
@@ -187,95 +183,66 @@ public class QuestGraphView : GraphView
                 var edge = node.outputPort.ConnectTo(questToNode[next].inputPort);
 
                 AddElement(edge);
-
-                //Debug.Log(node.outputPort.connections); //returns edge, not node!
             }
         }
     }
     
 
-    //repeating!
+    //*************** TO DO ***********************
+    //implement it later
     public QuestNode createQuestNode(string nodeName)
     {
-        var questNode = new QuestNode
-        {
-            questData = null, // create questso 
-            title = nodeName,
-            GUID = Guid.NewGuid().ToString(),
-            //questParts = new List<QuestPart>()
-        };
+        throw new NotImplementedException();
 
-        var outputPort = GeneratePort(questNode, Direction.Output, Port.Capacity.Multi);
-        outputPort.portName = "Next";
+        // var questNode = new QuestNode
+        // {
+        //     questData = null, // create questso 
+        //     title = nodeName,
+        //     GUID = Guid.NewGuid().ToString(),
+        //     //questParts = new List<QuestPart>()
+        // };
 
-        var inputPort = GeneratePort(questNode, Direction.Input, Port.Capacity.Multi);
-        inputPort.portName = "Prev";
+        // var outputPort = GeneratePort(questNode, Direction.Output, Port.Capacity.Multi);
+        // outputPort.portName = "Next";
 
-        questNode.inputContainer.Add(outputPort);
-        questNode.inputContainer.Add(inputPort);
+        // var inputPort = GeneratePort(questNode, Direction.Input, Port.Capacity.Multi);
+        // inputPort.portName = "Prev";
 
-        /* SO FIELD 
+        // questNode.inputContainer.Add(outputPort);
+        // questNode.inputContainer.Add(inputPort);
 
-        var questPartField = new ObjectField
-        {
-            objectType = typeof(QuestPart),
-            allowSceneObjects = false,
-            value = questPart,
-        };
-
-        questPartField.RegisterValueChangedCallback(v =>
-        {
-            questPart = questPartField.value as QuestPart;
-        });
-
-        questNode.Add(questPartField);
-
-        */
-
-        /* TEXT FIELD
-        var textField = new TextField("Npc");
-        textField.RegisterValueChangedCallback(evt =>
-        {
-            questNode.DenemeText = evt.newValue;
-        });
-        textField.SetValueWithoutNotify(questNode.DenemeText);
-        questNode.Add(textField);
+        // List<QuestPart> questParts = new List<QuestPart>(); 
         
-        */
+        // //questNode.questParts = questParts;
 
-        List<QuestPart> questParts = new List<QuestPart>(); 
+        // //*************** TO DO ***********************
+        // //butonu oluşturulan yeni questSO'ya bağla
+        // var button = new UnityEngine.UIElements.Button(() => {
+        //     QuestPart questPart = null;
+        //     questParts.Add(questPart); 
+
+        //     var questPartField = new ObjectField
+        //     {
+        //         objectType = typeof(QuestPart),
+        //         allowSceneObjects = false,
+        //         value = questPart,
+        //     };
+
+        //     questPartField.RegisterValueChangedCallback(v =>
+        //     {
+        //         questParts[questParts.IndexOf(questPart)] = questPartField.value as QuestPart;
+        //     });
+
+        //     questNode.Add(questPartField);
+        // });
         
-        //questNode.questParts = questParts;
+        // button.text = "Add New Quest Part";
+        // questNode.titleContainer.Add(button);
 
+        // questNode.RefreshExpandedState();
+        // questNode.RefreshPorts();
+        // questNode.SetPosition(new Rect(Vector2.zero, defaultNodeSize));
 
-        //*************** TO DO ***********************
-        //butonu oluşturulan yeni questSO'ya bağla
-        var button = new UnityEngine.UIElements.Button(() => {
-            QuestPart questPart = null;
-            questParts.Add(questPart); 
-
-            var questPartField = new ObjectField
-            {
-                objectType = typeof(QuestPart),
-                allowSceneObjects = false,
-                value = questPart,
-            };
-
-            questPartField.RegisterValueChangedCallback(v =>
-            {
-                questParts[questParts.IndexOf(questPart)] = questPartField.value as QuestPart;
-            });
-
-            questNode.Add(questPartField);
-        });
-        
-        button.text = "Add New Quest Part";
-        questNode.titleContainer.Add(button);
-
-        questNode.RefreshExpandedState();
-        questNode.RefreshPorts();
-        questNode.SetPosition(new Rect(Vector2.zero, defaultNodeSize));
-
-        return questNode;
+        // return questNode;
     }
 }

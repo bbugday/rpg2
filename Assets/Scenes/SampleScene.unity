@@ -951,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722379862a4466e4c824e287f649a6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstQuestSO: {fileID: 11400000, guid: 62b74f1b9f8deab4abb2824ebbbe0cb6, type: 2}
+  firstQuestSO: {fileID: 11400000, guid: 5c8c12b49c76feb4392c9440469db71f, type: 2}
 --- !u!4 &68759062
 Transform:
   m_ObjectHideFlags: 0
