@@ -9,15 +9,23 @@ public class CustomSceneManager : Singleton<CustomSceneManager>
 
     public void SwitchToArena(string arenaName)
     {
-        SceneManager.LoadSceneAsync(arenaName);
-        essentialObjects.SetActive(false);
-        GameManager.Instance.gameObject.SetActive(false);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(arenaName);
+
+        asyncLoad.completed += (asyncOperation) =>
+        {
+            essentialObjects.SetActive(false);
+            GameManager.Instance.gameObject.SetActive(false);
+        };
     }
 
     public void SwitchToFreeRoam()
     {
-        SceneManager.LoadSceneAsync(0);
-        essentialObjects.SetActive(true);
-        GameManager.Instance.gameObject.SetActive(true);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(0);;
+
+        asyncLoad.completed += (asyncOperation) =>
+        {
+            essentialObjects.SetActive(true);
+            GameManager.Instance.gameObject.SetActive(true);
+        };
     }
 }
