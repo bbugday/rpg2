@@ -16,9 +16,14 @@ public class PlayerController : MonoBehaviour
 
     float footOffset = -1.5f;
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<CharacterAnimator>();
+    }
+
+    void OnDisable()
+    {
+        isMoving = false;
     }
 
     public void HandleUpdate()
