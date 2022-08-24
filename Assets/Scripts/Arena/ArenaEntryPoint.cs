@@ -9,6 +9,6 @@ public class ArenaEntryPoint : MonoBehaviour, Interactable
 
     public void Interact()
     {
-        CustomSceneManager.Instance.SwitchToArena(arenaSceneName);
+        StartCoroutine(CustomSceneManager.Instance.SwitchToArena(arenaSceneName));
     }
 }
