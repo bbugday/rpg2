@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class ArenaPlayerController : MonoBehaviour
 {
+    CharacterAnimator animator;
 
     public int moveSpeed;
+
+    void Awake()
+    {
+        animator = GetComponent<CharacterAnimator>();
+    }
 
     public void HandleUpdate()
     {
@@ -17,13 +23,22 @@ public class ArenaPlayerController : MonoBehaviour
 
     public void Move()
     {
-        if(Input.GetKey(KeyCode.W))
-            transform.position += Vector3.up * moveSpeed * Time.deltaTime;
-        if(Input.GetKey(KeyCode.S))
-            transform.position += Vector3.down * moveSpeed * Time.deltaTime;
-        if(Input.GetKey(KeyCode.A))
-            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-        if(Input.GetKey(KeyCode.D))
-            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+        Vector2 input;
+
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.y = Input.GetAxisRaw("Vertical");
+
+        if(input != Vector2.zero)
+        {
+            transform.position += new Vector3(input.normalized.x, input.normalized.y, 0) * Time.deltaTime * moveSpeed;
+
+            animator.IsMoving = true;
+            animator.MoveX = input.x;
+            animator.MoveY = input.y;
+        }
+        else
+        {
+            animator.IsMoving = false;
+        }
     }
 }
