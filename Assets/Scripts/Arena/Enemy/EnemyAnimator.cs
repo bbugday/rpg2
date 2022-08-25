@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
 {
-
-    [SerializeField] List<Sprite> walkRightSprites;
-    [SerializeField] List<Sprite> walkLeftSprites;
+    [SerializeField] List<Sprite> sprites;
 
     public float MoveX { get; set; }
 
@@ -20,8 +18,8 @@ public class EnemyAnimator : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        walkRightAnim = new SpriteAnimator(walkRightSprites, spriteRenderer);
-        walkLeftAnim = new SpriteAnimator(walkLeftSprites, spriteRenderer);
+        walkRightAnim = new SpriteAnimator(sprites, spriteRenderer);
+        walkLeftAnim = new SpriteAnimator(sprites, spriteRenderer, true);
 
         currentAnim = walkRightAnim;
     }
