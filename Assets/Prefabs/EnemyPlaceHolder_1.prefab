@@ -111,16 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda73bfba93a6af4a83d4b75941519cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkRightSprites:
+  sprites:
   - {fileID: -807295068144483359, guid: 66e458ade9daba4469e5b263097d5a59, type: 3}
   - {fileID: -6857785314715420402, guid: 66e458ade9daba4469e5b263097d5a59, type: 3}
   - {fileID: -807295068144483359, guid: 66e458ade9daba4469e5b263097d5a59, type: 3}
   - {fileID: 8014958351230202367, guid: 66e458ade9daba4469e5b263097d5a59, type: 3}
-  walkLeftSprites:
-  - {fileID: 1274823086587086937, guid: 66e458ade9daba4469e5b263097d5a59, type: 3}
-  - {fileID: -3739087815041141814, guid: 66e458ade9daba4469e5b263097d5a59, type: 3}
-  - {fileID: 1274823086587086937, guid: 66e458ade9daba4469e5b263097d5a59, type: 3}
-  - {fileID: -8342304197539717324, guid: 66e458ade9daba4469e5b263097d5a59, type: 3}
 --- !u!50 &2521814341191140957
 Rigidbody2D:
   serializedVersion: 4

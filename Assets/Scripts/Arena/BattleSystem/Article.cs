@@ -1,0 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Article : Target
+{
+    public override void Damage()
+    {
+        
+    }
+}
