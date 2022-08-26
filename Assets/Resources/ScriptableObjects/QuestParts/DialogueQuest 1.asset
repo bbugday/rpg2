@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Npc1
   inkDialogue: {fileID: 4900000, guid: d9db35f102ca1f6428eb713ba1618773, type: 3}
+  questTitle: bir

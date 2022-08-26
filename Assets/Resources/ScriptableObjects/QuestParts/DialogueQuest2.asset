@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Npc2
   inkDialogue: {fileID: 4900000, guid: a5ff97629e935834993c07a5638f263a, type: 3}
+  questTitle: iki

@@ -989,6 +989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstQuestSO: {fileID: 11400000, guid: 5c8c12b49c76feb4392c9440469db71f, type: 2}
+  questDB: {fileID: 11400000, guid: 4256d11e97b5c414d8e082aa37379eb8, type: 2}
 --- !u!4 &68759062
 Transform:
   m_ObjectHideFlags: 0

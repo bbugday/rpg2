@@ -10,10 +10,16 @@ public class DialogueQuest : QuestPart
 
     [SerializeField] TextAsset inkDialogue;
 
+    [SerializeField] string questTitle;
+
+    Quest quest;
+
     public DialogueQuest(string npcName, TextAsset inkDialogue)
     {
         this.npcName = npcName;
         this.inkDialogue = inkDialogue;
+
+        this.quest = QuestManager.Instance.questDB.GetQuestByTitle(questTitle);
     }
 
     public override void doSettings(Quest quest)

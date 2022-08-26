@@ -10,10 +10,11 @@ public class Quest
 
     [SerializeField] QuestSO questData;
 
-    public Quest(QuestSO data)
+    public Quest(QuestSO data, QuestDB db)
     {
         questData = data;
         questParts = questData.questParts.ConvertAll(q => q.Clone()); //to prevent scriptable objects deleted
+        db.AddQuest(data.questTitle, this);
     }
 
 

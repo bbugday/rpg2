@@ -7,17 +7,22 @@ using UnityEngine;
 public class QuestManager : Singleton<QuestManager>
 {
     [SerializeField] QuestSO firstQuestSO;
+
+    public QuestDB questDB;
+
     //[SerializeField] List<Quest> activeQuests;
 
     public override void Awake()
     {
         base.Awake();
+
+        questDB = new QuestDB();
     }
 
     void Start()
     {
         setPreviousForQuestData(firstQuestSO);
-        Quest firstQuest = new Quest(firstQuestSO);
+        Quest firstQuest = new Quest(firstQuestSO, questDB);
         firstQuest.doSettings();
     }
 
@@ -40,7 +45,7 @@ public class QuestManager : Singleton<QuestManager>
             if(IsQuestReady(next))
             {
                 next.started = true;
-                Quest newQuest = new Quest(next);
+                Quest newQuest = new Quest(next, questDB);
                 newQuest.doSettings();
             }
 
