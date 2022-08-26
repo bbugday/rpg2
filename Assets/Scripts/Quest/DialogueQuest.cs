@@ -10,7 +10,7 @@ public class DialogueQuest : QuestPart
 
     [SerializeField] TextAsset inkDialogue;
 
-    [SerializeField] string questTitle;
+    private NPCController npc;
 
     Quest quest;
 
@@ -18,23 +18,32 @@ public class DialogueQuest : QuestPart
     {
         this.npcName = npcName;
         this.inkDialogue = inkDialogue;
-
-        this.quest = QuestManager.Instance.questDB.GetQuestByTitle(questTitle);
     }
 
-    public override void doSettings(Quest quest)
+    private void OnEnable()
     {
-        QuestManager.Instance.AddQuestToNPC(Npc, quest);
+        this.npc = GameObject.Find(npcName).GetComponent<NPCController>();
     }
 
-    public override void doneQuestPart(Quest quest)
+    public override void SetQuest(Quest quest)
     {
-        Npc.RemoveQuest(quest);
+        this.quest = quest;
     }
 
-    public NPCController Npc //böyle yapmak yerine oyunun başında eşleştir. her seferinde aramasın
+    public override void doSettings()
     {
-        get {return GameObject.Find(npcName).GetComponent<NPCController>();}
+        AddQuestToNPC();
+    }
+
+    public override void doneQuestPart()
+    {
+        npc.RemoveQuestPart(this);
+        quest.doneQuestPart();
+    }
+    
+    private void AddQuestToNPC()
+    {
+        npc.AddQuestPart(this);
     }
 
     public TextAsset InkDialogue

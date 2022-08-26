@@ -6,6 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public abstract class QuestPart : ScriptableObject
 {
-    public abstract void doSettings(Quest quest);
-    public abstract void doneQuestPart(Quest quest);
+    public abstract void doSettings();
+    public abstract void doneQuestPart();
+    public abstract void SetQuest(Quest quest);
 }

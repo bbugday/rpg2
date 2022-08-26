@@ -7,29 +7,34 @@ public class NPCController : MonoBehaviour, Interactable
 {
     List<Quest> quests;
 
+    List<DialogueQuest> dialogueQuests;
+
+    private void Awake()
+    {
+        dialogueQuests = new List<DialogueQuest>();
+    }
+
     public void Interact()
     {
         //multi quests being shown one by one
 
-        if(quests != null && quests.Count != 0)
+        if(dialogueQuests != null && dialogueQuests.Count != 0)
         {
-            DialogueQuest dialogueQuest = quests[0].CurrentQuestPart as DialogueQuest;
+            DialogueQuest dialogueQuest = dialogueQuests[0];
             DialogueManager.Instance.ShowInkDialog(dialogueQuest.InkDialogue);
-            quests[0].doneQuestPart();
+            dialogueQuests[0].doneQuestPart();
         }
     }
 
-    public void RemoveQuest(Quest quest)
+    public void RemoveQuestPart(DialogueQuest questPart)
     {
-        quests.Remove(quest);
+        dialogueQuests.Remove(questPart);
     }
 
-    public void AddQuest(Quest quest)
+    public void AddQuestPart(DialogueQuest dialogueQuest)
     {
-        if(quests == null)
-            quests = new List<Quest>();
-
-        quests.Add(quest);
+        dialogueQuests.Add(dialogueQuest);
     }
+
 
 }

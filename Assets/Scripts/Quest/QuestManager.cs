@@ -76,9 +76,5 @@ public class QuestManager : Singleton<QuestManager>
     //     return activeQuests.Count == 0;
     // }
 
-    public void AddQuestToNPC(NPCController npc, Quest quest)
-    {
-        npc.AddQuest(quest);
-    }
 
 }

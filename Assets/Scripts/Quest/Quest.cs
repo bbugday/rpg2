@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Quest
 {
-
     private List<QuestPart> questParts;
 
     [SerializeField] QuestSO questData;
@@ -14,20 +13,21 @@ public class Quest
     {
         questData = data;
         questParts = questData.questParts.ConvertAll(q => q.Clone()); //to prevent scriptable objects deleted
-        db.AddQuest(data.questTitle, this);
-    }
 
+        foreach(QuestPart questPart in questParts)
+        {
+            questPart.SetQuest(this);
+        }
+    }
 
     public void doSettings()
     {
-        CurrentQuestPart.doSettings(this);
+        CurrentQuestPart.doSettings();
     }
 
     //run when questpart is done
     public void doneQuestPart()
     {
-        CurrentQuestPart.doneQuestPart(this);
-
         questParts.RemoveAt(0); //remove that quest part
         if(!IsAllQuestPartsOver())
             doSettings();
