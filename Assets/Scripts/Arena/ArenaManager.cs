@@ -7,7 +7,7 @@ public class ArenaManager : MonoBehaviour
 {
     [SerializeField] ArenaPlayerController arenaPlayerController;
 
-    [SerializeField] ArenaSO arenaSO;   
+    [SerializeField] ArenaSO arenaSO;
 
     void Update()
     {

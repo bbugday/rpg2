@@ -10,14 +10,17 @@ public class ArenaQuest : QuestPart
 
 	private ArenaSO arena;
 
-    public override void doneQuestPart()
-    {
-		Debug.Log("Cleared");
-    }
-
     public override void doSettings()
     {
 		arena = GameManager.Instance.objectsDB.GetArena(arenaName);
+		arena.EnableEntry();
 		arena.onClearEvent += doneQuestPart;
     }
+
+	public override void doneQuestPart()
+    {
+		Debug.Log("Cleared");
+		arena.DisableEntry();
+    }
+
 }

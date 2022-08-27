@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Arena1
   m_EditorClassIdentifier: 
   arenaName: arena1
+  entryPointName: Arena1EntryPoint

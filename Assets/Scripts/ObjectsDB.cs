@@ -6,10 +6,12 @@ using UnityEngine;
 public class ObjectsDB : ScriptableObject
 {
     Dictionary<string, ArenaSO> arenas;
+    Dictionary<ArenaSO, ArenaEntryPoint> arenaEntryPoints;
 
     void OnEnable()
     {
         arenas = new Dictionary<string, ArenaSO>();
+        arenaEntryPoints = new Dictionary<ArenaSO, ArenaEntryPoint>();
     }
 
     public void AddArena(string arenaName, ArenaSO arenaData)
@@ -23,4 +25,20 @@ public class ObjectsDB : ScriptableObject
         return arenas[arenaName];
     }
 
+    public void AddArenaEntryPoint(string arenaName, ArenaEntryPoint entryPoint)
+    {   
+        var arena = GetArena(arenaName);
+        if(!arenaEntryPoints.ContainsKey(arena))
+            arenaEntryPoints.Add(arena, entryPoint);
+    }
+
+    public ArenaEntryPoint GetArenaEntryPoint(ArenaSO arena)
+    {
+        return arenaEntryPoints[arena];
+    }
+
+    public ArenaEntryPoint GetArenaEntryPoint(string arenaName)
+    {
+        return GetArenaEntryPoint(GetArena(arenaName));
+    }
 }
