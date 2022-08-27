@@ -1,19 +1,23 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-// public class ArenaQuest : QuestPart
-// {
-//     [SerializeField] string arenaName;
+[CreateAssetMenu(fileName = "ArenaQuest", menuName = "ScriptableObjects/ArenaQuestScriptableObject", order = 1)]
 
-//     public override void doneQuestPart()
-//     {
+public class ArenaQuest : QuestPart
+{
+    [SerializeField] string arenaName;
 
-//     }
+	private ArenaSO arena;
 
-//     public override void doSettings()
-//     {
-//         //QuestManager.Instance.AddQuestToNPC(Npc, quest);
-//     }
+    public override void doneQuestPart()
+    {
+		Debug.Log("Cleared");
+    }
 
-// }
+    public override void doSettings()
+    {
+		arena = GameManager.Instance.objectsDB.GetArena(arenaName);
+		arena.onClearEvent += doneQuestPart;
+    }
+}

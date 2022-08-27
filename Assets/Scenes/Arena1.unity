@@ -1599,6 +1599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arenaPlayerController: {fileID: 601744877}
+  arenaSO: {fileID: 11400000, guid: feaeb83f76114ab49ae9bb5f7223a793, type: 2}
 --- !u!1001 &1519323580
 PrefabInstance:
   m_ObjectHideFlags: 0

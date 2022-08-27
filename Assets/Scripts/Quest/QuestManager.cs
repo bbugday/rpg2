@@ -8,21 +8,17 @@ public class QuestManager : Singleton<QuestManager>
 {
     [SerializeField] QuestSO firstQuestSO;
 
-    public QuestDB questDB;
-
     //[SerializeField] List<Quest> activeQuests;
 
     public override void Awake()
     {
         base.Awake();
-
-        questDB = new QuestDB();
     }
 
     void Start()
     {
         setPreviousForQuestData(firstQuestSO);
-        Quest firstQuest = new Quest(firstQuestSO, questDB);
+        Quest firstQuest = new Quest(firstQuestSO);
         firstQuest.doSettings();
     }
 
@@ -45,7 +41,7 @@ public class QuestManager : Singleton<QuestManager>
             if(IsQuestReady(next))
             {
                 next.started = true;
-                Quest newQuest = new Quest(next, questDB);
+                Quest newQuest = new Quest(next);
                 newQuest.doSettings();
             }
 

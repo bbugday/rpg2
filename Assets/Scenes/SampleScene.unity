@@ -989,7 +989,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstQuestSO: {fileID: 11400000, guid: 5c8c12b49c76feb4392c9440469db71f, type: 2}
-  questDB: {fileID: 11400000, guid: 4256d11e97b5c414d8e082aa37379eb8, type: 2}
 --- !u!4 &68759062
 Transform:
   m_ObjectHideFlags: 0
@@ -29297,6 +29296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 606989405}
   dialogueManager: {fileID: 983770410}
+  objectsDB: {fileID: 11400000, guid: e18c2da500985b247a2b295c0f8006f4, type: 2}
 --- !u!1 &1803477477
 GameObject:
   m_ObjectHideFlags: 0

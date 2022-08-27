@@ -9,7 +9,7 @@ public class Quest
 
     [SerializeField] QuestSO questData;
 
-    public Quest(QuestSO data, QuestDB db)
+    public Quest(QuestSO data)
     {
         questData = data;
         questParts = questData.questParts.ConvertAll(q => q.Clone()); //to prevent scriptable objects deleted

@@ -12,26 +12,15 @@ public class DialogueQuest : QuestPart
 
     private NPCController npc;
 
-    Quest quest;
-
     public DialogueQuest(string npcName, TextAsset inkDialogue)
     {
         this.npcName = npcName;
         this.inkDialogue = inkDialogue;
     }
 
-    private void OnEnable()
-    {
-        this.npc = GameObject.Find(npcName).GetComponent<NPCController>();
-    }
-
-    public override void SetQuest(Quest quest)
-    {
-        this.quest = quest;
-    }
-
     public override void doSettings()
     {
+        this.npc = GameObject.Find(npcName).GetComponent<NPCController>();
         AddQuestToNPC();
     }
 

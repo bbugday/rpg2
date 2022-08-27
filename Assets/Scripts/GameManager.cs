@@ -8,6 +8,8 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] PlayerController playerController;
     [SerializeField] DialogueManager dialogueManager;
+    public ObjectsDB objectsDB;
+
     GameState state;
     
     public override void Awake()
