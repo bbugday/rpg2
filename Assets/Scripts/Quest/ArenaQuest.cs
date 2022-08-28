@@ -6,21 +6,18 @@ using UnityEngine;
 
 public class ArenaQuest : QuestPart
 {
-    [SerializeField] string arenaName;
-
-	private ArenaSO arena;
+	[SerializeField] ArenaSO arena;
 
     public override void doSettings()
     {
-		arena = GameManager.Instance.objectsDB.GetArena(arenaName);
-		arena.EnableEntry();
-		arena.onClearEvent += doneQuestPart;
+        arena.EnableEntry();
+        arena.onClearEvent += doneQuestPart;
     }
 
 	public override void doneQuestPart()
     {
 		Debug.Log("Cleared");
-		arena.DisableEntry();
+        quest.doneQuestPart();
     }
 
 }

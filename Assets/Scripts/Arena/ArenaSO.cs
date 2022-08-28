@@ -7,30 +7,26 @@ using System;
 [CreateAssetMenu(fileName = "Arena", menuName = "ScriptableObjects/ArenaScriptableObject", order = 1)]
 public class ArenaSO : ScriptableObject
 {
-    [SerializeField] string arenaName;
-
     private GameObject entryPoint;
+    
+    public string arenaSceneName;
 
     public delegate void OnClearEvent();
- 
-    public OnClearEvent onClearEvent;
-
-    void OnEnable()
+    public OnClearEvent onClearEvent;    
+    
+    public void AddEntryPoint(GameObject entryPoint)
     {
-        GameManager.Instance.objectsDB.AddArena(arenaName, this);
+        this.entryPoint = entryPoint;
     }
 
     public void EnableEntry()
     {
-        if(entryPoint == null)
-            entryPoint = GameManager.Instance.objectsDB.GetArenaEntryPoint(this).gameObject;
         entryPoint.SetActive(true);
     }
 
     public void DisableEntry()
     {
-        if(entryPoint == null)
-            entryPoint = GameManager.Instance.objectsDB.GetArenaEntryPoint(this).gameObject;
         entryPoint.SetActive(true);
     }
+    
 }

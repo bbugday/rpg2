@@ -5,18 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class ArenaEntryPoint : MonoBehaviour, Interactable
 {
-    [SerializeField] string arenaName;
-
-    [SerializeField] string arenaSceneName;
+    [SerializeField] ArenaSO arenaSO;
 
     void Start()
     {
-        GameManager.Instance.objectsDB.AddArenaEntryPoint(arenaName, this);
+        arenaSO.AddEntryPoint(this.gameObject);
         this.gameObject.SetActive(false);
     }
 
     public void Interact()
     {
-        StartCoroutine(CustomSceneManager.Instance.SwitchToArena(arenaSceneName));
+        StartCoroutine(CustomSceneManager.Instance.SwitchToArena(arenaSO.arenaSceneName));
     }
 }

@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c4fcc8205b14e4b9a0129d8caa46af, type: 3}
   m_Name: Arena1
   m_EditorClassIdentifier: 
-  arenaName: arena1
-  entryPointName: Arena1EntryPoint
+  arenaSceneName: Arena1
