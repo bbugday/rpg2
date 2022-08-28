@@ -1126,6 +1126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4cf18c968a5fda4681629b954c07ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSO: {fileID: 11400000, guid: de957ae0adcb6ff4a81ad71902180112, type: 2}
 --- !u!212 &194561055
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27958,6 +27959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4cf18c968a5fda4681629b954c07ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSO: {fileID: 11400000, guid: b6388697ff7725d49ae762c270928ed6, type: 2}
 --- !u!50 &478115595
 Rigidbody2D:
   serializedVersion: 4

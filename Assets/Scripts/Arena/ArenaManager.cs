@@ -9,15 +9,20 @@ public class ArenaManager : MonoBehaviour
 
     [SerializeField] ArenaSO arenaSO;
 
+    private bool finished = false;
+
     void Update()
     {
-        if(CheckCleared())
+        if(!finished && CheckCleared())
         {
             if(arenaSO.onClearEvent != null)
-                {
-                    arenaSO.onClearEvent.Invoke();
-                }
+            {
+                arenaSO.onClearEvent.Invoke();
+            }
+            
+            finished = true;    
         }
+
         arenaPlayerController.HandleUpdate();
     }
 

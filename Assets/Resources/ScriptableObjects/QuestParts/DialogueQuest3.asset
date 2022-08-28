@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eddf2da893e1434da4023660649f824, type: 3}
   m_Name: DialogueQuest3
   m_EditorClassIdentifier: 
-  npcName: Npc2
   inkDialogue: {fileID: 4900000, guid: 51d7033ed56c45849a524ead90cd14db, type: 3}
-  questTitle: uc
+  npcSO: {fileID: 11400000, guid: de957ae0adcb6ff4a81ad71902180112, type: 2}

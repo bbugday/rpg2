@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class ArenaQuest : QuestPart
 {
-	[SerializeField] ArenaSO arena;
+	[SerializeField] ArenaSO arenaSO;
 
     public override void doSettings()
     {
-        arena.EnableEntry();
-        arena.onClearEvent += doneQuestPart;
+        arenaSO.EnableEntry();
+        arenaSO.onClearEvent += doneQuestPart;
     }
 
 	public override void doneQuestPart()

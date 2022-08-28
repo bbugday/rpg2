@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour, Interactable
 {
-    List<Quest> quests;
+    [SerializeField] NpcSO npcSO;
 
     List<DialogueQuest> dialogueQuests;
 
     private void Awake()
     {
         dialogueQuests = new List<DialogueQuest>();
+        npcSO.AddNpc(this);
     }
 
     public void Interact()
