@@ -17,13 +17,17 @@ public class DialogueQuest : QuestPart
 
     public override void doSettings()
     {
-        npcSO.npc.AddQuestPart(this);
+        npcSO.AddQuestPart(this);
+        npcSO.dialogueEvent += doneQuestPart;
     }
 
-    public override void doneQuestPart()
+    public void doneQuestPart(DialogueQuest dialogueQuest)
     {
-        npcSO.npc.RemoveQuestPart(this);
-        quest.doneQuestPart();
+        if(this == dialogueQuest)
+        {
+            npcSO.RemoveQuestPart(this);
+            quest.doneQuestPart();
+        }
     }
 
     public TextAsset InkDialogue

@@ -5,10 +5,31 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NpcSO", menuName = "ScriptableObjects/NpcScriptableObject", order = 1)]
 public class NpcSO : ScriptableObject
 {
-    public NPCController npc;
+    private NPCController npc;
+
+    public delegate void DialogueEvent(DialogueQuest dialogueQuest);
+    public DialogueEvent dialogueEvent;
+
+    public List<DialogueQuest> dialogueQuests;
+
+    private void Awake()
+    {
+        dialogueQuests = new List<DialogueQuest>();
+    }
 
     public void AddNpc(NPCController npc)
     {
         this.npc = npc;
     }
+
+    public void AddQuestPart(DialogueQuest dialogueQuest)
+    {
+        dialogueQuests.Add(dialogueQuest);
+    }
+
+    public void RemoveQuestPart(DialogueQuest dialogueQuest)
+    {
+        dialogueQuests.Remove(dialogueQuest);
+    }
+
 }

@@ -14,10 +14,9 @@ public class ArenaQuest : QuestPart
         arenaSO.onClearEvent += doneQuestPart;
     }
 
-	public override void doneQuestPart()
+	public void doneQuestPart()
     {
 		Debug.Log("Cleared");
         quest.doneQuestPart();
     }
-
 }

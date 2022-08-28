@@ -12,7 +12,7 @@ public class ArenaSO : ScriptableObject
     public string arenaSceneName;
 
     public delegate void OnClearEvent();
-    public OnClearEvent onClearEvent;    
+    public OnClearEvent onClearEvent;
     
     public void AddEntryPoint(GameObject entryPoint)
     {

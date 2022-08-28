@@ -7,11 +7,8 @@ public class NPCController : MonoBehaviour, Interactable
 {
     [SerializeField] NpcSO npcSO;
 
-    List<DialogueQuest> dialogueQuests;
-
     private void Awake()
     {
-        dialogueQuests = new List<DialogueQuest>();
         npcSO.AddNpc(this);
     }
 
@@ -19,23 +16,12 @@ public class NPCController : MonoBehaviour, Interactable
     {
         //multi quests being shown one by one
 
-        if(dialogueQuests != null && dialogueQuests.Count != 0)
+        if(npcSO.dialogueQuests != null && npcSO.dialogueQuests.Count != 0)
         {
-            DialogueQuest dialogueQuest = dialogueQuests[0];
+            DialogueQuest dialogueQuest = npcSO.dialogueQuests[0];
             DialogueManager.Instance.ShowInkDialog(dialogueQuest.InkDialogue);
-            dialogueQuests[0].doneQuestPart();
+
+            npcSO.dialogueEvent.Invoke(dialogueQuest);
         }
     }
-
-    public void RemoveQuestPart(DialogueQuest questPart)
-    {
-        dialogueQuests.Remove(questPart);
-    }
-
-    public void AddQuestPart(DialogueQuest dialogueQuest)
-    {
-        dialogueQuests.Add(dialogueQuest);
-    }
-
-
 }
