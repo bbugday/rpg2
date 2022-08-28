@@ -17,6 +17,11 @@ public class NpcSO : ScriptableObject
         dialogueQuests = new List<DialogueQuest>();
     }
 
+    public void ClearNullQuests()
+    {
+        dialogueQuests.RemoveAll(item => item == null);
+    }
+
     public void AddNpc(NPCController npc)
     {
         this.npc = npc;

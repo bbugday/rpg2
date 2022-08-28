@@ -10,6 +10,7 @@ public class NPCController : MonoBehaviour, Interactable
     private void Awake()
     {
         npcSO.AddNpc(this);
+        npcSO.ClearNullQuests();
     }
 
     public void Interact()
