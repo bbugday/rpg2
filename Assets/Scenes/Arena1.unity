@@ -765,6 +765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  attackDamage: 0
 --- !u!4 &628539985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2521814341191140958, guid: 8dc6bcfe14228564281e571a35c3c223, type: 3}
@@ -912,6 +913,8 @@ GameObject:
   - component: {fileID: 832156420}
   - component: {fileID: 832156421}
   - component: {fileID: 832156424}
+  - component: {fileID: 832156425}
+  - component: {fileID: 832156426}
   m_Layer: 0
   m_Name: wizard
   m_TagString: Untagged
@@ -1028,6 +1031,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   attackDamage: 0
+--- !u!50 &832156425
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832156419}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 2
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!60 &832156426
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832156419}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.84375, y: 1}
+    newSize: {x: 0.84375, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.046875, y: 0.5}
+      - {x: -0.30778456, y: 0.20256197}
+      - {x: -0.2783389, y: -0.049658656}
+      - {x: -0.2938485, y: -0.2014358}
+      - {x: -0.2938485, y: -0.49623448}
+      - {x: 0.3254857, y: -0.5}
+      - {x: 0.34280014, y: -0.30648226}
+      - {x: 0.33779, y: -0.23381329}
+      - {x: 0.39928198, y: -0.041152358}
+      - {x: 0.3277378, y: 0.19728327}
+      - {x: 0.171875, y: 0.5}
 --- !u!4 &857364992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2521814341191140958, guid: 8dc6bcfe14228564281e571a35c3c223, type: 3}

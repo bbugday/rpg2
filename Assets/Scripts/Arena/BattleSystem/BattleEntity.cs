@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BattleEntity : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int health;
+    [SerializeField] protected int health;
 
-    public abstract void Damage();
+    public abstract void Damage(int AttackDamage);
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Article : Target
 {
-    public override void Damage()
+    public override void Damage(int AttackDamage)
     {
         
     }

@@ -7,7 +7,7 @@ public class MainCharacter : BattleEntity, IAttackable
 
     private List<Weapon> weapons;
 
-    private int attackDamage;
+    public int attackDamage;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class MainCharacter : BattleEntity, IAttackable
             Attack();
     }
 
-    public override void Damage()
+    public override void Damage(int AttackDamage)
     {
 
     }

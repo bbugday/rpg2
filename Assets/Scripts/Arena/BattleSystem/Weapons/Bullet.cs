@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Projectile
 {
     public float speed;
-    public float force;
+    //public float force;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,15 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(transform.right * speed * Time.deltaTime, Space.World);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.TryGetComponent<Target>(out Target target))
+        {
+            target.GetHit(this);
+            gameObject.SetActive(false);
+        }
     }
 
     void OnBecameInvisible(){
@@ -31,6 +40,11 @@ public class Bullet : MonoBehaviour
     public void SetPosition(Vector3 position)
     {
         transform.position = position;
+    }
+
+    public void SetAttackDamage(int attackDamage)
+    {
+        this.attackDamage = attackDamage;
     }
 
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gun : Weapon
 {
+    [SerializeField] int attackDamage;
+
     private bool attacking = false;
     private float consecutiveAttackCooldown = 0.1f;
 
@@ -18,12 +20,6 @@ public class Gun : Weapon
         character = FindObjectOfType<MainCharacter>();
         character.AddWeapon(this);
     }
-
-    // private void Update()
-    // {
-    //     if(!attacking && FindObjectOfType<Target>())
-    //         Attack();
-    // }
 
     public override void Attack()
     {
@@ -93,6 +89,6 @@ public class Gun : Weapon
         Bullet bullet = ObjectPool.SharedInstance.GetPooledObject(0).GetComponent<Bullet>();
         bullet.SetPosition(position);
         bullet.SetDirection(direction);
+        bullet.SetAttackDamage(attackDamage + character.attackDamage);
     }
-
 }
