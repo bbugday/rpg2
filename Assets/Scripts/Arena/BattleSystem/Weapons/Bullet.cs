@@ -23,4 +23,14 @@ public class Bullet : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void SetDirection(Vector3 direction)
+    {
+        transform.right = direction;
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = position;
+    }
+
 }

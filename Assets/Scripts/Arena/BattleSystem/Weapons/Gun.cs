@@ -11,9 +11,12 @@ public class Gun : Weapon
     [SerializeField] private uint bulletCount;
     [SerializeField] private uint extraShoots = 0;
 
+    private MainCharacter character;
+
     public void Start()
     {
-        FindObjectOfType<MainCharacter>().AddWeapon(this);
+        character = FindObjectOfType<MainCharacter>();
+        character.AddWeapon(this);
     }
 
     // private void Update()
@@ -41,21 +44,55 @@ public class Gun : Weapon
 
     IEnumerator Shoot()
     {
-        CreateBullet();
+        CreateMultiBullets(bulletCount);
         for (int i = 0; i < extraShoots; i++)
         {
             yield return new WaitForSeconds(consecutiveAttackCooldown);
-            CreateBullet();
+            CreateMultiBullets(bulletCount);
         }
     }
 
-    private void CreateBullet()
+    private void CreateMultiBullets(uint n)
     {
-        var bullet = ObjectPool.SharedInstance.GetPooledObject(0).GetComponent<Bullet>();
-        bullet.transform.position = this.transform.position;
-
         Target target = findClosestTarget();
-        bullet.transform.right = target.transform.position - transform.position;
+        
+        if(target == null) return;
+
+        Vector3 direction = (target.transform.position - character.transform.position);
+
+        if(direction == Vector3.zero) direction = Vector3.right;
+
+        Vector3 extraBulletPosition = (Quaternion.Euler(0, 0, 90) * direction).normalized;
+        float extraBulletDistance = 0.3f;
+
+        if(n % 2 == 0)
+        {
+            CreateBullet(character.transform.position + extraBulletPosition * extraBulletDistance / 2.0f, direction);
+            CreateBullet(character.transform.position + extraBulletPosition * -extraBulletDistance / 2.0f , direction);
+            
+            for(int fired = 2, distance = 1; fired < n; fired += 2, distance++)
+            {
+                CreateBullet(character.transform.position + extraBulletPosition * (extraBulletDistance * distance + extraBulletDistance / 2f), direction);
+                CreateBullet(character.transform.position + extraBulletPosition * -(extraBulletDistance * distance + extraBulletDistance / 2f), direction);
+            }
+        }
+        else
+        {
+            CreateBullet(character.transform.position, direction);
+            
+            for(int fired = 1, distance = 1; fired < n; fired += 2, distance++)
+            {
+                CreateBullet(character.transform.position + extraBulletPosition * extraBulletDistance * distance, direction);
+                CreateBullet(character.transform.position + extraBulletPosition * -extraBulletDistance * distance, direction);
+            }
+        }
+    }
+
+    private void CreateBullet(Vector3 position, Vector3 direction)
+    {
+        Bullet bullet = ObjectPool.SharedInstance.GetPooledObject(0).GetComponent<Bullet>();
+        bullet.SetPosition(position);
+        bullet.SetDirection(direction);
     }
 
 }

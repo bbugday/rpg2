@@ -479,7 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pools:
   - objectPrefab: {fileID: 775539693269668676, guid: b071b6f239c0f144488d6f624721e4c0, type: 3}
-    poolSize: 50
+    poolSize: 100
 --- !u!4 &366910172
 Transform:
   m_ObjectHideFlags: 0
@@ -548,6 +548,14 @@ PrefabInstance:
     - target: {fileID: 7809899589539330879, guid: 00b63acc9b0e7d64a955ec06b26e91ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324931404898636101, guid: 00b63acc9b0e7d64a955ec06b26e91ef, type: 3}
+      propertyPath: bulletCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324931404898636101, guid: 00b63acc9b0e7d64a955ec06b26e91ef, type: 3}
+      propertyPath: extraShoots
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00b63acc9b0e7d64a955ec06b26e91ef, type: 3}
