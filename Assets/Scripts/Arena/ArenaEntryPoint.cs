@@ -7,6 +7,8 @@ public class ArenaEntryPoint : MonoBehaviour, Interactable
 {
     [SerializeField] ArenaSO arenaSO;
 
+    [SerializeField] string arenaSceneName;
+
     void Awake()
     {
         arenaSO.ClearNullQuests();
@@ -14,9 +16,9 @@ public class ArenaEntryPoint : MonoBehaviour, Interactable
 
     public void Interact()
     {
-        if(arenaSO.arenaQuests != null && arenaSO.arenaQuests.Count != 0)
+        if(arenaSO.questParts != null && arenaSO.questParts.Count != 0)
         {
-            StartCoroutine(CustomSceneManager.Instance.SwitchToArena(arenaSO.arenaSceneName));
+            StartCoroutine(CustomSceneManager.Instance.SwitchToArena(arenaSceneName));
         }
     }
 }

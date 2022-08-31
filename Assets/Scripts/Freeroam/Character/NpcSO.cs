@@ -3,30 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NpcSO", menuName = "ScriptableObjects/NpcScriptableObject", order = 1)]
-public class NpcSO : ScriptableObject
+public class NpcSO : QuestObjectSO
 {
-    public delegate void DialogueEvent(DialogueQuest dialogueQuest);
+    public delegate void DialogueEvent(QuestPart dialogueQuest);
     public DialogueEvent dialogueEvent;
-
-    public List<DialogueQuest> dialogueQuests;
-
-    private void Awake()
-    {
-        dialogueQuests = new List<DialogueQuest>();
-    }
-
-    public void ClearNullQuests()
-    {
-        dialogueQuests.RemoveAll(item => item == null);
-    }
-
-    public void AddQuestPart(DialogueQuest dialogueQuest)
-    {
-        dialogueQuests.Add(dialogueQuest);
-    }
-
-    public void RemoveQuestPart(DialogueQuest dialogueQuest)
-    {
-        dialogueQuests.Remove(dialogueQuest);
-    }
 }

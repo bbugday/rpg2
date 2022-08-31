@@ -21,7 +21,7 @@ public class DialogueQuest : QuestPart
         npcSO.dialogueEvent += doneQuestPart;
     }
 
-    public void doneQuestPart(DialogueQuest dialogueQuest)
+    public void doneQuestPart(QuestPart dialogueQuest)
     {
         if(this == dialogueQuest)
         {
