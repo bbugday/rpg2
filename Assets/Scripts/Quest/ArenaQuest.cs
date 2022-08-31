@@ -10,13 +10,14 @@ public class ArenaQuest : QuestPart
 
     public override void doSettings()
     {
-        arenaSO.EnableEntry();
+        arenaSO.AddQuestPart(this);
         arenaSO.onClearEvent += doneQuestPart;
     }
 
 	public void doneQuestPart()
     {
 		Debug.Log("Cleared");
+        arenaSO.RemoveQuestPart(this);
         quest.doneQuestPart();
     }
 }

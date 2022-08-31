@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NpcSO", menuName = "ScriptableObjects/NpcScriptableObject", order = 1)]
 public class NpcSO : ScriptableObject
 {
-    private NPCController npc;
-
     public delegate void DialogueEvent(DialogueQuest dialogueQuest);
     public DialogueEvent dialogueEvent;
 
@@ -22,11 +20,6 @@ public class NpcSO : ScriptableObject
         dialogueQuests.RemoveAll(item => item == null);
     }
 
-    public void AddNpc(NPCController npc)
-    {
-        this.npc = npc;
-    }
-
     public void AddQuestPart(DialogueQuest dialogueQuest)
     {
         dialogueQuests.Add(dialogueQuest);
@@ -36,5 +29,4 @@ public class NpcSO : ScriptableObject
     {
         dialogueQuests.Remove(dialogueQuest);
     }
-
 }

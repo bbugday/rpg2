@@ -32,7 +32,6 @@ public class ArenaManager : MonoBehaviour
         {
             return true;
         }
-
         return false;
     }
 }

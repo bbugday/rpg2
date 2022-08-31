@@ -7,26 +7,31 @@ using System;
 [CreateAssetMenu(fileName = "Arena", menuName = "ScriptableObjects/ArenaScriptableObject", order = 1)]
 public class ArenaSO : ScriptableObject
 {
-    private GameObject entryPoint;
-    
     public string arenaSceneName;
+
+    public List<ArenaQuest> arenaQuests;
 
     public delegate void OnClearEvent();
     public OnClearEvent onClearEvent;
-    
-    public void AddEntryPoint(GameObject entryPoint)
+
+    private void Awake()
     {
-        this.entryPoint = entryPoint;
+        arenaQuests = new List<ArenaQuest>();
     }
 
-    public void EnableEntry()
+    public void ClearNullQuests()
     {
-        entryPoint.SetActive(true);
-    }
-
-    public void DisableEntry()
-    {
-        entryPoint.SetActive(true);
+        arenaQuests.RemoveAll(item => item == null);
     }
     
+    public void AddQuestPart(ArenaQuest arenaQuest)
+    {
+        arenaQuests.Add(arenaQuest);
+    }
+
+    public void RemoveQuestPart(ArenaQuest arenaQuest)
+    {
+        arenaQuests.Remove(arenaQuest);
+    }
+
 }
