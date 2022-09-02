@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Article : Target
 {
+
+    public override void GetHit(Projectile projectile)
+    {
+
+    }
+
     public override void Damage(int AttackDamage)
     {
         
