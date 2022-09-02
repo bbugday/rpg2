@@ -20,9 +20,15 @@ public class MainCharacter : BattleEntity, IAttackable
             Attack();
     }
 
-    public override void Damage(int AttackDamage)
+    public void GetHit(int damage)
     {
+        Damage(damage);
+    }
 
+    public override void Damage(int damage)
+    {
+        Debug.Log("character got damage");
+        health -= damage;
     }
 
     public void AddWeapon(Weapon weapon)
@@ -37,7 +43,4 @@ public class MainCharacter : BattleEntity, IAttackable
             weapon.Attack();
         }
     }
-
-
-
 }

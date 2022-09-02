@@ -679,9 +679,10 @@ GameObject:
   - component: {fileID: 601744877}
   - component: {fileID: 601744878}
   - component: {fileID: 601744879}
+  - component: {fileID: 601744880}
   m_Layer: 0
   m_Name: ArenaPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -811,6 +812,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   attackDamage: 50
+--- !u!60 &601744880
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601744874}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.2849802, y: 0.25688738}
+      - {x: 0.2851278, y: 0.4934612}
+      - {x: 0.083333336, y: 0.6458334}
+      - {x: -0.10416667, y: 0.6458334}
+      - {x: -0.25, y: 0.5}
+      - {x: -0.26764265, y: 0.3883571}
+      - {x: -0.27391452, y: 0.32563996}
+      - {x: -0.27352366, y: 0.16507132}
+      - {x: -0.33333334, y: -0.3541667}
+      - {x: -0.32494423, y: -0.5351615}
+      - {x: -0.3125, y: -0.6458334}
+      - {x: -0.25, y: -0.875}
+      - {x: -0.22916667, y: -0.9166667}
+      - {x: 0.33333334, y: -0.9166667}
+      - {x: 0.2882173, y: -0.8801361}
+      - {x: 0.28820246, y: -0.69705063}
+      - {x: 0.2916667, y: -0.5208334}
+      - {x: 0.33333334, y: -0.39583334}
+      - {x: 0.30324593, y: -0.2225958}
+      - {x: 0.33333334, y: 0.10416667}
 --- !u!4 &628539985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2521814341191140958, guid: 8dc6bcfe14228564281e571a35c3c223, type: 3}
@@ -1092,7 +1138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199674, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199678, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_RootOrder
@@ -1523,7 +1569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199674, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199678, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_RootOrder
@@ -1768,7 +1814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199674, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199678, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_RootOrder
@@ -8996,7 +9042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199674, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199678, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_RootOrder
@@ -9062,7 +9108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199674, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199678, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_RootOrder

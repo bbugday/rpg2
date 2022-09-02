@@ -10,6 +10,11 @@ public class Enemy : Target, IAttackable
 
     private SpriteRenderer spriteRenderer;
 
+    MainCharacter mainCharacter;
+
+    const float coolDownTime = 0.1f;
+    bool onCoolDown;
+
     void Awake()
     {
         enemyAnimator = GetComponent<EnemyAnimator>();
@@ -34,8 +39,6 @@ public class Enemy : Target, IAttackable
         enemyAnimator.GetDamage(projectile.attackDamage);
     }
 
-
-
     public override void Damage(int AttackDamage)
     {
         health -= AttackDamage;
@@ -47,10 +50,36 @@ public class Enemy : Target, IAttackable
         transform.Translate(velocity);
     }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.collider.CompareTag("Player"))
+        {
+            if(!mainCharacter)
+                mainCharacter = FindObjectOfType<MainCharacter>();
+            Attack();
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if(col.collider.CompareTag("Player"))
+        {
+            if(!onCoolDown)
+                StartCoroutine(AttackAndReload());
+        }
+    }
+
+    public IEnumerator AttackAndReload()
+    {
+        Attack();
+        onCoolDown = true;
+        yield return new WaitForSeconds(coolDownTime);
+        onCoolDown = false;
+    }
 
     public void Attack()
     {
-
+        mainCharacter.GetHit(attackDamage);
     }
 
 }
