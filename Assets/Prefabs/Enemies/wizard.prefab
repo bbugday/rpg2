@@ -129,8 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7824c9805b2ecf54494079fb6e4790f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 1000
   health: 1000
-  attackDamage: 0
+  attackDamage: 1
 --- !u!50 &6308868505011199664
 Rigidbody2D:
   serializedVersion: 4
@@ -177,7 +178,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.046875, y: 0.5}
+    - - {x: -0.042680264, y: 0.42030585}
       - {x: -0.30778456, y: 0.20256197}
       - {x: -0.2783389, y: -0.049658656}
       - {x: -0.2938485, y: -0.2014358}
@@ -187,4 +188,4 @@ PolygonCollider2D:
       - {x: 0.33779, y: -0.23381329}
       - {x: 0.39928198, y: -0.041152358}
       - {x: 0.3277378, y: 0.19728327}
-      - {x: 0.171875, y: 0.5}
+      - {x: 0.18445826, y: 0.40772247}
