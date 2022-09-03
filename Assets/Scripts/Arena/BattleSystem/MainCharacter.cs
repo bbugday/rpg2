@@ -11,6 +11,8 @@ public class MainCharacter : BattleEntity, IAttackable
 
     [SerializeField] GameObject healthBar;
 
+    [SerializeField] ArenaManager arenaManager;
+
     private void Awake()
     {
         health = maxHealth;
@@ -31,9 +33,17 @@ public class MainCharacter : BattleEntity, IAttackable
 
     public override void Damage(int damage)
     {
-        Debug.Log("character got damage");
         health -= damage;
         UpdateHealthBar();
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        arenaManager.dieEvent();
     }
 
     private void UpdateHealthBar()
