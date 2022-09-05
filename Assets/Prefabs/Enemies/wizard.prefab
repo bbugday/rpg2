@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7824c9805b2ecf54494079fb6e4790f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
-  health: 1000
+  maxHealth: 100
   attackDamage: 1
+  xpObject: {fileID: 4209410578619343160, guid: a6d9348599e9348478944a4181f5d9fe, type: 3}
 --- !u!50 &6308868505011199664
 Rigidbody2D:
   serializedVersion: 4

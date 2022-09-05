@@ -12,11 +12,14 @@ public class Enemy : Target, IAttackable
 
     MainCharacter mainCharacter;
 
+    [SerializeField] GameObject expObject;
+
     const float coolDownTime = 0.1f;
     bool onCoolDown;
 
     void Awake()
     {
+        health = maxHealth;
         enemyAnimator = GetComponent<EnemyAnimator>();
     }
 
@@ -24,10 +27,21 @@ public class Enemy : Target, IAttackable
     {
         if(health <= 0)
         {
-            enemyAnimator.Die();
-            Destroy(GetComponent<EnemyController>());
-            Destroy(this);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        enemyAnimator.Die();
+
+        ExpObject expObject = ObjectPool.SharedInstance.GetPooledObject(2).GetComponent<ExpObject>();
+        expObject.SetPosition(gameObject.transform.position);
+
+        Destroy(GetComponent<EnemyController>());
+        Destroy(this);
+
+        //instantiate xp object
     }
 
     public override void GetHit(Projectile projectile)

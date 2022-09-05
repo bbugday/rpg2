@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MainCharacter : BattleEntity, IAttackable
 {
-
     private List<Weapon> weapons;
 
     public int attackDamage;
@@ -13,8 +12,13 @@ public class MainCharacter : BattleEntity, IAttackable
 
     [SerializeField] ArenaManager arenaManager;
 
+    private int exp;
+    private int level;
+
     private void Awake()
     {
+        exp = 0;
+        level = 1;
         health = maxHealth;
 
         weapons = new List<Weapon>();
@@ -63,4 +67,18 @@ public class MainCharacter : BattleEntity, IAttackable
             weapon.Attack();
         }
     }
+
+    public void AddExp(int exp)
+    {
+        this.exp += exp;
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.CompareTag("Collectable"))
+        {
+            collider.GetComponent<Collectable>()?.Collect(this);
+        }
+    }
+
 }

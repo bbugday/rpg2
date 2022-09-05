@@ -32,17 +32,24 @@ public class Bullet : Projectile
         gameObject.SetActive(false);
     }
 
-    public void SetDirection(Vector3 direction)
+    public void SetUp(Vector3 direction, Vector3 position, int attackDamage)
+    {
+        SetDirection(direction);
+        SetPosition(position);
+        SetAttackDamage(attackDamage);
+    }
+
+    private void SetDirection(Vector3 direction)
     {
         transform.right = direction;
     }
 
-    public void SetPosition(Vector3 position)
+    private void SetPosition(Vector3 position)
     {
         transform.position = position;
     }
 
-    public void SetAttackDamage(int attackDamage)
+    private void SetAttackDamage(int attackDamage)
     {
         this.attackDamage = attackDamage;
     }

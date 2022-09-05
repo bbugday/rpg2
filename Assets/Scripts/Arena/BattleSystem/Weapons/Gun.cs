@@ -88,8 +88,6 @@ public class Gun : Weapon
     private void CreateBullet(Vector3 position, Vector3 direction)
     {
         Bullet bullet = ObjectPool.SharedInstance.GetPooledObject(0).GetComponent<Bullet>();
-        bullet.SetPosition(position);
-        bullet.SetDirection(direction);
-        bullet.SetAttackDamage(attackDamage + character.attackDamage);
+        bullet.SetUp(direction, position, attackDamage + character.attackDamage);
     }
 }
