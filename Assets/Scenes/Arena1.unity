@@ -725,6 +725,7 @@ GameObject:
   - component: {fileID: 601744878}
   - component: {fileID: 601744879}
   - component: {fileID: 601744880}
+  - component: {fileID: 601744881}
   m_Layer: 0
   m_Name: ArenaPlayer
   m_TagString: Player
@@ -905,6 +906,27 @@ PolygonCollider2D:
       - {x: 0.27289432, y: -0.39583334}
       - {x: 0.30324593, y: -0.2225958}
       - {x: 0.24499926, y: 0.0855701}
+--- !u!50 &601744881
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601744874}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &613240537
 GameObject:
   m_ObjectHideFlags: 0
