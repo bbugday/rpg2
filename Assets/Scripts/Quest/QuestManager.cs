@@ -8,11 +8,19 @@ public class QuestManager : Singleton<QuestManager>
 {
     [SerializeField] QuestSO firstQuestSO;
 
-    //[SerializeField] List<Quest> activeQuests;
+    private List<QuestSO> startedQuests;
+    private List<QuestSO> finishedQuests;
+
+    public List<Quest> activeQuests{get; set;}//questso or quest or id?
 
     public override void Awake()
     {
         base.Awake();
+
+        activeQuests = new List<Quest>();
+
+        startedQuests = new List<QuestSO>();
+        finishedQuests = new List<QuestSO>();
     }
 
     void Start()
@@ -34,13 +42,16 @@ public class QuestManager : Singleton<QuestManager>
 
     public void QuestDone(Quest quest)
     {
+        activeQuests.Remove(quest);
+        finishedQuests.Add(quest.questData);
+
         List<QuestSO> nextQuests = quest.NextQuests;
 
         foreach(QuestSO next in nextQuests)
         {
             if(IsQuestReady(next))
             {
-                next.started = true;
+                startedQuests.Add(next);
                 Quest newQuest = new Quest(next);
                 newQuest.doSettings();
             }
@@ -50,12 +61,12 @@ public class QuestManager : Singleton<QuestManager>
 
     private bool IsQuestReady(QuestSO questData)
     {
-        if(questData.started)
+        if(startedQuests.Contains(questData))
             return false;
 
         foreach(QuestSO prev in questData.prevQuests)
         {
-            if(prev.done == false)
+            if(!finishedQuests.Contains(prev))
                 return false;
         }
 

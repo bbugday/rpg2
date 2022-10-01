@@ -7,7 +7,7 @@ public class Quest
 {
     private List<QuestPart> questParts;
 
-    [SerializeField] QuestSO questData;
+    [SerializeField] public QuestSO questData{get; private set;}
 
     public int currentPart;
 
@@ -27,6 +27,7 @@ public class Quest
     public void doSettings()
     {
         questParts[currentPart].doSettings();
+        QuestManager.Instance.activeQuests.Add(this);
     }
 
     //run when questpart is done
@@ -46,7 +47,6 @@ public class Quest
 
     void Finished()
     {
-        questData.done = true;
         QuestManager.Instance.QuestDone(this);
         //quest reward
     }

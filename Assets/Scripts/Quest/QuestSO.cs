@@ -11,8 +11,6 @@ public class QuestSO : ScriptableObject
     void OnEnable()
     {
         prevQuests.Clear();
-        started = false;
-        done = false;
     }
 
     public string questTitle;
@@ -21,9 +19,6 @@ public class QuestSO : ScriptableObject
 
     public List<QuestSO> prevQuests;
     public List<QuestSO> nextQuests;
-
-    public bool started = false;
-    public bool done = false;
 
     public Rect position = new Rect(0, 0, 150, 200);
 
