@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ISavable
 {
-
     public float moveSpeed;
 
     bool isMoving = false;
@@ -107,6 +106,18 @@ public class PlayerController : MonoBehaviour
             animator.IsMoving = false;
             collider.GetComponent<Interactable>()?.Interact();
         }
+    }
+
+    public object CaptureState()
+    {
+        float[] pos = new float[] {transform.position.x, transform.position.y};
+        return pos;
+    }
+
+    public void RestoreState(object state)
+    {
+        var pos = (float[]) state;
+        transform.position = new Vector3(pos[0], pos[1]);
     }
 
     //interact's circle

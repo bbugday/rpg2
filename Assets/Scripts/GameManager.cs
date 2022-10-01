@@ -31,6 +31,16 @@ public class GameManager : Singleton<GameManager>
         {
             dialogueManager.HandleUpdate();
         }
+
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            SavingSystem.i.Save("saveSlot1");
+        }   
+    
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            SavingSystem.i.Load("saveSlot1");
+        }
     }
 
     public void setState(GameState newState)
