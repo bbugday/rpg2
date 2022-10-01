@@ -9,10 +9,14 @@ public class Quest
 
     [SerializeField] QuestSO questData;
 
+    public int currentPart;
+
     public Quest(QuestSO data)
     {
         questData = data;
-        questParts = questData.questParts.ConvertAll(q => q.Clone()); //to prevent scriptable objects deleted
+        questParts = questData.questParts;
+
+        currentPart = 0;
 
         foreach(QuestPart questPart in questParts)
         {
@@ -22,13 +26,13 @@ public class Quest
 
     public void doSettings()
     {
-        CurrentQuestPart.doSettings();
+        questParts[currentPart].doSettings();
     }
 
     //run when questpart is done
     public void doneQuestPart()
     {
-        questParts.RemoveAt(0); //remove that quest part
+        currentPart++;
         if(!IsAllQuestPartsOver())
             doSettings();
         else
@@ -37,7 +41,7 @@ public class Quest
 
     public bool IsAllQuestPartsOver()
     {
-        return questParts.Count == 0;
+        return currentPart == questParts.Count;
     }
 
     void Finished()
