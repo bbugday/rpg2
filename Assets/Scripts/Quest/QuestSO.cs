@@ -13,6 +13,7 @@ public class QuestSO : ScriptableObject
         prevQuests.Clear();
     }
 
+    public int questId;
     public string questTitle;
 
     public List<QuestPart> questParts;
