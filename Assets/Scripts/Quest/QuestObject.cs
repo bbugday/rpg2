@@ -20,4 +20,9 @@ public class QuestObject : MonoBehaviour
     {
         questParts.Remove(questPart);
     }
+
+    public void ClearQuestParts()
+    {
+        questParts.Clear();
+    }
 }

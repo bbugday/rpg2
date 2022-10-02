@@ -988,6 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722379862a4466e4c824e287f649a6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questDB: {fileID: 11400000, guid: e7b5513de6b08d548b9d5c1389abeb16, type: 2}
   firstQuestSO: {fileID: 11400000, guid: 5c8c12b49c76feb4392c9440469db71f, type: 2}
 --- !u!4 &68759062
 Transform:

@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class QuestManager : Singleton<QuestManager>
+public class QuestManager : Singleton<QuestManager>, ISavable
 {
+    [SerializeField] QuestDB questDB;
+    public Dictionary<int, QuestSO> idToQuest;
+
     [SerializeField] QuestSO firstQuestSO;
 
     private List<QuestSO> startedQuests;
@@ -16,6 +19,14 @@ public class QuestManager : Singleton<QuestManager>
     public override void Awake()
     {
         base.Awake();
+
+        idToQuest = new Dictionary<int, QuestSO>();
+
+        foreach(QuestSO questSO in questDB.quests)
+        {
+            if(!idToQuest.ContainsKey(questSO.questId))
+                idToQuest.Add(questSO.questId, questSO);
+        }
 
         activeQuests = new List<Quest>();
 
@@ -71,6 +82,82 @@ public class QuestManager : Singleton<QuestManager>
         }
 
         return true;
+    }
+
+    public object CaptureState()
+    {
+        QuestSaveData questSaveData = new QuestSaveData()
+        {
+            startedQuestIds = new int[startedQuests.Count],
+            finishedQuestIds = new int[startedQuests.Count],
+            activeQuestIds = new int[startedQuests.Count],
+            activeQuestCurrentParts = new int[startedQuests.Count]
+        };
+
+        for(int i = 0; i < startedQuests.Count; i++)
+        {
+            questSaveData.startedQuestIds[i] = startedQuests[i].questId;
+        }
+
+        for(int i = 0; i < finishedQuests.Count; i++)
+        {
+            questSaveData.finishedQuestIds[i] = finishedQuests[i].questId;
+        }
+
+        for(int i = 0; i < startedQuests.Count; i++)
+        {
+            questSaveData.activeQuestIds[i] = activeQuests[i].questData.questId;
+            questSaveData.activeQuestCurrentParts[i] = activeQuests[i].currentPart;
+        }
+
+        return questSaveData;
+    }
+
+    public void RestoreState(object state)
+    {
+        activeQuests.Clear();
+
+        foreach (QuestObject questObject in FindObjectsOfType<QuestObject>())
+        {
+            questObject.ClearQuestParts();
+        }
+
+        QuestSaveData questSaveData = (QuestSaveData)state;
+
+        foreach(int questId in questSaveData.startedQuestIds)
+        {
+            var questSO = idToQuest[questId];
+
+            if(startedQuests.Contains(questSO))
+                startedQuests.Add(questSO);
+        }
+
+        foreach(int questId in questSaveData.finishedQuestIds)
+        {
+            var questSO = idToQuest[questId];
+            
+            if(!finishedQuests.Contains(questSO))
+                finishedQuests.Add(questSO);
+        }
+
+        for(int i = 0; i < questSaveData.activeQuestIds.Length; i++)
+        {
+            Quest quest = new Quest(idToQuest[questSaveData.activeQuestIds[i]]);
+            quest.currentPart = questSaveData.activeQuestCurrentParts[i];
+
+            activeQuests.Add(quest);
+
+            quest.doSettings();
+        }
+    }
+
+    [Serializable]
+    public class QuestSaveData
+    {
+        public int[] startedQuestIds;
+        public int[] finishedQuestIds;
+        public int[] activeQuestIds;
+        public int[] activeQuestCurrentParts;
     }
 
     // List<Quest> CurrentQuests

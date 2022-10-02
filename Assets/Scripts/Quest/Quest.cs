@@ -27,8 +27,12 @@ public class Quest
     public void doSettings()
     {
         Debug.Log("do settings " + "quest title: " + questData.questTitle + " quest part: " + currentPart);
+
+        if(!QuestManager.Instance.activeQuests.Contains(this))
+            QuestManager.Instance.activeQuests.Add(this);
+
         questParts[currentPart].doSettings();
-        QuestManager.Instance.activeQuests.Add(this);
+        
     }
 
     //run when questpart is done
@@ -55,10 +59,5 @@ public class Quest
     public List<QuestSO> NextQuests
     {
         get {return questData.nextQuests;}
-    } 
-
-    public QuestPart CurrentQuestPart
-    {
-        get {return questParts[0];}
-    } 
+    }
 }
