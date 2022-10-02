@@ -17,8 +17,8 @@ public class ArenaPlayerController : MonoBehaviour
     {
         Move();
 
-        if(Input.GetKeyDown(KeyCode.T))
-            StartCoroutine(CustomSceneManager.Instance.SwitchToFreeRoam());
+        // if(Input.GetKeyDown(KeyCode.T))
+        //     StartCoroutine(CustomSceneManager.Instance.SwitchToFreeRoam());
     }
 
     public void Move()

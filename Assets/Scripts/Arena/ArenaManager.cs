@@ -27,10 +27,12 @@ public class ArenaManager : MonoBehaviour
 
         clearEvent += () => 
         {
-            if(arenaSO.onClearEvent != null)
-            {
-                arenaSO.onClearEvent.Invoke();
-            }
+            arenaSO.onExitArena += arenaSO.onClearEvent.Invoke; 
+
+            // if(arenaSO.onClearEvent != null)
+            // {
+            //     arenaSO.onClearEvent.Invoke();
+            // }
             
             state = State.Finish;
         };
@@ -58,7 +60,7 @@ public class ArenaManager : MonoBehaviour
         {
             if(Input.anyKey)
             {
-                StartCoroutine(CustomSceneManager.Instance.SwitchToFreeRoam());
+                StartCoroutine(CustomSceneManager.Instance.SwitchToFreeRoam(arenaSO));
                 state = State.Loading;
             }
         }

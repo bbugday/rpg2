@@ -8,24 +8,23 @@ public class DialogueQuest : QuestPart
 {
     [SerializeField] TextAsset inkDialogue;
 
-    [SerializeField] NpcSO npcSO;
+    [SerializeField] string npcName;
 
-    public DialogueQuest(string npcName, TextAsset inkDialogue)
-    {
-        this.inkDialogue = inkDialogue;
-    }
+    private NPCController npc;
 
     public override void doSettings()
     {
-        npcSO.AddQuestPart(this);
-        npcSO.dialogueEvent += doneQuestPart;
+        npc = GameObject.Find(npcName).GetComponent<NPCController>();
+        npc.AddQuestPart(this);
+        npc.dialogueEvent += doneQuestPart;
     }
 
     public void doneQuestPart(QuestPart dialogueQuest)
     {
         if(this == dialogueQuest)
         {
-            npcSO.RemoveQuestPart(this);
+            npc.RemoveQuestPart(this);
+            npc.dialogueEvent -= doneQuestPart;
             quest.doneQuestPart();
         }
     }

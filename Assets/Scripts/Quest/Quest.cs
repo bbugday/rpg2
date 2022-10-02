@@ -26,6 +26,7 @@ public class Quest
 
     public void doSettings()
     {
+        Debug.Log("do settings " + "quest title: " + questData.questTitle + " quest part: " + currentPart);
         questParts[currentPart].doSettings();
         QuestManager.Instance.activeQuests.Add(this);
     }

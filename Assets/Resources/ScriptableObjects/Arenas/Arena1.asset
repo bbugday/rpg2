@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Arena1
   m_EditorClassIdentifier: 
   questParts: []
+  arenaEntryPointName: Arena1EntryPoint

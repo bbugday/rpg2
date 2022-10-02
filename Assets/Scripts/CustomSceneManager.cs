@@ -27,7 +27,9 @@ public class CustomSceneManager : Singleton<CustomSceneManager>
         asyncLoad.allowSceneActivation = true;
     }
 
-    public IEnumerator SwitchToFreeRoam()
+    //SwitchArenaToFreeroam
+
+    public IEnumerator SwitchToFreeRoam(ArenaSO arenaSO)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(0);
 
@@ -45,5 +47,7 @@ public class CustomSceneManager : Singleton<CustomSceneManager>
         essentialObjects.SetActive(true);
         GameManager.Instance.gameObject.SetActive(true);
         asyncLoad.allowSceneActivation = true;
+
+        arenaSO.onExitArena.Invoke();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum GameState {FreeRoam, Dialog}
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : Singleton<GameManager> //freeroam manager
 {
     [SerializeField] PlayerController playerController;
     [SerializeField] DialogueManager dialogueManager;

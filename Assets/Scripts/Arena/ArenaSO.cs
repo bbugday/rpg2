@@ -5,8 +5,20 @@ using UnityEngine.Events;
 using System;
 
 [CreateAssetMenu(fileName = "Arena", menuName = "ScriptableObjects/ArenaScriptableObject", order = 1)]
-public class ArenaSO : QuestObjectSO
-{
+public class ArenaSO : ScriptableObject
+{    
+    [SerializeField] string arenaEntryPointName;
+    private ArenaEntryPoint arenaEntryPoint;
+    
     public delegate void OnClearEvent();
     public OnClearEvent onClearEvent;
+
+    public delegate void OnExitArena();
+    public OnExitArena onExitArena;
+
+    void Awake()
+    {
+        arenaEntryPoint = GameObject.Find(arenaEntryPointName).GetComponent<ArenaEntryPoint>(); 
+    }
+
 }

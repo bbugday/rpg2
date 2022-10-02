@@ -6,18 +6,21 @@ using UnityEngine;
 
 public class ArenaQuest : QuestPart
 {
-	[SerializeField] ArenaSO arenaSO;
+    [SerializeField] string entryPointName; 
+
+    private ArenaEntryPoint entryPoint;
 
     public override void doSettings()
     {
-        arenaSO.AddQuestPart(this);
-        arenaSO.onClearEvent += doneQuestPart;
+        entryPoint = GameObject.Find(entryPointName).GetComponent<ArenaEntryPoint>();
+        entryPoint.AddQuestPart(this);
+        entryPoint.arenaSO.onClearEvent += doneQuestPart;
     }
 
 	public void doneQuestPart()
     {
-		Debug.Log("Cleared");
-        arenaSO.RemoveQuestPart(this);
+        entryPoint.RemoveQuestPart(this);
+        entryPoint.arenaSO.onClearEvent -= doneQuestPart;
         quest.doneQuestPart();
     }
 }
