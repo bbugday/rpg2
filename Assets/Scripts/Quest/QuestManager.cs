@@ -120,6 +120,9 @@ public class QuestManager : Singleton<QuestManager>, ISavable
         foreach (QuestObject questObject in FindObjectsOfType<QuestObject>())
         {
             questObject.ClearQuestParts();
+
+            if(questObject.TryGetComponent<NPCController>(out NPCController npc))
+                npc.ResetDialogueEvents();
         }
 
         QuestSaveData questSaveData = (QuestSaveData)state;

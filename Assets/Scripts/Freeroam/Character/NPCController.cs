@@ -20,4 +20,9 @@ public class NPCController : QuestObject, Interactable
             dialogueEvent.Invoke(dialogueQuest);
         }
     }
+
+    public void ResetDialogueEvents()
+    {
+        dialogueEvent = null;
+    }
 }
