@@ -31,8 +31,12 @@ public class Quest
         if(!QuestManager.Instance.activeQuests.Contains(this))
             QuestManager.Instance.activeQuests.Add(this);
 
-        questParts[currentPart].doSettings();
-        
+        questParts[currentPart].doSettings(); 
+    }
+
+    public void RemoveSettings()
+    {
+        questParts[currentPart].RemoveSettings(); 
     }
 
     //run when questpart is done

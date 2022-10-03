@@ -19,12 +19,18 @@ public class DialogueQuest : QuestPart
         npc.dialogueEvent += doneQuestPart;
     }
 
+    public override void RemoveSettings()
+    {
+        npc.RemoveQuestPart(this);
+        npc.dialogueEvent -= doneQuestPart;
+    }
+
+
     public void doneQuestPart(QuestPart dialogueQuest)
     {
         if(this == dialogueQuest)
         {
-            npc.RemoveQuestPart(this);
-            npc.dialogueEvent -= doneQuestPart;
+            RemoveSettings();
             quest.doneQuestPart();
         }
     }

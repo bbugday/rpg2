@@ -115,15 +115,12 @@ public class QuestManager : Singleton<QuestManager>, ISavable
 
     public void RestoreState(object state)
     {
-        activeQuests.Clear();
-
-        foreach (QuestObject questObject in FindObjectsOfType<QuestObject>())
+        foreach(Quest quest in activeQuests)
         {
-            questObject.ClearQuestParts();
-
-            if(questObject.TryGetComponent<NPCController>(out NPCController npc))
-                npc.ResetDialogueEvents();
+            quest.RemoveSettings();
         }
+
+        activeQuests.Clear();
 
         QuestSaveData questSaveData = (QuestSaveData)state;
 
@@ -162,16 +159,4 @@ public class QuestManager : Singleton<QuestManager>, ISavable
         public int[] activeQuestIds;
         public int[] activeQuestCurrentParts;
     }
-
-    // List<Quest> CurrentQuests
-    // {
-    //     get {return activeQuests;}
-    // } 
-
-    // public bool IsAllQuestsOver()
-    // {
-    //     return activeQuests.Count == 0;
-    // }
-
-
 }

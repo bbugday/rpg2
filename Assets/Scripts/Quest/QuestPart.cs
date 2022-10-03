@@ -8,6 +8,7 @@ public abstract class QuestPart : ScriptableObject
     protected Quest quest;
 
     public abstract void doSettings();
+    public abstract void RemoveSettings();
     
     public void SetQuest(Quest quest)
     {

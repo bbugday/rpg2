@@ -14,13 +14,18 @@ public class ArenaQuest : QuestPart
     {
         entryPoint = GameObject.Find(entryPointName).GetComponent<ArenaEntryPoint>();
         entryPoint.AddQuestPart(this);
-        entryPoint.arenaSO.onClearEvent += doneQuestPart;
+        entryPoint.arenaSO.onClearEvent += doneQuestPart; 
+    }
+
+    public override void RemoveSettings()
+    {
+        entryPoint.RemoveQuestPart(this);
+        entryPoint.arenaSO.onClearEvent -= doneQuestPart;
     }
 
 	public void doneQuestPart()
     {
-        entryPoint.RemoveQuestPart(this);
-        entryPoint.arenaSO.onClearEvent -= doneQuestPart;
+        RemoveSettings();
         quest.doneQuestPart();
     }
 }
