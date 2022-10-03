@@ -89,9 +89,9 @@ public class QuestManager : Singleton<QuestManager>, ISavable
         QuestSaveData questSaveData = new QuestSaveData()
         {
             startedQuestIds = new int[startedQuests.Count],
-            finishedQuestIds = new int[startedQuests.Count],
-            activeQuestIds = new int[startedQuests.Count],
-            activeQuestCurrentParts = new int[startedQuests.Count]
+            finishedQuestIds = new int[finishedQuests.Count],
+            activeQuestIds = new int[activeQuests.Count],
+            activeQuestCurrentParts = new int[activeQuests.Count]
         };
 
         for(int i = 0; i < startedQuests.Count; i++)
@@ -104,7 +104,7 @@ public class QuestManager : Singleton<QuestManager>, ISavable
             questSaveData.finishedQuestIds[i] = finishedQuests[i].questId;
         }
 
-        for(int i = 0; i < startedQuests.Count; i++)
+        for(int i = 0; i < activeQuests.Count; i++)
         {
             questSaveData.activeQuestIds[i] = activeQuests[i].questData.questId;
             questSaveData.activeQuestCurrentParts[i] = activeQuests[i].currentPart;
