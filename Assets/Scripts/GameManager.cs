@@ -34,11 +34,13 @@ public class GameManager : Singleton<GameManager> //freeroam manager
 
         if(Input.GetKeyDown(KeyCode.O))
         {
+            Debug.Log("SAVE");
             SavingSystem.i.Save("saveSlot2");
         }   
     
         if(Input.GetKeyDown(KeyCode.L))
         {
+            Debug.Log("LOAD");
             SavingSystem.i.Load("saveSlot2");
         }
     }
