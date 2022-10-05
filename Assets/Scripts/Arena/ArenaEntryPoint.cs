@@ -9,6 +9,11 @@ public class ArenaEntryPoint : QuestObject, Interactable
 
     public ArenaSO arenaSO;
 
+    void Awake()
+    {
+        arenaSO.Init();
+    }
+
     public void Interact()
     {
         if(questParts != null && questParts.Count != 0)

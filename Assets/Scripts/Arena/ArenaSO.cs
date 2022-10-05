@@ -16,9 +16,8 @@ public class ArenaSO : ScriptableObject
     public delegate void OnExitArena();
     public OnExitArena onExitArena;
 
-    void Awake()
+    public void Init()
     {
-        arenaEntryPoint = GameObject.Find(arenaEntryPointName).GetComponent<ArenaEntryPoint>(); 
+        arenaEntryPoint = GameObject.Find(arenaEntryPointName).GetComponent<ArenaEntryPoint>();
     }
-
 }
