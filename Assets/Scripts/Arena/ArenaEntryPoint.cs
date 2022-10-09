@@ -21,9 +21,4 @@ public class ArenaEntryPoint : QuestObject, Interactable
             StartCoroutine(CustomSceneManager.Instance.SwitchToArena(arenaSceneName));
         }
     }
-
-    public void ResetClearEvents()
-    {
-        arenaSO.onClearEvent = null;
-    }
 }

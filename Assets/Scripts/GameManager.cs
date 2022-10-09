@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState {FreeRoam, Dialog}
+public enum GameState {MainMenu, FreeRoam, Dialog}
 
 public class GameManager : Singleton<GameManager> //freeroam manager
 {
@@ -18,7 +18,7 @@ public class GameManager : Singleton<GameManager> //freeroam manager
 
     void Start()
     {
-        state = GameState.FreeRoam;
+        state = GameState.MainMenu;
     }
 
     void Update()
@@ -45,8 +45,23 @@ public class GameManager : Singleton<GameManager> //freeroam manager
         }
     }
 
+    public void LoadGame(string save)
+    {
+        SavingSystem.i.Load("saveSlot2");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     public void setState(GameState newState)
     {
         state = newState;
+    }
+
+    public void StartFreeroam()
+    {
+        state = GameState.FreeRoam;
     }
 }

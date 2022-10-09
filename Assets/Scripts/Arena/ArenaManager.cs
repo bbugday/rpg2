@@ -26,11 +26,8 @@ public class ArenaManager : MonoBehaviour
         clearCanvas.SetActive(false);
         clearEvent += () => 
         {
-            arenaSO.onExitArena = arenaSO.onClearEvent.Invoke; 
-            // if(arenaSO.onClearEvent != null)
-            // {
-            //     arenaSO.onClearEvent.Invoke();
-            // }
+            arenaSO.onExitArena = null;
+            arenaSO.onExitArena += arenaSO.onClearEvent.Invoke; 
             
             state = State.Finish;
         };
