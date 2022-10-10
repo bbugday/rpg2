@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState {MainMenu, FreeRoam, Dialog}
+public enum GameState {MainMenu, PauseMenu, FreeRoam, Dialog}
 
 public class GameManager : Singleton<GameManager> //freeroam manager
 {
@@ -11,13 +11,13 @@ public class GameManager : Singleton<GameManager> //freeroam manager
 
     GameState state;
 
-    [SerializeField] GameObject buttonPrefab;
-    [SerializeField] GameObject loadButtons;
-    [SerializeField] GameObject mainMenuCanvas;
+    UiManager uiManager;
 
     public override void Awake()
     {
         base.Awake();
+
+        uiManager = GetComponent<UiManager>();
     }
 
     void Start()
@@ -35,6 +35,20 @@ public class GameManager : Singleton<GameManager> //freeroam manager
         {
             dialogueManager.HandleUpdate();
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(state == GameState.FreeRoam || state == GameState.Dialog)
+            {
+                state = GameState.PauseMenu;
+                uiManager.OpenPauseMenu();
+            }
+            // else if(state == GameState.PauseMenu)
+            // {
+            //     state = GameState.FreeRoam;
+            //     uiManager.ClosePauseMenu();
+            // }
+        }   
 
         if(Input.GetKeyDown(KeyCode.U))
         {
@@ -78,26 +92,5 @@ public class GameManager : Singleton<GameManager> //freeroam manager
         state = GameState.FreeRoam;
     }
 
-    private void InstantiateLoadButton(string saveName, int pos)
-    {
-        GameObject buttonObject = Instantiate(buttonPrefab);
-        var button = buttonObject.GetComponent<UnityEngine.UI.Button>();
-        button.transform.parent = loadButtons.transform;
-        buttonObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,240,0) - Vector3.up * pos * 62;
-        button.onClick.AddListener(() => SavingSystem.i.Load("savefiles/" + saveName));
-        button.onClick.AddListener(() => mainMenuCanvas.SetActive(false));
-        button.onClick.AddListener(() => StartFreeroam());
-        button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText(saveName);
-    }
 
-    public void LoadButtonsCreator()
-    {
-        string [] files = System.IO.Directory.GetFiles(Application.persistentDataPath + "/savefiles");
-        int i = 0;
-        foreach (string file in files)
-        {
-            InstantiateLoadButton(System.IO.Path.GetFileName(file), i);
-            i++;
-        }
-    }
 }
