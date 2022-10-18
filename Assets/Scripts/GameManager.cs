@@ -48,7 +48,15 @@ public class GameManager : Singleton<GameManager> //freeroam manager
             //     state = GameState.FreeRoam;
             //     uiManager.ClosePauseMenu();
             // }
-        }   
+        }
+
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            if(state == GameState.FreeRoam)
+            {
+                uiManager.OpenCloseQuestWindow();
+            }
+        }
 
         if(Input.GetKeyDown(KeyCode.U))
         {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject pauseButtons;
     [SerializeField] GameObject mainMenuCanvas;
     [SerializeField] GameObject pauseMenuCanvas;
+    [SerializeField] GameObject questWindowCanvas;
+    [SerializeField] GameObject questTextPrefab;
+
 
     private List<GameObject> dynamicButtons;
 
@@ -98,5 +102,29 @@ public class UiManager : MonoBehaviour
     {
         dynamicButtons.ForEach(button => Destroy(button.gameObject));
         dynamicButtons.Clear();
+    }
+
+    public void OpenCloseQuestWindow()
+    {
+        if(questWindowCanvas.gameObject.activeSelf)
+        {
+            questWindowCanvas.gameObject.SetActive(false);
+            foreach (Transform child in questWindowCanvas.transform.GetChild(0).transform)
+                Destroy(child.gameObject);
+        }
+        else
+        {
+            questWindowCanvas.gameObject.SetActive(true);
+            foreach(Quest quest in QuestManager.Instance.activeQuests)
+                InstantiateQuestText(0, quest.questData);
+        } 
+    }
+
+    private void InstantiateQuestText(int pos, QuestSO questData)
+    {
+        GameObject obj = Instantiate(questTextPrefab);
+        obj.GetComponent<Text>().text = questData.questTitle;  
+        obj.transform.SetParent(questWindowCanvas.transform.GetChild(0), false);
+        obj.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,0,0); //- Vector3.up * pos * 62;
     }
 }

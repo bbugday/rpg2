@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6308868505011199674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.57, y: 2.41, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   attackDamage: 1
-  xpObject: {fileID: 4209410578619343160, guid: a6d9348599e9348478944a4181f5d9fe, type: 3}
+  expObject: {fileID: 0}
 --- !u!50 &6308868505011199664
 Rigidbody2D:
   serializedVersion: 4
