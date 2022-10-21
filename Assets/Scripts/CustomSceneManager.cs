@@ -49,5 +49,8 @@ public class CustomSceneManager : Singleton<CustomSceneManager>
         asyncLoad.allowSceneActivation = true;
 
         arenaSO.onExitArena.Invoke();
+
+        var player = FindObjectOfType<PlayerData>();
+        player.xp += arenaSO.gainedXP;
     }
 }

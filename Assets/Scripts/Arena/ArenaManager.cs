@@ -27,7 +27,7 @@ public class ArenaManager : MonoBehaviour
         clearEvent += () => 
         {
             arenaSO.onExitArena = null;
-            arenaSO.onExitArena += arenaSO.onClearEvent.Invoke; 
+            arenaSO.onExitArena += arenaSO.onClearEvent.Invoke;
             
             state = State.Finish;
         };
@@ -37,6 +37,11 @@ public class ArenaManager : MonoBehaviour
             state = State.Finish;
             dieCanvas.SetActive(true);
         };
+    }
+
+    void Start()
+    {
+        arenaSO.gainedXP = 0;
     }
 
     void Update()
@@ -68,5 +73,10 @@ public class ArenaManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void GainExp(int exp)
+    {
+        arenaSO.gainedXP += exp;
     }
 }

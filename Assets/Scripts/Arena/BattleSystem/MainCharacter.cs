@@ -12,7 +12,7 @@ public class MainCharacter : BattleEntity, IAttackable
 
     [SerializeField] ArenaManager arenaManager;
 
-    private int exp;
+    public int exp;
     private int level;
 
     private void Awake()
@@ -71,6 +71,7 @@ public class MainCharacter : BattleEntity, IAttackable
     public void AddExp(int exp)
     {
         this.exp += exp;
+        arenaManager.GainExp(exp);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
