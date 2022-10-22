@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour, ISavable
     public LayerMask solidObjectsLayer;
     public LayerMask interactableLayer;
 
+    private UiManager ui;
+
     CharacterAnimator animator;
 
     float footOffset = -1.5f;
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour, ISavable
     void Awake()
     {
         animator = GetComponent<CharacterAnimator>();
+        ui = FindObjectOfType<UiManager>();
     }
 
     void OnDisable()
@@ -65,6 +68,12 @@ public class PlayerController : MonoBehaviour, ISavable
 
         if(Input.GetKeyDown(KeyCode.Space))
             Interact();
+
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            ui.OpenCloseQuestWindow();
+        }
+        
     }
     
     IEnumerator Move(Vector3 targetPos)

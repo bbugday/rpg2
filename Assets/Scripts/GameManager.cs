@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState {MainMenu, PauseMenu, FreeRoam, Dialog}
+public enum GameState {MainMenu, PauseMenu, FreeRoam, Dialog, Shop}
 
 public class GameManager : Singleton<GameManager> //freeroam manager
 {
     [SerializeField] PlayerController playerController;
     [SerializeField] DialogueManager dialogueManager;
+    [SerializeField] ShopController shopController;
 
     GameState state;
 
@@ -54,34 +55,26 @@ public class GameManager : Singleton<GameManager> //freeroam manager
             // }
         }
 
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            if(state == GameState.FreeRoam)
-            {
-                uiManager.OpenCloseQuestWindow();
-            }
-        }
+        // if(Input.GetKeyDown(KeyCode.U))
+        // {
+        //     string [] files = System.IO.Directory.GetFiles(Application.persistentDataPath + "/savefiles");
+        //     foreach (string file in files)
+        //     {
+        //         Debug.Log(file);
+        //         Debug.Log(System.IO.Path.GetFileName(file));
+        //     }
+        // }
 
-        if(Input.GetKeyDown(KeyCode.U))
-        {
-            string [] files = System.IO.Directory.GetFiles(Application.persistentDataPath + "/savefiles");
-            foreach (string file in files)
-            {
-                Debug.Log(file);
-                Debug.Log(System.IO.Path.GetFileName(file));
-            }
-        }
-
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            Debug.Log("SAVE");
-            SavingSystem.i.Save("savefiles/saveSlot2");
-        }   
+        // if(Input.GetKeyDown(KeyCode.O))
+        // {
+        //     Debug.Log("SAVE");
+        //     SavingSystem.i.Save("savefiles/saveSlot2");
+        // }   
     
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            LoadGame("savefiles/saveSlot2");
-        }
+        // if(Input.GetKeyDown(KeyCode.L))
+        // {
+        //     LoadGame("savefiles/saveSlot2");
+        // }
     }
 
     public void LoadGame(string save)

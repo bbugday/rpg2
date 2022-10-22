@@ -11,6 +11,7 @@ public class ArenaPlayerController : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<CharacterAnimator>();
+        moveSpeed += FindObjectOfType<PlayerDataManager>().moveSpeedUpgrade * 10;
     }
 
     public void HandleUpdate()
