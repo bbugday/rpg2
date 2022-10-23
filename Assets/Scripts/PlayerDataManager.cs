@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class PlayerDataManager : Singleton<PlayerDataManager>
 {
-    public const int moveSpeedUpgradeLimit = 5;
-    public int moveSpeedUpgrade = 0;
+    public Dictionary<string, PlayerStat> stats;
 
-    public bool UpgradeMoveSpeed()
+    public override void Awake()
     {
-        moveSpeedUpgrade++;
-        if(moveSpeedUpgrade > moveSpeedUpgradeLimit)
-        {
-            moveSpeedUpgrade = moveSpeedUpgradeLimit;
-            return false;
-        }
-        return true;
+        base.Awake();
+
+        stats = new Dictionary<string, PlayerStat>();
+
+        stats.Add("movespeed", new PlayerStat());
+        stats.Add("health", new PlayerStat());
+        stats.Add("armor", new PlayerStat());
+        stats.Add("cooldown", new PlayerStat());
+        stats.Add("attackspeed", new PlayerStat());
+        stats.Add("attackdamage", new PlayerStat());
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public bool Upgrade(string statName)
     {
-        
+        return stats[statName].Upgrade();
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GetCurrentUpgrade(string statName)
     {
-        
+        return stats[statName].currentUpgrade;
     }
 }

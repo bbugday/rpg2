@@ -58,9 +58,9 @@ public class ShopController : MonoBehaviour, Interactable
         lastselect = choices[0].gameObject;
     }
 
-    public void UpgradeMoveSpeed()
+    public void UpgradeMoveSpeed(string statName)
     {
-        if(playerDataManager.UpgradeMoveSpeed())
+        if(playerDataManager.Upgrade(statName))
         {
             //gold--
         }

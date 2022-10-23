@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI.Extensions;
 
-enum Upgrades{MoveSpeed, Damage}
-
 public class UpgradeCircle : MonoBehaviour
 {
-    [SerializeField] Upgrades upgradeType;
+    [SerializeField] string statName;
     [SerializeField] UICircle[] circles;
 
     PlayerDataManager playerDataManager;
@@ -30,11 +28,6 @@ public class UpgradeCircle : MonoBehaviour
 
     int GetUpgradeCount()
     {
-        if(upgradeType == Upgrades.MoveSpeed)
-        {
-            return playerDataManager.moveSpeedUpgrade;
-        }
-
-        return 0;
+        return playerDataManager.GetCurrentUpgrade(statName);
     }
 }
