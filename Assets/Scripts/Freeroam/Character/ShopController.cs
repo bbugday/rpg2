@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI.Extensions;
 
 public class ShopController : MonoBehaviour, Interactable
 {
@@ -34,7 +35,11 @@ public class ShopController : MonoBehaviour, Interactable
 
     public void HandleUpdate()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            shopPanel.SetActive(false);
+            GameManager.Instance.setState(GameState.FreeRoam);
+        }
     }
 
     private void OpenShop()

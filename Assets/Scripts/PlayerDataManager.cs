@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerDataManager : Singleton<PlayerDataManager>
 {
-
     public const int moveSpeedUpgradeLimit = 5;
     public int moveSpeedUpgrade = 0;
 

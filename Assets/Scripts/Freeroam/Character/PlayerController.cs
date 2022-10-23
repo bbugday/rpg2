@@ -66,6 +66,13 @@ public class PlayerController : MonoBehaviour, ISavable
 
         animator.IsMoving = isMoving;
 
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.Instance.setState(GameState.PauseMenu);
+            GameManager.Instance.uiManager.OpenPauseMenu();
+        }
+
         if(Input.GetKeyDown(KeyCode.Space))
             Interact();
 

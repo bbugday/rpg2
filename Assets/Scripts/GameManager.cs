@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager> //freeroam manager
 
     GameState state;
 
-    UiManager uiManager;
+    public UiManager uiManager;
 
     public override void Awake()
     {
@@ -41,19 +41,24 @@ public class GameManager : Singleton<GameManager> //freeroam manager
             dialogueManager.HandleUpdate();
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        else if(state == GameState.Shop)
         {
-            if(state == GameState.FreeRoam || state == GameState.Dialog)
-            {
-                state = GameState.PauseMenu;
-                uiManager.OpenPauseMenu();
-            }
-            // else if(state == GameState.PauseMenu)
-            // {
-            //     state = GameState.FreeRoam;
-            //     uiManager.ClosePauseMenu();
-            // }
+            shopController.HandleUpdate();
         }
+
+        // if(Input.GetKeyDown(KeyCode.Escape))
+        // {
+        //     if(state == GameState.FreeRoam || state == GameState.Dialog)
+        //     {
+        //         state = GameState.PauseMenu;
+        //         uiManager.OpenPauseMenu();
+        //     }
+        //     // else if(state == GameState.PauseMenu)
+        //     // {
+        //     //     state = GameState.FreeRoam;
+        //     //     uiManager.ClosePauseMenu();
+        //     // }
+        // }
 
         // if(Input.GetKeyDown(KeyCode.U))
         // {
