@@ -1537,7 +1537,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.5686275}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0}
     m_PressedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.70980394}
     m_SelectedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.87058824}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1694,7 +1694,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.5686275}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0}
     m_PressedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.70980394}
     m_SelectedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.87058824}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1743,6 +1743,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1790434064}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: DestroyDynamicButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1790434064}
+        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+        m_MethodName: SelectFirstButtonEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2278,7 +2290,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.5686275}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0}
     m_PressedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.70980394}
     m_SelectedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.87058824}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -30586,7 +30598,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.5686275}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0}
     m_PressedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.70980394}
     m_SelectedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.87058824}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -30635,6 +30647,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1790434064}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: DestroyDynamicButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1790434064}
+        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+        m_MethodName: SelectFirstButtonEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36847,7 +36871,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.5686275}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0}
     m_PressedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.70980394}
     m_SelectedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.87058824}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -37055,7 +37079,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.5686275}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0}
     m_PressedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.70980394}
     m_SelectedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.87058824}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -39080,7 +39104,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.5686275}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0}
     m_PressedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.70980394}
     m_SelectedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.87058824}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -40938,7 +40962,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.5686275}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0}
     m_PressedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.70980394}
     m_SelectedColor: {r: 0.3019608, g: 0.18039216, b: 0.02745098, a: 0.87058824}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
