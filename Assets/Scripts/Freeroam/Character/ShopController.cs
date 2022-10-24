@@ -27,7 +27,6 @@ public class ShopController : MonoBehaviour, Interactable
     void Start()
     {
         shopPanel.SetActive(false);
-        //choicesPanel.SetActive(false);
     }
 
     public void HandleUpdate()

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ExpObject : MonoBehaviour, Collectable
 {
+    [SerializeField] int exp;
+    [SerializeField] int gold;
+
     public void SetPosition(Vector3 position)
     {
         transform.position = position;
@@ -11,8 +14,8 @@ public class ExpObject : MonoBehaviour, Collectable
 
     public void Collect(MainCharacter character)
     {
-        character.AddExp(2); // to do: get information from SO
+        character.AddExp(exp);
+        PlayerDataManager.Instance.AddGold(gold);
         gameObject.SetActive(false);
     }
-
 }

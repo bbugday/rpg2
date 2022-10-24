@@ -77,6 +77,11 @@ public class PlayerDataManager : Singleton<PlayerDataManager>, ISavable
             stats[playerSaveData.statNames[i]].currentUpgrade = playerSaveData.currentUpgrades[i];
         }
     }
+
+    public void AddGold(int gainedGold)
+    {
+        gold += gainedGold;
+    }
     
     [Serializable]
     public class PlayerSaveData

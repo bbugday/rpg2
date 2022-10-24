@@ -12,8 +12,10 @@ public class MainCharacter : BattleEntity, IAttackable
 
     [SerializeField] ArenaManager arenaManager;
 
+    int[] levelUpExps = new int[] {22,444,666,888};
+
     public int exp;
-    private int level;
+    public int level;
 
     private void Awake()
     {
@@ -72,6 +74,23 @@ public class MainCharacter : BattleEntity, IAttackable
     {
         this.exp += exp;
         arenaManager.GainExp(exp);
+        CheckLevelUp();
+    }
+
+    public void CheckLevelUp()
+    {
+        if(exp >= levelUpExps[level - 1])
+        {
+            LevelUp();
+        }
+    }
+
+    public void LevelUp()
+    {
+        level++;
+        Debug.Log("level up:" + level);
+
+        CheckLevelUp();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
