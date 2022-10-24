@@ -4,7 +4,17 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    protected MainCharacter character;
+
+    [SerializeField] protected int attackDamage;
+
     public virtual void Attack(){}
+
+    public void Start()
+    {
+        character = FindObjectOfType<MainCharacter>();
+        character.AddWeapon(this);
+    }
 
     protected Target findClosestTarget()
     {

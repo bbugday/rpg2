@@ -6,21 +6,19 @@ public class Gun : Weapon
 {
     private const float consecutiveAttackCooldown = 0.1f;
 
-    [SerializeField] int attackDamage;
-
     private bool attacking = false;
     
     [SerializeField] private float attackCooldown;
     [SerializeField] private uint bulletCount;
     [SerializeField] private uint extraShoots = 0;
 
-    private MainCharacter character;
+    // private MainCharacter character;
 
-    public void Start()
-    {
-        character = FindObjectOfType<MainCharacter>();
-        character.AddWeapon(this);
-    }
+    // public void Start()
+    // {
+    //     character = FindObjectOfType<MainCharacter>();
+    //     character.AddWeapon(this);
+    // }
 
     public override void Attack()
     {

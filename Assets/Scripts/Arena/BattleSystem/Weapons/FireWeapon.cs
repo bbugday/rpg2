@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FireWeapon : Weapon
+{
+    private const float consecutiveAttackCooldown = 0.1f;
+    private bool attacking = false;
+    [SerializeField] private uint extraShoots = 0;
+    [SerializeField] private float attackCooldown;
+
+    public override void Attack()
+    {
+        if(!attacking)
+            StartCoroutine(Fire());
+    }
+
+    public IEnumerator Fire()
+    {
+        Target target = findClosestTarget();
+        
+        if(target == null) yield break;
+
+        Vector3 direction = (target.transform.position - character.transform.position);
+
+        attacking = true;        
+      
+        StartCoroutine(Shoot(direction));
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        attacking = false;
+    }
+
+    IEnumerator Shoot(Vector3 direction)
+    {
+        CreateFireBall(character.transform.position, direction);
+        for (int i = 0; i < extraShoots; i++)
+        {
+            yield return new WaitForSeconds(consecutiveAttackCooldown);
+            CreateFireBall(character.transform.position, direction);
+        }
+    }
+
+    private void CreateFireBall(Vector3 position, Vector3 direction)
+    {
+        FireBall fireBall = ObjectPool.SharedInstance.GetPooledObject(3).GetComponent<FireBall>();
+        fireBall.SetUp(direction, position, attackDamage + character.attackDamage);
+    }
+}
