@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
@@ -26,6 +27,7 @@ public class UiManager : MonoBehaviour
     public void OpenPauseMenu()
     {
         pauseMenuCanvas.SetActive(true);
+        StartCoroutine(SelectFirstButton());
     }
 
     public void ClosePauseMenu()
@@ -43,6 +45,7 @@ public class UiManager : MonoBehaviour
             InstantiateLoadButton(System.IO.Path.GetFileName(file), i);
             i++;
         }
+        StartCoroutine(UiManager.SelectFirstButton());
     }
 
     public void SaveButtonsCreator()
@@ -58,7 +61,7 @@ public class UiManager : MonoBehaviour
         {
             InstantiateSaveButton("save" + i, i, "NEW SAVE");
         }
-        
+        StartCoroutine(UiManager.SelectFirstButton());
     }
 
     private void InstantiateLoadButton(string saveName, int pos)
@@ -126,5 +129,21 @@ public class UiManager : MonoBehaviour
         obj.GetComponent<Text>().text = questData.questTitle;  
         obj.transform.SetParent(questWindowCanvas.transform.GetChild(0), false);
         obj.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,0,0); //- Vector3.up * pos * 62;
+    }
+
+    public void SelectFirstButtonEvent()
+    {
+        StartCoroutine(UiManager.SelectFirstButton());
+    } 
+
+    public static IEnumerator SelectFirstButton() 
+    {
+        // Event System requires we clear it first, then wait
+        // for at least one frame before we set the current selected object.
+
+        EventSystem.current.SetSelectedGameObject(null);
+        yield return new WaitForEndOfFrame();
+        var button = FindObjectOfType<Button>().gameObject;
+        EventSystem.current.SetSelectedGameObject(button);
     }
 }

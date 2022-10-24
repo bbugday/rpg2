@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI.Extensions;
+using UnityEngine.UI;
 
 public class ShopController : MonoBehaviour, Interactable
 {
     [SerializeField] GameObject shopPanel;
 
     [SerializeField] private GameObject[] choices;
-
-    GameObject lastselect;
 
     PlayerDataManager playerDataManager;
 
@@ -43,17 +42,7 @@ public class ShopController : MonoBehaviour, Interactable
     private void OpenShop()
     {
         shopPanel.SetActive(true);
-        StartCoroutine(SelectFirstChoice());
-    }
-
-    private IEnumerator SelectFirstChoice() 
-    {
-        // Event System requires we clear it first, then wait
-        // for at least one frame before we set the current selected object.
-        EventSystem.current.SetSelectedGameObject(null);
-        yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
-        lastselect = choices[0].gameObject;
+        StartCoroutine(UiManager.SelectFirstButton());
     }
 
     public void Upgrade(string statName)

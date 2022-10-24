@@ -24,10 +24,11 @@ public class GameManager : Singleton<GameManager> //freeroam manager
     void Start()
     {
         state = GameState.MainMenu;
+        StartCoroutine(UiManager.SelectFirstButton()); 
 
-        #if UNITY_EDITOR
-            state = GameState.FreeRoam;
-        #endif
+        // #if UNITY_EDITOR
+        //     state = GameState.FreeRoam;
+        // #endif
     }
 
     void Update()
