@@ -17,9 +17,7 @@ public class ShopController : MonoBehaviour, Interactable
     public void Interact()
     {
         GameManager.Instance.setState(GameState.Shop);
-
         OpenShop();
-        
     }
 
     void Awake()
@@ -58,12 +56,13 @@ public class ShopController : MonoBehaviour, Interactable
         lastselect = choices[0].gameObject;
     }
 
-    public void UpgradeMoveSpeed(string statName)
+    public void Upgrade(string statName)
     {
-        if(playerDataManager.Upgrade(statName))
+        int cost = playerDataManager.GetStatUpgradeCost(statName);
+
+        if(playerDataManager.gold >= cost && playerDataManager.IsStatUpgradeable(statName))
         {
-            //gold--
+            playerDataManager.Upgrade(statName);
         }
     }
-
 }

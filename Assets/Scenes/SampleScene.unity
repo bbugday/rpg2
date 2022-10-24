@@ -29446,7 +29446,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 579450937}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeMoveSpeed
+        m_MethodName: Upgrade
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31869,7 +31869,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 579450937}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeMoveSpeed
+        m_MethodName: Upgrade
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32575,7 +32575,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 579450937}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeMoveSpeed
+        m_MethodName: Upgrade
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36851,7 +36851,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 579450937}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeMoveSpeed
+        m_MethodName: Upgrade
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -38834,7 +38834,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 579450937}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeMoveSpeed
+        m_MethodName: Upgrade
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -39563,7 +39563,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 579450937}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: UpgradeMoveSpeed
+        m_MethodName: Upgrade
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -39755,6 +39755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2036515343}
   - component: {fileID: 2036515344}
+  - component: {fileID: 2036515345}
   m_Layer: 0
   m_Name: PlayerDataManager
   m_TagString: Untagged
@@ -39788,6 +39789,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4954fca03127bdd4497f60bb5c22594b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gold: 0
+--- !u!114 &2036515345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036515342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a47220771ba2644858304e57d8600c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: ca511790-0866-4b93-96c4-1d90c735d201
 --- !u!1 &2054709818
 GameObject:
   m_ObjectHideFlags: 0

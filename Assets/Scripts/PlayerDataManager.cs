@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerDataManager : Singleton<PlayerDataManager>, ISavable
 {
     public Dictionary<string, PlayerStat> stats;
+    public int gold = 0;
 
     public override void Awake()
     {
@@ -13,17 +14,28 @@ public class PlayerDataManager : Singleton<PlayerDataManager>, ISavable
 
         stats = new Dictionary<string, PlayerStat>();
 
-        stats.Add("movespeed", new PlayerStat());
-        stats.Add("health", new PlayerStat());
-        stats.Add("armor", new PlayerStat());
-        stats.Add("cooldown", new PlayerStat());
-        stats.Add("attackspeed", new PlayerStat());
-        stats.Add("attackdamage", new PlayerStat());
+        stats.Add("movespeed", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
+        stats.Add("health", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
+        stats.Add("armor", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
+        stats.Add("cooldown", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
+        stats.Add("attackspeed", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
+        stats.Add("attackdamage", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
     }
 
-    public bool Upgrade(string statName)
+    public int GetStatUpgradeCost(string statName)
     {
-        return stats[statName].Upgrade();
+        return stats[statName].GetCost();
+    }
+
+    public bool IsStatUpgradeable(string statName)
+    {
+        return !stats[statName].IsFull();
+    }
+
+    public void Upgrade(string statName)
+    {
+        stats[statName].Upgrade();
+        gold -= GetStatUpgradeCost(statName);
     }
 
     public int GetCurrentUpgrade(string statName)
