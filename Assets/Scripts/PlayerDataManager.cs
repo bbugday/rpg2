@@ -48,7 +48,8 @@ public class PlayerDataManager : Singleton<PlayerDataManager>, ISavable
         PlayerSaveData playerSaveData = new PlayerSaveData()
         {
             statNames = new string[stats.Count],
-            currentUpgrades = new int[stats.Count]
+            currentUpgrades = new int[stats.Count],
+            currentGold = gold
         };
 
         int i = 0;
@@ -77,5 +78,6 @@ public class PlayerDataManager : Singleton<PlayerDataManager>, ISavable
     {
         public string[] statNames;
         public int[] currentUpgrades;
+        public int currentGold;
     }
 }
