@@ -20,6 +20,11 @@ public class PlayerDataManager : Singleton<PlayerDataManager>, ISavable
         stats.Add("cooldown", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
         stats.Add("attackspeed", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
         stats.Add("attackdamage", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
+
+        #if UNITY_EDITOR
+            gold = 1000;
+        #endif
+
     }
 
     public int GetStatUpgradeCost(string statName)
