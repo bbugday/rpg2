@@ -13,7 +13,6 @@ public class DisplayCost : MonoBehaviour
         text = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         text.SetText(PlayerDataManager.Instance.GetStatUpgradeCost(statName).ToString());

@@ -39,8 +39,8 @@ public class PlayerDataManager : Singleton<PlayerDataManager>, ISavable
 
     public void Upgrade(string statName)
     {
-        stats[statName].Upgrade();
         gold -= GetStatUpgradeCost(statName);
+        stats[statName].Upgrade();
     }
 
     public int GetCurrentUpgrade(string statName)

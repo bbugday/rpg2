@@ -12,7 +12,6 @@ public class DisplayGold : MonoBehaviour
         text = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         text.SetText(PlayerDataManager.Instance.gold.ToString());
