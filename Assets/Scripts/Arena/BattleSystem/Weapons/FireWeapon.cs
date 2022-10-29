@@ -21,7 +21,7 @@ public class FireWeapon : Weapon
         
         if(target == null) yield break;
 
-        Vector3 direction = (target.transform.position - character.transform.position);
+        Vector3 direction = (target.transform.position - character.transform.position).normalized;
 
         attacking = true;        
       
@@ -45,6 +45,6 @@ public class FireWeapon : Weapon
     private void CreateFireBall(Vector3 position, Vector3 direction)
     {
         FireBall fireBall = ObjectPool.SharedInstance.GetPooledObject(3).GetComponent<FireBall>();
-        fireBall.SetUp(direction, position, attackDamage + character.attackDamage);
+        fireBall.SetUp(position, attackDamage * character.attackDamage);
     }
 }
