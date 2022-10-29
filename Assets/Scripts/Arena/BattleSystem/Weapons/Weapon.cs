@@ -6,7 +6,7 @@ public abstract class Weapon : MonoBehaviour
 {
     protected MainCharacter character;
 
-    [SerializeField] protected int attackDamage;
+    public int attackDamage;
 
     public virtual void Attack(){}
 

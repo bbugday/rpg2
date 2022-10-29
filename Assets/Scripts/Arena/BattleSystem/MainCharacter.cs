@@ -12,6 +12,12 @@ public class MainCharacter : BattleEntity, IAttackable
 
     [SerializeField] ArenaManager arenaManager;
 
+    List<WeaponUpgrader> weaponUpgraders;
+
+    [SerializeField] Gun gun;
+    [SerializeField] FireWeapon fireWeapon;
+
+
     int[] levelUpExps = new int[] {22,444,666,888};
 
     public int exp;
@@ -24,6 +30,14 @@ public class MainCharacter : BattleEntity, IAttackable
         health = maxHealth;
 
         weapons = new List<Weapon>();
+        
+        weaponUpgraders = new List<WeaponUpgrader>();
+        weaponUpgraders.Add(new GunUpgrader(gun.gameObject, this));
+    }
+
+    private void Start()
+    {
+        weaponUpgraders[0].Upgrade();
     }
 
     private void Update()

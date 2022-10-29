@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FireBall : Projectile
 {
-
     private float startTime;
-
+    private float explosionArea;
     [SerializeField] GameObject explosionAnim;
+
     
     public void Update()
     {
@@ -22,7 +22,8 @@ public class FireBall : Projectile
         if(other.TryGetComponent<Target>(out Target target))
         {
             target.GetHit(this);
-            Instantiate(explosionAnim, gameObject.transform.position, Quaternion.identity);
+            FireExplosion explosion = Instantiate(explosionAnim, gameObject.transform.position, Quaternion.identity).GetComponent<FireExplosion>();
+            explosion.SetUp(explosionArea);
 
             gameObject.SetActive(false);
         }
@@ -33,12 +34,13 @@ public class FireBall : Projectile
        return new Vector2(-direction.y, direction.x);
     }
 
-    public void SetUp(Vector3 position, int damage)
+    public void SetUp(Vector3 position, int damage, float area)
     {
         transform.position = position;
         attackDamage = damage;
         startTime = 0;
         transform.right = Random.insideUnitCircle.normalized;
+        explosionArea = area;
     }
 
 }

@@ -8,6 +8,7 @@ public class FireWeapon : Weapon
     private bool attacking = false;
     [SerializeField] private uint extraShoots = 0;
     [SerializeField] private float attackCooldown;
+    [SerializeField] float explosionArea;
 
     public override void Attack()
     {
@@ -34,17 +35,17 @@ public class FireWeapon : Weapon
 
     IEnumerator Shoot(Vector3 direction)
     {
-        CreateFireBall(character.transform.position, direction);
+        CreateFireBall(character.transform.position, direction, explosionArea);
         for (int i = 0; i < extraShoots; i++)
         {
             yield return new WaitForSeconds(consecutiveAttackCooldown);
-            CreateFireBall(character.transform.position, direction);
+            CreateFireBall(character.transform.position, direction, explosionArea);
         }
     }
 
-    private void CreateFireBall(Vector3 position, Vector3 direction)
+    private void CreateFireBall(Vector3 position, Vector3 direction, float explosionArea)
     {
         FireBall fireBall = ObjectPool.SharedInstance.GetPooledObject(3).GetComponent<FireBall>();
-        fireBall.SetUp(position, attackDamage * character.attackDamage);
+        fireBall.SetUp(position, attackDamage * character.attackDamage, explosionArea);
     }
 }
