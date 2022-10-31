@@ -45,7 +45,7 @@ public class ArenaManager : MonoBehaviour
 
     void Start()
     {
-        arenaSO.gainedXP = 0;
+        //arenaSO.gainedXP = 0;
 
         state = State.Battle;
     }
@@ -84,10 +84,5 @@ public class ArenaManager : MonoBehaviour
             return true;
         }
         return false;
-    }
-
-    public void GainExp(int exp)
-    {
-        arenaSO.gainedXP += exp;
     }
 }

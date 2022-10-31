@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+using System;
 
 public class ArenaUiManager : MonoBehaviour
 {
@@ -10,12 +12,14 @@ public class ArenaUiManager : MonoBehaviour
     [SerializeField] GameObject upgradeButtonPrefab;
     [SerializeField] GameObject upgradeButtons;
 
+    PlayerDataManager dataManager;
+
     List<WeaponUpgrader> weaponUpgraders;
 
     void Awake()
     {
+        dataManager = FindObjectOfType<PlayerDataManager>();
         weaponUpgraders = FindObjectOfType<MainCharacter>().weaponUpgraders;
-        Debug.Log("awake");
         LevelUp();
     }
 
@@ -53,15 +57,44 @@ public class ArenaUiManager : MonoBehaviour
     private void CreateButtons()
     {
         List<WeaponUpgrader> upgrades = GetReadyUpgrades();
+        
+
+        System.Random rnd = new System.Random();
+
+        if(upgrades.Count > 3)
+        {
+            upgrades = (List<WeaponUpgrader>)upgrades.OrderBy(x => rnd.Next()).Take(3);
+        }
 
         int i = 0;
 
         foreach(WeaponUpgrader upgrade in upgrades)
         {
             //3'den fazla gelirse aradan rasgele seç, az gelirse gold ekle
-            CreateButton(upgrade, i);
-            i++;
+            CreateButton(upgrade, i++);
         }
+        while(i < 3)
+            CreateGoldButton(i++);
+    }
+
+    private void CreateGoldButton(int pos)
+    {
+        GameObject buttonObject = Instantiate(upgradeButtonPrefab);
+
+        var button = buttonObject.GetComponent<UnityEngine.UI.Button>();
+        button.transform.SetParent(upgradeButtons.transform);
+        buttonObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(90, 110, 0) + Vector3.right * pos * 155;
+        buttonObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText("Gold");
+        button.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().SetText("Get 50 gold");
+        button.transform.GetChild(2).GetComponent<Image>().sprite = Resources.Load<Sprite>("images/coin");
+        button.onClick.AddListener(() => {
+            dataManager.AddGold(50);
+            foreach (Transform child in upgradeButtons.transform) {
+                GameObject.Destroy(child.gameObject);
+            }
+            upgradePanel.SetActive(false);
+        });
     }
 
     private void CreateButton(WeaponUpgrader upgrade, int pos)

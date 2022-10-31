@@ -18,7 +18,7 @@ public class MainCharacter : BattleEntity, IAttackable
     [SerializeField] FireWeapon fireWeapon;
     [SerializeField] ArenaUiManager uiManager;
 
-    int[] levelUpExps = new int[] {2,4,6,8,10,9999};
+    int[] levelUpExps = new int[] {5,10,20,30,40,9999};
 
     public int exp;
     public int level;
@@ -86,7 +86,7 @@ public class MainCharacter : BattleEntity, IAttackable
     public void AddExp(int exp)
     {
         this.exp += exp;
-        arenaManager.GainExp(exp);
+        //arenaManager.GainExp(exp);
         CheckLevelUp();
     }
 

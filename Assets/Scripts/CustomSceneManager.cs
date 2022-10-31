@@ -50,7 +50,7 @@ public class CustomSceneManager : Singleton<CustomSceneManager>
 
         arenaSO.onExitArena.Invoke();
 
-        var player = FindObjectOfType<PlayerData>();
-        player.xp += arenaSO.gainedXP;
+        // var player = FindObjectOfType<PlayerData>();
+        // player.xp += arenaSO.gainedXP;
     }
 }
