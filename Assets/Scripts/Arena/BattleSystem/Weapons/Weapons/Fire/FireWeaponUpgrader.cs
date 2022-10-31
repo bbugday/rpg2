@@ -10,7 +10,7 @@ public class FireWeaponUpgrader : WeaponUpgrader
     public FireWeaponUpgrader(GameObject prefab, MainCharacter character) : base(prefab, character)
     {
         descriptions = new string[] {"Fireweapon oluştur", "damage++"};
-        maxWeaponLevel = 10;
+        maxWeaponLevel = 2;
         weaponName = "Fire Weapon";
         sprite = Resources.Load<Sprite>("images/fireball3");
     }
@@ -28,5 +28,7 @@ public class FireWeaponUpgrader : WeaponUpgrader
             default:
                 throw new UnityException("Invalid level");
         }
+
+        weaponLevel++;
     }
 }

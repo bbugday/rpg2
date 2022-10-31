@@ -9,7 +9,7 @@ public class GunUpgrader : WeaponUpgrader
     public GunUpgrader(GameObject prefab, MainCharacter character) : base(prefab, character)
     {
         descriptions = new string[] {"Gun oluştur", "damage++"};
-        maxWeaponLevel = 10;
+        maxWeaponLevel = 2;
         weaponName = "Gun";
         sprite = Resources.Load<Sprite>("images/arrow");
     }
@@ -27,5 +27,6 @@ public class GunUpgrader : WeaponUpgrader
             default:
                 throw new UnityException("Invalid level");
         }
+        weaponLevel++;
     }
 }

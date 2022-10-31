@@ -14,14 +14,11 @@ public class ArenaUiManager : MonoBehaviour
 
     void Awake()
     {
-        
+        weaponUpgraders = FindObjectOfType<MainCharacter>().weaponUpgraders;
+        Debug.Log("awake");
+        LevelUp();
     }
 
-    void Start()
-    {
-        weaponUpgraders = FindObjectOfType<MainCharacter>().weaponUpgraders;
-        CreateButtons();
-    }
 
     public void HandleUpdate()
     {
@@ -32,6 +29,12 @@ public class ArenaUiManager : MonoBehaviour
     {
         upgradePanel.SetActive(true);
         StartCoroutine(UiManager.SelectFirstButton());
+    }
+
+    public void LevelUp()
+    {
+        OpenUpgradePanel();
+        CreateButtons();
     }
 
     private List<WeaponUpgrader> GetReadyUpgrades()
@@ -74,7 +77,13 @@ public class ArenaUiManager : MonoBehaviour
         button.transform.GetChild(2).GetComponent<Image>().sprite = upgrade.sprite;
         button.onClick.AddListener(() => {
             upgrade.Upgrade();
+
+            foreach (Transform child in upgradeButtons.transform) {
+                GameObject.Destroy(child.gameObject);
+            }
+
             upgradePanel.SetActive(false);
+
         });
 
         //dynamicButtons.Add(buttonObject);
