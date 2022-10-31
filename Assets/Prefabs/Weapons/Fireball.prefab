@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 821464609936110874}
   - component: {fileID: 625673228622351935}
-  - component: {fileID: 2105017859686555671}
   - component: {fileID: -526844446870496351}
+  - component: {fileID: 7652580824625158140}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2553166831239409521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.177, y: 0.008, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1401976303
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1cbab147f3d6a4298afd5dc425552309, type: 3}
   m_Color: {r: 1, g: 0.47546762, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,22 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2105017859686555671
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2553166831239409521}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.49999997
 --- !u!114 &-526844446870496351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,3 +100,19 @@ MonoBehaviour:
   force: 0
   speed: 5
   explosionAnim: {fileID: 1244204041973863067, guid: 0df03c9cf56acad44bef5c88ffcd805d, type: 3}
+--- !u!58 &7652580824625158140
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2553166831239409521}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.13

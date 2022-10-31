@@ -10,13 +10,8 @@ public class GunUpgrader : WeaponUpgrader
     {
         descriptions = new string[] {"Gun oluştur", "damage++"};
         maxWeaponLevel = 10;
-    }
-
-    public override string ReadyUpgrade()
-    {
-        if(weaponLevel < maxWeaponLevel)
-            return descriptions[weaponLevel];
-        return null;
+        weaponName = "Gun";
+        sprite = Resources.Load<Sprite>("images/arrow");
     }
 
     public override void Upgrade()
@@ -33,6 +28,4 @@ public class GunUpgrader : WeaponUpgrader
                 throw new UnityException("Invalid level");
         }
     }
-
-
 }

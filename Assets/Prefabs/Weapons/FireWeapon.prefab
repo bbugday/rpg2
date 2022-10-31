@@ -98,3 +98,4 @@ MonoBehaviour:
   attackDamage: 1
   extraShoots: 0
   attackCooldown: 3
+  explosionArea: 5

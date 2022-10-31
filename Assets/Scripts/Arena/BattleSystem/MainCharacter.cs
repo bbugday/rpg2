@@ -8,11 +8,11 @@ public class MainCharacter : BattleEntity, IAttackable
 
     public int attackDamage;
 
+    public List<WeaponUpgrader> weaponUpgraders;
+
     [SerializeField] GameObject healthBar;
 
     [SerializeField] ArenaManager arenaManager;
-
-    List<WeaponUpgrader> weaponUpgraders;
 
     [SerializeField] Gun gun;
     [SerializeField] FireWeapon fireWeapon;
@@ -33,11 +33,12 @@ public class MainCharacter : BattleEntity, IAttackable
         
         weaponUpgraders = new List<WeaponUpgrader>();
         weaponUpgraders.Add(new GunUpgrader(gun.gameObject, this));
+        weaponUpgraders.Add(new FireWeaponUpgrader(fireWeapon.gameObject, this));
     }
 
     private void Start()
     {
-        weaponUpgraders[0].Upgrade();
+        //weaponUpgraders[1].Upgrade();
     }
 
     private void Update()

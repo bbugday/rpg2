@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum State{Battle, Finish, Loading}
+public enum State{Battle, Finish, Loading, Upgrade}
 
 public class ArenaManager : MonoBehaviour
 {
@@ -16,12 +16,16 @@ public class ArenaManager : MonoBehaviour
     [SerializeField] GameObject dieCanvas;
     [SerializeField] GameObject clearCanvas;
 
+    ArenaUiManager uiManager;
+
     public delegate void FinishEvent();
     public FinishEvent clearEvent;
     public FinishEvent dieEvent;
 
     void Awake()
     {
+        uiManager = GetComponent<ArenaUiManager>();
+
         dieCanvas.SetActive(false);
         clearCanvas.SetActive(false);
         clearEvent += () => 
@@ -42,6 +46,8 @@ public class ArenaManager : MonoBehaviour
     void Start()
     {
         arenaSO.gainedXP = 0;
+
+        state = State.Battle;
     }
 
     void Update()
@@ -54,6 +60,11 @@ public class ArenaManager : MonoBehaviour
             {
                 clearEvent();
             }
+        }
+
+        if(state == State.Upgrade)
+        {
+            
         }
         
         if(state == State.Finish)

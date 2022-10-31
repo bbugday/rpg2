@@ -4,12 +4,14 @@ using UnityEngine;
 
 public abstract class WeaponUpgrader 
 {
+    public string weaponName;
     public int weaponLevel = 0;
     public int maxWeaponLevel;
     public GameObject weaponPrefab;
     public string[] descriptions;
     public Weapon weapon;
     public MainCharacter mainCharacter;
+    public Sprite sprite;
 
     public WeaponUpgrader(GameObject prefab, MainCharacter character)
     {
@@ -27,7 +29,18 @@ public abstract class WeaponUpgrader
         return weapon;
     }
 
+    public string ReadyUpgrade()
+    {
+        return descriptions[weaponLevel];
+    }
+
+    public bool IsUpgradeReady()
+    {
+        if(weaponLevel < maxWeaponLevel)
+            return true;
+        return false;
+    }
+
     public abstract void Upgrade();
-    public abstract string ReadyUpgrade();
 
 }
