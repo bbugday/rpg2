@@ -19,6 +19,8 @@ public class UiManager : MonoBehaviour
 
     private List<GameObject> dynamicButtons;
 
+    int showedQuest = 0;
+
     void Awake()
     {
         dynamicButtons = new List<GameObject>();
@@ -107,8 +109,6 @@ public class UiManager : MonoBehaviour
         dynamicButtons.Clear();
     }
 
-    int i = 0;
-
     public void OpenCloseQuestWindow()
     {
         int questCount = QuestManager.Instance.activeQuests.Count;
@@ -117,15 +117,15 @@ public class UiManager : MonoBehaviour
 
         if(!questWindowCanvas.gameObject.activeSelf)
         {
-            i = 0;
+            showedQuest = 0;
             questWindowCanvas.gameObject.SetActive(true);
             InstantiateQuestText(QuestManager.Instance.activeQuests[0].questData);
         }
-        else if(i + 1 < questCount)
+        else if(showedQuest + 1 < questCount)
         {
             foreach (Transform child in questWindowCanvas.transform.GetChild(0).transform)
                 Destroy(child.gameObject);
-            InstantiateQuestText(QuestManager.Instance.activeQuests[++i].questData);
+            InstantiateQuestText(QuestManager.Instance.activeQuests[++showedQuest].questData);
         }
         else
         {

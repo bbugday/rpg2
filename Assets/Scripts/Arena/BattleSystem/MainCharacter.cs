@@ -23,6 +23,8 @@ public class MainCharacter : BattleEntity, IAttackable
 
     public int exp;
     public int level;
+    
+    private bool dying = false;
 
     private void Awake()
     {
@@ -56,7 +58,7 @@ public class MainCharacter : BattleEntity, IAttackable
     {
         health -= damage;
         UpdateHealthBar();
-        if(health <= 0)
+        if(health <= 0 && !dying)
         {
             Die();
         }
@@ -64,6 +66,7 @@ public class MainCharacter : BattleEntity, IAttackable
 
     private void Die()
     {
+        dying = true;
         arenaManager.dieEvent();
     }
 

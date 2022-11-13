@@ -48,7 +48,8 @@ public class CustomSceneManager : Singleton<CustomSceneManager>
         GameManager.Instance.gameObject.SetActive(true);
         asyncLoad.allowSceneActivation = true;
 
-        arenaSO.onExitArena.Invoke();
+        if(arenaSO.onExitArena != null)
+            arenaSO.onExitArena.Invoke();
 
         // var player = FindObjectOfType<PlayerData>();
         // player.xp += arenaSO.gainedXP;
