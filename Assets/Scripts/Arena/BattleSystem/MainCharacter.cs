@@ -16,6 +16,7 @@ public class MainCharacter : BattleEntity, IAttackable
 
     [SerializeField] Gun gun;
     [SerializeField] FireWeapon fireWeapon;
+    [SerializeField] KnifeThrower knifeThrower;
     [SerializeField] ArenaUiManager uiManager;
 
     int[] levelUpExps = new int[] {5,10,20,30,40,9999};
@@ -34,6 +35,7 @@ public class MainCharacter : BattleEntity, IAttackable
         weaponUpgraders = new List<WeaponUpgrader>();
         weaponUpgraders.Add(new GunUpgrader(gun.gameObject, this));
         weaponUpgraders.Add(new FireWeaponUpgrader(fireWeapon.gameObject, this));
+        //weaponUpgraders.Add(new KnifeUpgrader(knifeThrower.gameObject, this));
 
         uiManager = FindObjectOfType<ArenaUiManager>();
     }
