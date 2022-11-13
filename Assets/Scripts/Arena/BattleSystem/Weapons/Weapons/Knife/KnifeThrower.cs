@@ -54,7 +54,8 @@ public class KnifeThrower : Weapon
         
         if(animator.MoveX != 0)
             lastDirection = animator.MoveX == 1 ? Vector3.right : Vector3.left;
-            
+        else if(animator.MoveY != 0)    
+            lastDirection = animator.MoveY == 1 ? Vector3.up : Vector3.down;
 
         Vector3 direction = lastDirection;
         //if(direction == Vector3.zero) direction = Vector3.right;

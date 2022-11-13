@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f933f3abf025d54da98a534817d5386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 0
-  attackCooldown: 0
-  knifeCount: 0
-  extraShoots: 0
+  attackDamage: 1
+  attackCooldown: 1
+  knifeCount: 1
+  extraShoots: 1

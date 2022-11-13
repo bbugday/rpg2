@@ -35,7 +35,7 @@ public class MainCharacter : BattleEntity, IAttackable
         weaponUpgraders = new List<WeaponUpgrader>();
         weaponUpgraders.Add(new GunUpgrader(gun.gameObject, this));
         weaponUpgraders.Add(new FireWeaponUpgrader(fireWeapon.gameObject, this));
-        //weaponUpgraders.Add(new KnifeUpgrader(knifeThrower.gameObject, this));
+        weaponUpgraders.Add(new KnifeUpgrader(knifeThrower.gameObject, this));
 
         uiManager = FindObjectOfType<ArenaUiManager>();
     }
