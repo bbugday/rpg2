@@ -22,10 +22,7 @@ public abstract class WeaponUpgrader
     public T InstantiateWeapon<T>() where T : Weapon
     {
         var weapon = GameObject.Instantiate(weaponPrefab).GetComponent<T>();
-
         weapon.transform.SetParent(mainCharacter.transform);
-        mainCharacter.AddWeapon(weapon);
-
         return weapon;
     }
 
