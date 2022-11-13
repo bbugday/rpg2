@@ -22046,6 +22046,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnifeThrower
       objectReference: {fileID: 0}
+    - target: {fileID: 6111444322271790503, guid: c5857ac61ec5e5646bdc15bff188b485, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896542162174612994, guid: c5857ac61ec5e5646bdc15bff188b485, type: 3}
+      propertyPath: knifeCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896542162174612994, guid: c5857ac61ec5e5646bdc15bff188b485, type: 3}
+      propertyPath: extraShoots
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896542162174612994, guid: c5857ac61ec5e5646bdc15bff188b485, type: 3}
+      propertyPath: attackDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896542162174612994, guid: c5857ac61ec5e5646bdc15bff188b485, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5857ac61ec5e5646bdc15bff188b485, type: 3}
 --- !u!4 &6196162503753776050 stripped
