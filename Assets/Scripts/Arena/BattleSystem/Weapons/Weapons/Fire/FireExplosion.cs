@@ -30,9 +30,10 @@ public class FireExplosion : Projectile
         }
     }
 
-    public void SetUp(float explosionArea)
+    public void SetUp(float explosionArea, int damage)
     {
         area = explosionArea;
+        attackDamage = damage;
     }
 
 }

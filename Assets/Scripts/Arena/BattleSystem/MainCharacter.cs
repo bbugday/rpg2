@@ -7,6 +7,7 @@ public class MainCharacter : BattleEntity, IAttackable
     private List<Weapon> weapons;
 
     public int attackDamage;
+    public int armor;
 
     public List<WeaponUpgrader> weaponUpgraders;
 
@@ -30,6 +31,14 @@ public class MainCharacter : BattleEntity, IAttackable
     {
         exp = 0;
         level = 1;
+
+        PlayerDataManager dataManager = FindObjectOfType<PlayerDataManager>();
+
+        maxHealth += dataManager.GetCurrentUpgrade("health") * 50;
+        attackDamage += dataManager.GetCurrentUpgrade("attackdamage") * 10;
+        armor += dataManager.GetCurrentUpgrade("armor") * 2;
+        
+
         health = maxHealth;
 
         weapons = new List<Weapon>();
@@ -51,12 +60,13 @@ public class MainCharacter : BattleEntity, IAttackable
 
     public void GetHit(int damage)
     {
-        Damage(damage);
+        Damage(damage - armor);
     }
 
-    public override void Damage(int damage)
+    public override void Damage(int trueDamage)
     {
-        health -= damage;
+        if(trueDamage <= 0) return;
+        health -= trueDamage;
         UpdateHealthBar();
         if(health <= 0 && !dying)
         {

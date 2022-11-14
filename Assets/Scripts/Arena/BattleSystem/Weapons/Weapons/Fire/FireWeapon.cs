@@ -10,6 +10,12 @@ public class FireWeapon : Weapon
     [SerializeField] private float attackCooldown;
     [SerializeField] float explosionArea;
 
+
+    void Awake()
+    {
+        attackCooldown -= FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("attackspeed") * 0.03f;
+    }
+
     public override void Attack()
     {
         if(!attacking)
@@ -46,6 +52,6 @@ public class FireWeapon : Weapon
     private void CreateFireBall(Vector3 position, Vector3 direction, float explosionArea)
     {
         FireBall fireBall = ObjectPool.SharedInstance.GetPooledObject(3).GetComponent<FireBall>();
-        fireBall.SetUp(position, attackDamage * character.attackDamage, explosionArea);
+        fireBall.SetUp(position, attackDamage, character.attackDamage, explosionArea);
     }
 }

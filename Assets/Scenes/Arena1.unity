@@ -1755,9 +1755,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aaa88a07ec3ded4ea6b0911a0890fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 200
   health: 0
   attackDamage: 50
+  armor: 100
   healthBar: {fileID: 2060782409}
   arenaManager: {fileID: 1495305879}
   gun: {fileID: 8324931404898636101, guid: 00b63acc9b0e7d64a955ec06b26e91ef, type: 3}

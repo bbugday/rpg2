@@ -133,20 +133,6 @@ public class UiManager : MonoBehaviour
             foreach (Transform child in questWindowCanvas.transform.GetChild(0).transform)
                 Destroy(child.gameObject);
         }
-
-
-        // if(questWindowCanvas.gameObject.activeSelf)
-        // {
-        //     questWindowCanvas.gameObject.SetActive(false);
-        //     foreach (Transform child in questWindowCanvas.transform.GetChild(0).transform)
-        //         Destroy(child.gameObject);
-        // }
-        // else
-        // {
-        //     questWindowCanvas.gameObject.SetActive(true);
-        //     foreach(Quest quest in QuestManager.Instance.activeQuests)
-        //         InstantiateQuestText(0, quest.questData);
-        // } 
     }
 
     private void InstantiateQuestText(QuestSO questData)

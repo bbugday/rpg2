@@ -8,6 +8,8 @@ public class FireBall : Projectile
     private float explosionArea;
     [SerializeField] GameObject explosionAnim;
 
+    private int characterAttackDamage;
+
     
     public void Update()
     {
@@ -23,7 +25,7 @@ public class FireBall : Projectile
         {
             target.GetHit(this);
             FireExplosion explosion = Instantiate(explosionAnim, gameObject.transform.position, Quaternion.identity).GetComponent<FireExplosion>();
-            explosion.SetUp(explosionArea);
+            explosion.SetUp(explosionArea, explosion.attackDamage + characterAttackDamage);
 
             gameObject.SetActive(false);
         }
@@ -34,10 +36,11 @@ public class FireBall : Projectile
        return new Vector2(-direction.y, direction.x);
     }
 
-    public void SetUp(Vector3 position, int damage, float area)
+    public void SetUp(Vector3 position, int damage, int characterDamage, float area)
     {
         transform.position = position;
-        attackDamage = damage;
+        attackDamage = damage + characterDamage;
+        characterAttackDamage = characterDamage;
         startTime = 0;
         transform.right = Random.insideUnitCircle.normalized;
         explosionArea = area;

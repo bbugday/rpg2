@@ -6,12 +6,12 @@ public class ArenaPlayerController : MonoBehaviour
 {
     CharacterAnimator animator;
 
-    public int moveSpeed;
+    public float moveSpeed;
 
     void Awake()
     {
         animator = GetComponent<CharacterAnimator>();
-        moveSpeed += FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("movespeed") * 10;
+        moveSpeed += FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("movespeed") * 0.1f;
     }
 
     public void HandleUpdate()

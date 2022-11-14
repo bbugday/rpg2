@@ -19,8 +19,8 @@ public class KnifeThrower : Weapon
     void Awake()
     {
         animator = FindObjectOfType<CharacterAnimator>();
+        attackCooldown -= FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("attackspeed") * 0.01f;
     }
-
 
     public override void Attack()
     {

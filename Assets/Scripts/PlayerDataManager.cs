@@ -17,12 +17,12 @@ public class PlayerDataManager : Singleton<PlayerDataManager>, ISavable
         stats.Add("movespeed", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
         stats.Add("health", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
         stats.Add("armor", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
-        stats.Add("cooldown", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
+        //stats.Add("cooldown", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
         stats.Add("attackspeed", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
         stats.Add("attackdamage", new PlayerStat(new int[] {100, 200, 300, 400, 500}));
 
         #if UNITY_EDITOR
-            gold = 1000;
+            gold = 10000;
         #endif
 
     }

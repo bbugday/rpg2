@@ -12,13 +12,10 @@ public class Gun : Weapon
     [SerializeField] private uint bulletCount;
     [SerializeField] private uint extraShoots = 0;
 
-    // private MainCharacter character;
-
-    // public void Start()
-    // {
-    //     character = FindObjectOfType<MainCharacter>();
-    //     character.AddWeapon(this);
-    // }
+    void Awake()
+    {
+        attackCooldown -= FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("attackspeed") * 0.02f;
+    }
 
     public override void Attack()
     {
