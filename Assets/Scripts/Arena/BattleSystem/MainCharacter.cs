@@ -92,6 +92,7 @@ public class MainCharacter : BattleEntity, IAttackable
 
     public void Attack()
     {
+        if(weapons.Count == 0) return;
         foreach(Weapon weapon in weapons)
         {
             weapon.Attack();
