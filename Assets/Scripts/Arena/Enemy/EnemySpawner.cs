@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     
     void Start() 
     {
-        InvokeRepeating("SpawnEnemy", 1f, 60f);  //1s delay, repeat every 1s
+        InvokeRepeating("SpawnEnemy", 1f, 4f);  //1s delay, repeat every 1s
     }
 
     void OutputTime() 
@@ -19,6 +19,6 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy() 
     {
-        Instantiate(enemyList[0], gameObject.transform.position, Quaternion.identity);
+        Instantiate(enemyList[Random.Range(0, enemyList.Count)], gameObject.transform.position, Quaternion.identity);
     }
 }

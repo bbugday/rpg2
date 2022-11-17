@@ -24,7 +24,7 @@ public abstract class Weapon : MonoBehaviour
 
         foreach (Target target in targets)
         {
-            float distance = (target.transform.position - this.transform.position).sqrMagnitude;
+            float distance = (target.transform.position - this.transform.parent.position).sqrMagnitude;
             if(distanceToClosest > distance)
             {
                 distanceToClosest = distance;

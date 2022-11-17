@@ -15,6 +15,7 @@ public class DisplayCost : MonoBehaviour
 
     void Update()
     {
-        text.SetText(PlayerDataManager.Instance.GetStatUpgradeCost(statName).ToString());
+        var cost = PlayerDataManager.Instance.GetStatUpgradeCost(statName);
+        text.SetText(cost == -1 ? "Full" : cost.ToString());
     }
 }

@@ -16,7 +16,7 @@ public class PlayerStat
 
     public int GetCost()
     {
-        return upgradeCosts[currentUpgrade];
+        return IsFull() ? -1 :  upgradeCosts[currentUpgrade];
     }
 
     public bool IsFull()
