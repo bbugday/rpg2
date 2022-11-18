@@ -10,7 +10,7 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void Attack(){}
 
-    public void Start()
+    public virtual void Start()
     {
         character = FindObjectOfType<MainCharacter>();
         character.AddWeapon(this);

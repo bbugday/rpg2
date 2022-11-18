@@ -8,13 +8,22 @@ public class Gun : Weapon
 
     private bool attacking = false;
     
-    [SerializeField] private float attackCooldown;
-    [SerializeField] private uint bulletCount;
-    [SerializeField] private uint extraShoots = 0;
+    public float attackCooldown;
+    public uint bulletCount;
+    public uint extraShoots = 0;
 
     void Awake()
     {
         attackCooldown -= FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("attackspeed") * 0.02f;
+    }
+    
+    public override void Start()
+    {
+        base.Start();
+
+        bulletCount = 1;
+        extraShoots = 0;
+        attackCooldown = 2;
     }
 
     public override void Attack()

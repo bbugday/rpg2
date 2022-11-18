@@ -21,7 +21,7 @@ public class MainCharacter : BattleEntity, IAttackable
     [SerializeField] KnifeThrower knifeThrower;
     [SerializeField] ArenaUiManager uiManager;
 
-    int[] levelUpExps = new int[] {5,10,20,30,40,9999};
+    int[] levelUpExps = new int[] {5, 10, 20, 30, 40, 45, 50, 55, 60, 65, 70, 75, 80, 90, 100, 105 , 110, 99999};
 
     public int exp;
     public int level;

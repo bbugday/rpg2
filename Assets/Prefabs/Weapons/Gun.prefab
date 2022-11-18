@@ -98,4 +98,4 @@ MonoBehaviour:
   attackDamage: 0
   attackCooldown: 2
   bulletCount: 1
-  extraShoots: 1
+  extraShoots: 0
