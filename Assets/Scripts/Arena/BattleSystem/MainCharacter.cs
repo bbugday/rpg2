@@ -8,6 +8,7 @@ public class MainCharacter : BattleEntity, IAttackable
 
     public int attackDamage;
     public int armor;
+    public int healthRegen;
 
     public List<WeaponUpgrader> weaponUpgraders;
 
@@ -30,14 +31,16 @@ public class MainCharacter : BattleEntity, IAttackable
     private void Awake()
     {
         exp = 0;
+        healthRegen = 1;
         level = 1;
+        armor = 0;
 
         PlayerDataManager dataManager = FindObjectOfType<PlayerDataManager>();
 
         maxHealth += dataManager.GetCurrentUpgrade("health") * 50;
         attackDamage += dataManager.GetCurrentUpgrade("attackdamage") * 10;
         armor += dataManager.GetCurrentUpgrade("armor") * 2;
-        
+        healthRegen += dataManager.GetCurrentUpgrade("healthregen") * 1;
 
         health = maxHealth;
 
@@ -51,11 +54,24 @@ public class MainCharacter : BattleEntity, IAttackable
         uiManager = FindObjectOfType<ArenaUiManager>();
     }
 
+    private void Start()
+    {
+        InvokeRepeating("RegenHealth", 1f, 1f);
+    }
 
     private void Update()
     {
         if(FindObjectOfType<Target>())
             Attack();
+    }
+
+    void RegenHealth() 
+    {
+        if(health == maxHealth) return;
+
+        var healthAfterRegen = health + healthRegen;
+        health = healthAfterRegen > maxHealth ? maxHealth : healthAfterRegen;
+        UpdateHealthBar();
     }
 
     public void GetHit(int damage)
