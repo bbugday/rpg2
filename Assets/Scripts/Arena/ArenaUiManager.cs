@@ -7,10 +7,12 @@ using System;
 
 public class ArenaUiManager : MonoBehaviour
 {
-
     [SerializeField] GameObject upgradePanel;
     [SerializeField] GameObject upgradeButtonPrefab;
     [SerializeField] GameObject upgradeButtons;
+    [SerializeField] Text elapsedTimeText;
+
+    private int elapsedTime;
 
     PlayerDataManager dataManager;
 
@@ -23,10 +25,23 @@ public class ArenaUiManager : MonoBehaviour
         LevelUp();
     }
 
+    void Start()
+    {
+        elapsedTime = 0;
+        InvokeRepeating("ElapseTime", 1f, 1f);
+    }
 
     public void HandleUpdate()
     {
 
+    }
+
+    private void ElapseTime()
+    {
+        elapsedTime++;
+        int minutes = elapsedTime / 60;
+        int seconds = elapsedTime - minutes * 60;
+        elapsedTimeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     private void OpenUpgradePanel()

@@ -22,6 +22,8 @@ public class ArenaManager : MonoBehaviour
     public FinishEvent clearEvent;
     public FinishEvent dieEvent;
 
+    private const int arenaTimeAsMinute = 30;
+
     void Awake()
     {
         uiManager = GetComponent<ArenaUiManager>();
@@ -33,6 +35,7 @@ public class ArenaManager : MonoBehaviour
             arenaSO.onExitArena = null;
             arenaSO.onExitArena += arenaSO.onClearEvent.Invoke;
             
+            clearCanvas.SetActive(true);
             state = State.Finish;
         };
 
@@ -48,6 +51,8 @@ public class ArenaManager : MonoBehaviour
         //arenaSO.gainedXP = 0;
 
         state = State.Battle;
+
+        Invoke("TimeOver", arenaTimeAsMinute * 60f);
     }
 
     void Update()
@@ -56,10 +61,10 @@ public class ArenaManager : MonoBehaviour
         {
             arenaPlayerController.HandleUpdate();
 
-            if(CheckCleared())
-            {
-                clearEvent();
-            }
+            // if(CheckCleared())
+            // {
+            //     clearEvent();
+            // }
         }
 
         if(state == State.Upgrade)
@@ -75,6 +80,12 @@ public class ArenaManager : MonoBehaviour
                 state = State.Loading;
             }
         }
+    }
+
+    void TimeOver()
+    {
+        state = State.Finish;
+        clearEvent();
     }
 
     bool CheckCleared()
