@@ -13,6 +13,7 @@ public class MainCharacter : BattleEntity, IAttackable
     public List<WeaponUpgrader> weaponUpgraders;
 
     [SerializeField] GameObject healthBar;
+    [SerializeField] GameObject expBar;
 
     [SerializeField] ArenaManager arenaManager;
 
@@ -111,6 +112,14 @@ public class MainCharacter : BattleEntity, IAttackable
         healthBar.transform.localScale = new Vector3((health / (float)maxHealth), healthBar.transform.localScale.y, healthBar.transform.localScale.z);
     }
 
+    private void UpdateExpBar()
+    {
+        if(level > 1)
+            expBar.transform.localScale = new Vector3(((exp - levelUpExps[level - 2]) / ((float)(levelUpExps[level - 1] - levelUpExps[level - 2]))), expBar.transform.localScale.y, expBar.transform.localScale.z);
+        else
+            expBar.transform.localScale = new Vector3(exp / (float)(levelUpExps[level - 1]), expBar.transform.localScale.y, expBar.transform.localScale.z);
+    }
+
     public void AddWeapon(Weapon weapon)
     {
         weapons.Add(weapon);
@@ -130,6 +139,7 @@ public class MainCharacter : BattleEntity, IAttackable
         this.exp += exp;
         //arenaManager.GainExp(exp);
         CheckLevelUp();
+        UpdateExpBar();
     }
 
     public void CheckLevelUp()
