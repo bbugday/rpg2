@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
-    public int attackDamage;
+    public float attackDamage;
     public int force;
     public float speed;
 

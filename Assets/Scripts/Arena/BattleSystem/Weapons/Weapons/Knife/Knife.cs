@@ -18,7 +18,7 @@ public class Knife : Projectile
         }
     }
 
-    public void SetUp(Vector3 direction, Vector3 position, int attackDamage)
+    public void SetUp(Vector3 direction, Vector3 position, float attackDamage)
     {
         SetDirection(direction);
         SetPosition(position);
@@ -35,7 +35,7 @@ public class Knife : Projectile
         transform.position = position;
     }
 
-    private void SetAttackDamage(int attackDamage)
+    private void SetAttackDamage(float attackDamage)
     {
         this.attackDamage = attackDamage;
     }

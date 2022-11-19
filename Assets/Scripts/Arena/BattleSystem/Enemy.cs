@@ -53,7 +53,7 @@ public class Enemy : Target, IAttackable
         enemyAnimator.GetDamage(projectile.attackDamage);
     }
 
-    public override void Damage(int AttackDamage)
+    public override void Damage(float AttackDamage)
     {
         health -= AttackDamage;
     }

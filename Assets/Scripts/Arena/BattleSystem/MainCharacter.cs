@@ -6,9 +6,9 @@ public class MainCharacter : BattleEntity, IAttackable
 {
     private List<Weapon> weapons;
 
-    public int attackDamage;
-    public int armor;
-    public int healthRegen;
+    public float attackDamage;
+    public float armor;
+    public float healthRegen;
 
     public List<WeaponUpgrader> weaponUpgraders;
 
@@ -30,27 +30,8 @@ public class MainCharacter : BattleEntity, IAttackable
 
     private void Awake()
     {
-        exp = 0;
-        healthRegen = 1;
-        level = 1;
-        armor = 0;
-
-        PlayerDataManager dataManager = FindObjectOfType<PlayerDataManager>();
-
-        maxHealth += dataManager.GetCurrentUpgrade("health") * 50;
-        attackDamage += dataManager.GetCurrentUpgrade("attackdamage") * 10;
-        armor += dataManager.GetCurrentUpgrade("armor") * 2;
-        healthRegen += dataManager.GetCurrentUpgrade("healthregen") * 1;
-
-        health = maxHealth;
-
-        weapons = new List<Weapon>();
-        
-        weaponUpgraders = new List<WeaponUpgrader>();
-        weaponUpgraders.Add(new GunUpgrader(gun.gameObject, this));
-        weaponUpgraders.Add(new FireWeaponUpgrader(fireWeapon.gameObject, this));
-        weaponUpgraders.Add(new KnifeUpgrader(knifeThrower.gameObject, this));
-
+        SetStats();
+        SetWeapons();
         uiManager = FindObjectOfType<ArenaUiManager>();
     }
 
@@ -65,7 +46,36 @@ public class MainCharacter : BattleEntity, IAttackable
             Attack();
     }
 
-    void RegenHealth() 
+    private void SetStats()
+    {
+        exp = 0;
+        healthRegen = 1;
+        level = 1;
+        armor = 0;
+        maxHealth = 550;
+        attackDamage = 60;
+
+        PlayerDataManager dataManager = FindObjectOfType<PlayerDataManager>();
+
+        maxHealth += dataManager.GetCurrentUpgrade("health") * 50;
+        attackDamage += dataManager.GetCurrentUpgrade("attackdamage") * 10;
+        armor += dataManager.GetCurrentUpgrade("armor") * 2;
+        healthRegen += dataManager.GetCurrentUpgrade("healthregen") * 1;
+
+        health = maxHealth;
+    }
+
+    private void SetWeapons()
+    {
+        weapons = new List<Weapon>();
+        
+        weaponUpgraders = new List<WeaponUpgrader>();
+        weaponUpgraders.Add(new GunUpgrader(gun.gameObject, this));
+        weaponUpgraders.Add(new FireWeaponUpgrader(fireWeapon.gameObject, this));
+        weaponUpgraders.Add(new KnifeUpgrader(knifeThrower.gameObject, this));
+    }
+
+    private void RegenHealth() 
     {
         if(health == maxHealth) return;
 
@@ -74,12 +84,12 @@ public class MainCharacter : BattleEntity, IAttackable
         UpdateHealthBar();
     }
 
-    public void GetHit(int damage)
+    public void GetHit(float damage)
     {
         Damage(damage - armor);
     }
 
-    public override void Damage(int trueDamage)
+    public override void Damage(float trueDamage)
     {
         if(trueDamage <= 0) return;
         health -= trueDamage;
@@ -133,10 +143,18 @@ public class MainCharacter : BattleEntity, IAttackable
     public void LevelUp()
     {
         level++;
+        LevelUpStats();
         uiManager.LevelUp();
-        Debug.Log("level up:" + level);
 
         CheckLevelUp();
+    }
+
+    private void LevelUpStats()
+    {
+        maxHealth += 100;
+        health += 50;
+        attackDamage += 2.50f;
+        UpdateHealthBar();
     }
 
     void OnTriggerEnter2D(Collider2D collider)

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class BattleEntity : MonoBehaviour, IDamageable
 {
-    public int maxHealth;
-    public int health;
+    public float maxHealth;
+    public float health;
 
-    public abstract void Damage(int AttackDamage);
+    public abstract void Damage(float trueDamage);
 }

@@ -21,6 +21,7 @@ public class Gun : Weapon
     {
         base.Start();
 
+        attackDamage = 20;
         bulletCount = 1;
         extraShoots = 0;
         attackCooldown = 2;
@@ -92,6 +93,6 @@ public class Gun : Weapon
     private void CreateBullet(Vector3 position, Vector3 direction)
     {
         Bullet bullet = ObjectPool.SharedInstance.GetPooledObject(0).GetComponent<Bullet>();
-        bullet.SetUp(direction, position, attackDamage + character.attackDamage);
+        bullet.SetUp(direction, position, attackDamage + character.attackDamage * 1.05f);
     }
 }

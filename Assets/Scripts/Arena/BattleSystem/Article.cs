@@ -10,7 +10,7 @@ public class Article : Target
 
     }
 
-    public override void Damage(int AttackDamage)
+    public override void Damage(float AttackDamage)
     {
         
     }

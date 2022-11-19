@@ -23,7 +23,7 @@ public class EnemyAnimator : MonoBehaviour
     DamagePopup damagePopup;
 
     bool stackDamageOn = false;
-    int stackedDamage = 0;
+    float stackedDamage = 0;
 
     void Awake()
     {
@@ -81,7 +81,7 @@ public class EnemyAnimator : MonoBehaviour
         spriteRenderer.color = Color.white;
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(float damage)
     {
         stackedDamage += damage;
         if(!stackDamageOn)
@@ -93,7 +93,7 @@ public class EnemyAnimator : MonoBehaviour
         stackDamageOn = true;
         yield return new WaitForSeconds(0.05f);
         damagePopup = ObjectPool.SharedInstance.GetPooledObject(1).GetComponent<DamagePopup>();
-        damagePopup.ShowUp(stackedDamage + "", this.transform.position);
+        damagePopup.ShowUp((int)stackedDamage + "", this.transform.position);
         stackDamageOn = false;
         stackedDamage = 0;
     }

@@ -8,9 +8,9 @@ public class GunUpgrader : WeaponUpgrader
 
     public GunUpgrader(GameObject prefab, MainCharacter character) : base(prefab, character)
     {
-        descriptions = new string[] {"Gun oluştur", "Ok sayısını arttır", "Ekstra atış", "Ok hasarını 5 arttır",
-                                         "Ok sayısını arttır", "Ekstra atış", "Ok hasarını 10 arttır",
-                                         "Ok sayısını arttır", "Ekstra atış", "Ok hasarını 15 arttır"};
+        descriptions = new string[] {"Gun oluştur", "Ok sayısını arttır", "Ekstra atış", "Ok hasarını 20 arttır",
+                                         "Ok sayısını arttır", "Ekstra atış", "Ok hasarını 25 arttır",
+                                         "Ok sayısını arttır", "Ekstra atış", "Ok hasarını 30 arttır"};
         maxWeaponLevel = 10;
         weaponName = "Gun";
         sprite = Resources.Load<Sprite>("images/arrow");
@@ -30,7 +30,7 @@ public class GunUpgrader : WeaponUpgrader
                 gun.extraShoots++;
                 break;
             case(3):
-                gun.attackDamage += 5;
+                gun.attackDamage += 20;
                 break;
             case(4):
                 gun.bulletCount++;
@@ -39,7 +39,7 @@ public class GunUpgrader : WeaponUpgrader
                 gun.extraShoots++;
                 break;
             case(6):
-                gun.attackDamage += 10;
+                gun.attackDamage += 25;
                 break;
             case(7):
                 gun.bulletCount++;
@@ -48,7 +48,7 @@ public class GunUpgrader : WeaponUpgrader
                 gun.extraShoots++;
                 break;
             case(9):
-                gun.attackDamage += 15;
+                gun.attackDamage += 30;
                 break;
             default:
                 throw new UnityException("Invalid level");

@@ -8,7 +8,7 @@ public class FireBall : Projectile
     private float explosionArea;
     [SerializeField] GameObject explosionAnim;
 
-    private int characterAttackDamage;
+    private float characterAttackDamage;
 
     
     public void Update()
@@ -36,7 +36,7 @@ public class FireBall : Projectile
        return new Vector2(-direction.y, direction.x);
     }
 
-    public void SetUp(Vector3 position, int damage, int characterDamage, float area)
+    public void SetUp(Vector3 position, float damage, float characterDamage, float area)
     {
         transform.position = position;
         attackDamage = damage + characterDamage;
