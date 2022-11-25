@@ -6,9 +6,10 @@ public class FireWeapon : Weapon
 {
     private const float consecutiveAttackCooldown = 0.1f;
     private bool attacking = false;
-    [SerializeField] private uint extraShoots;
-    [SerializeField] private float attackCooldown;
-    [SerializeField] float explosionArea;
+
+    public uint extraShoots;
+    public float attackCooldown;
+    public float explosionArea;
 
 
     public override void Start()
@@ -16,8 +17,9 @@ public class FireWeapon : Weapon
         base.Start();
 
         attackDamage = 20;
-        extraShoots = 1;
-        attackCooldown = 2;
+        extraShoots = 0;
+        attackCooldown = 4;
+        explosionArea = 3;
         attackCooldown -= FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("attackspeed") * 0.1f;
     }
 

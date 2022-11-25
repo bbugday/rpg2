@@ -9,8 +9,10 @@ public class FireWeaponUpgrader : WeaponUpgrader
     
     public FireWeaponUpgrader(GameObject prefab, MainCharacter character) : base(prefab, character)
     {
-        descriptions = new string[] {"Fireweapon oluştur", "damage++"};
-        maxWeaponLevel = 2;
+        descriptions = new string[] {"Fireweapon oluştur", "Hasarı 5 arttır", "Ekstra atış", "Patlama alanını büyüt",
+                                         "Hasarı 5 arttır", "Ekstra atış", "Patlama alanını büyüt",
+                                         "Hasarı 5 arttır", "Ekstra atış", "Patlama alanını büyüt"};
+        maxWeaponLevel = 10;
         weaponName = "Fire Weapon";
         sprite = Resources.Load<Sprite>("images/fireball3");
     }
@@ -25,30 +27,30 @@ public class FireWeaponUpgrader : WeaponUpgrader
             case(1):
                 fireWeapon.attackDamage += 5;
                 break;
-            // case(2):
-            //     fireWeapon.extraShoots++;
-            //     break;
-            // case(3):
-            //     gun.attackDamage += 20;
-            //     break;
-            // case(4):
-            //     gun.bulletCount++;
-            //     break;
-            // case(5):
-            //     gun.extraShoots++;
-            //     break;
-            // case(6):
-            //     gun.attackDamage += 25;
-            //     break;
-            // case(7):
-            //     gun.bulletCount++;
-            //     break;
-            // case(8):
-            //     gun.extraShoots++;
-            //     break;
-            // case(9):
-            //     gun.attackDamage += 30;
-            //     break;
+            case(2):
+                fireWeapon.extraShoots++;
+                break;
+            case(3):
+                fireWeapon.explosionArea += 2.5f;
+                break;
+            case(4):
+                fireWeapon.attackDamage += 5;
+                break;
+            case(5):
+                fireWeapon.extraShoots++;
+                break;
+            case(6):
+                fireWeapon.explosionArea += 2.5f;
+                break;
+            case(7):
+                fireWeapon.attackDamage += 5;
+                break;
+            case(8):
+                fireWeapon.extraShoots++;
+                break;
+            case(9):
+                fireWeapon.explosionArea += 2.5f;
+                break;
             default:
                 throw new UnityException("Invalid level");
         }

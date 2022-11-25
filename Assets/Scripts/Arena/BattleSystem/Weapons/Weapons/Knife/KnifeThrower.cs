@@ -8,9 +8,9 @@ public class KnifeThrower : Weapon
 
     private bool attacking = false;
     
-    [SerializeField] private float attackCooldown;
-    [SerializeField] private uint knifeCount;
-    [SerializeField] private uint extraShoots = 0;
+    public float attackCooldown;
+    public uint knifeCount;
+    public uint extraShoots;
 
     CharacterAnimator animator;
 
@@ -19,7 +19,17 @@ public class KnifeThrower : Weapon
     void Awake()
     {
         animator = FindObjectOfType<CharacterAnimator>();
-        attackCooldown -= FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("attackspeed") * 0.01f;
+    }
+
+    public override void Start()
+    {
+        base.Start();
+
+        attackCooldown = 1f;
+        knifeCount = 1;
+        extraShoots = 0;
+
+        attackCooldown -= FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("attackspeed") * 0.1f;
     }
 
     public override void Attack()
