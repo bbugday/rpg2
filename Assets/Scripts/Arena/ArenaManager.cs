@@ -22,7 +22,7 @@ public class ArenaManager : MonoBehaviour
     public FinishEvent clearEvent;
     public FinishEvent dieEvent;
 
-    private const int arenaTimeAsMinute = 30;
+    private const int arenaTimeAsMinute = 15;
 
     void Awake()
     {

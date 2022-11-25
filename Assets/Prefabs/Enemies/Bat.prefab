@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199665, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: attackDamage
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199667, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

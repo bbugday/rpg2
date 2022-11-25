@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6308868505011199665, guid: bc0680e682e400a4497b288f012cc000, type: 3}
+      propertyPath: maxHealth
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308868505011199665, guid: bc0680e682e400a4497b288f012cc000, type: 3}
+      propertyPath: attackDamage
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199667, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.64
@@ -131,6 +139,10 @@ PrefabInstance:
       propertyPath: sprites.Array.data[7]
       value: 
       objectReference: {fileID: -3939340846533709606, guid: 76d2d556ea7309948bc4da6efb5431b9, type: 3}
+    - target: {fileID: 6308868505011199677, guid: bc0680e682e400a4497b288f012cc000, type: 3}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6308868505011199678, guid: bc0680e682e400a4497b288f012cc000, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -18,7 +18,7 @@ public class FireWeapon : Weapon
 
         attackDamage = 20;
         extraShoots = 0;
-        attackCooldown = 4;
+        attackCooldown = 3;
         explosionArea = 3;
         attackCooldown -= FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("attackspeed") * 0.1f;
     }

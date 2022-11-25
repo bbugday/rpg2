@@ -22,7 +22,8 @@ public class MainCharacter : BattleEntity, IAttackable
     [SerializeField] KnifeThrower knifeThrower;
     [SerializeField] ArenaUiManager uiManager;
 
-    int[] levelUpExps = new int[] {5, 10, 20, 30, 40, 45, 50, 55, 60, 65, 70, 75, 80, 90, 100, 105, 110, 115, 120, 125, 130, 99999};
+    int[] levelUpExps = new int[] {10, 35, 50, 100, 150, 200, 250, 300, 350, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300,
+        1400, 1500, 1600, 1700, 1800, 1900, 2100, 2300, 2500, 2700, 3500, 4000, 5000, 6000, 7000, 10000, 99999};
 
     public int exp;
     public int level;
@@ -58,10 +59,10 @@ public class MainCharacter : BattleEntity, IAttackable
 
         PlayerDataManager dataManager = FindObjectOfType<PlayerDataManager>();
 
-        maxHealth += dataManager.GetCurrentUpgrade("health") * 50;
-        attackDamage += dataManager.GetCurrentUpgrade("attackdamage") * 10;
-        armor += dataManager.GetCurrentUpgrade("armor") * 2;
-        healthRegen += dataManager.GetCurrentUpgrade("healthregen") * 1;
+        maxHealth += dataManager.GetCurrentUpgrade("health") * 200;
+        attackDamage += dataManager.GetCurrentUpgrade("attackdamage") * 20;
+        armor += dataManager.GetCurrentUpgrade("armor") * 0.5f;
+        healthRegen += dataManager.GetCurrentUpgrade("healthregen") * 2;
 
         health = maxHealth;
     }
@@ -162,8 +163,8 @@ public class MainCharacter : BattleEntity, IAttackable
     private void LevelUpStats()
     {
         maxHealth += 100;
-        health += 50;
-        attackDamage += 2.50f;
+        health += 100;
+        attackDamage += 5f;
         UpdateHealthBar();
     }
 

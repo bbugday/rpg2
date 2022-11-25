@@ -12,7 +12,7 @@ public class Enemy : Target, IAttackable
 
     MainCharacter mainCharacter;
 
-    [SerializeField] GameObject expObject;
+    //[SerializeField] GameObject expObject;
 
     const float coolDownTime = 0.1f;
     bool onCoolDown;

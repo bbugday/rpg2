@@ -13,11 +13,11 @@ public class EnemySpawner : MonoBehaviour
     {
         spawningEnemies.Add(enemyList[spawningEnemyCount++]);
         Invoke("AddEnemy", 1 * 60f);
+        Invoke("AddEnemy", 2 * 60f);
         Invoke("AddEnemy", 3 * 60f);
         Invoke("AddEnemy", 5 * 60f);
-        Invoke("AddEnemy", 10 * 60f);
-        Invoke("AddEnemy", 15 * 60f);
-        Invoke("AddEnemy", 20 * 60f);
+        Invoke("AddEnemy", 8 * 60f);
+        Invoke("AddEnemy", 12 * 60f);
 
         // Invoke("AddEnemy", 1 * 40f);
         // Invoke("AddEnemy", 1 * 40f);
