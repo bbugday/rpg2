@@ -25,6 +25,30 @@ public class FireWeaponUpgrader : WeaponUpgrader
             case(1):
                 fireWeapon.attackDamage += 5;
                 break;
+            // case(2):
+            //     fireWeapon.extraShoots++;
+            //     break;
+            // case(3):
+            //     gun.attackDamage += 20;
+            //     break;
+            // case(4):
+            //     gun.bulletCount++;
+            //     break;
+            // case(5):
+            //     gun.extraShoots++;
+            //     break;
+            // case(6):
+            //     gun.attackDamage += 25;
+            //     break;
+            // case(7):
+            //     gun.bulletCount++;
+            //     break;
+            // case(8):
+            //     gun.extraShoots++;
+            //     break;
+            // case(9):
+            //     gun.attackDamage += 30;
+            //     break;
             default:
                 throw new UnityException("Invalid level");
         }

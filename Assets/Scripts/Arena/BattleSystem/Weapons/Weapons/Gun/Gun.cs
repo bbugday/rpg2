@@ -11,11 +11,6 @@ public class Gun : Weapon
     public float attackCooldown;
     public uint bulletCount;
     public uint extraShoots = 0;
-
-    void Awake()
-    {
-        attackCooldown -= FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("attackspeed") * 0.02f;
-    }
     
     public override void Start()
     {
@@ -25,6 +20,7 @@ public class Gun : Weapon
         bulletCount = 1;
         extraShoots = 0;
         attackCooldown = 2;
+        attackCooldown -= FindObjectOfType<PlayerDataManager>().GetCurrentUpgrade("attackspeed") * 0.1f;
     }
 
     public override void Attack()

@@ -26,7 +26,7 @@ public class FireBall : Projectile
         {
             target.GetHit(this);
             FireExplosion explosion = Instantiate(explosionAnim, gameObject.transform.position, Quaternion.identity).GetComponent<FireExplosion>();
-            explosion.SetUp(explosionArea, fireBallDamage + characterAttackDamage * 1.10f);
+            explosion.SetUp(explosionArea, fireBallDamage + characterAttackDamage * 0.5f);
 
             gameObject.SetActive(false);
         }
