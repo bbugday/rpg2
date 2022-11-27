@@ -52,7 +52,8 @@ public class ArenaManager : MonoBehaviour
 
         state = State.Battle;
 
-        Invoke("TimeOver", arenaTimeAsMinute * 60f);
+        //Invoke("TimeOver", arenaTimeAsMinute * 60f);
+        Invoke("TimeOver", 10f);
     }
 
     void Update()
