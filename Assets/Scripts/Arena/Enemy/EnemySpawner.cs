@@ -19,12 +19,12 @@ public class EnemySpawner : MonoBehaviour
         Invoke("AddEnemy", 8 * 60f);
         Invoke("AddEnemy", 12 * 60f);
 
-        // Invoke("AddEnemy", 1 * 40f);
-        // Invoke("AddEnemy", 1 * 40f);
-        // Invoke("AddEnemy", 1 * 40f);
-        // Invoke("AddEnemy", 10 * 60f);
-        // Invoke("AddEnemy", 15 * 60f);
-        // Invoke("AddEnemy", 20 * 60f);
+        // Invoke("AddEnemy", 1);
+        // Invoke("AddEnemy", 1);
+        // Invoke("AddEnemy", 1);
+        // Invoke("AddEnemy", 1);
+        // Invoke("AddEnemy", 1);
+        // Invoke("AddEnemy", 1);
 
         InvokeRepeating("SpawnEnemy", 1f, 4f);  //1s delay, repeat every 1s
     }
