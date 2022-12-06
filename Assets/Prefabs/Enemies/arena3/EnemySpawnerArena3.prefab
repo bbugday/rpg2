@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList:
-  - {fileID: 4165554763330697257, guid: e41b06c4d65d0c54cb2a767ef202dc66, type: 3}
-  - {fileID: 8510125222168799719, guid: be41257b1a3655246bed93e1ad01e9ba, type: 3}
+  - {fileID: 7135035954674436882, guid: f0d14d9d42470cf498d473c7e656945f, type: 3}
   - {fileID: 337984275755493002, guid: e613bef3429eeb84399ef2948a8f36a8, type: 3}
   - {fileID: 8251588880191830655, guid: 2aefa6a2c4fa77942abf7b41a7fd0f5d, type: 3}
+  - {fileID: 8390103282655662682, guid: 3c2c35621612c1c4cbbf5e11b17458bb, type: 3}
   - {fileID: 631531592841968267, guid: 389342683c47cfd4ea673e2fbaebc8f0, type: 3}
-  - {fileID: 631531592841968267, guid: 389342683c47cfd4ea673e2fbaebc8f0, type: 3}
-  - {fileID: 631531592841968267, guid: 389342683c47cfd4ea673e2fbaebc8f0, type: 3}
+  - {fileID: 4165554763330697257, guid: e41b06c4d65d0c54cb2a767ef202dc66, type: 3}
+  - {fileID: 8510125222168799719, guid: be41257b1a3655246bed93e1ad01e9ba, type: 3}
   spawningEnemies: []

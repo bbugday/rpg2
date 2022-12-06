@@ -15,7 +15,7 @@ MonoBehaviour:
   questId: 3
   questTitle: dort
   questParts:
-  - {fileID: 11400000, guid: 888b8dc470bc91148b4ae1fc39697727, type: 2}
+  - {fileID: 11400000, guid: 3ae6bda4637175d46b46962579f27e79, type: 2}
   - {fileID: 11400000, guid: ff1d1997a90d7ee4da3ee36e8fae5398, type: 2}
   - {fileID: 11400000, guid: ab001c9a1087e374083d882d7f8040f7, type: 2}
   - {fileID: 11400000, guid: 3ae6bda4637175d46b46962579f27e79, type: 2}
