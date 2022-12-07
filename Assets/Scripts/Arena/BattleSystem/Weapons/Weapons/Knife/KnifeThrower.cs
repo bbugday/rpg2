@@ -14,11 +14,14 @@ public class KnifeThrower : Weapon
 
     CharacterAnimator animator;
 
+    AudioSource tickSource;
+
     Vector3 lastDirection = Vector3.right;
 
     void Awake()
     {
         animator = FindObjectOfType<CharacterAnimator>();
+        tickSource = GetComponent<AudioSource>();
     }
 
     public override void Start()
@@ -40,6 +43,8 @@ public class KnifeThrower : Weapon
 
     public IEnumerator Fire()
     {
+        tickSource.Play();
+
         attacking = true;        
       
         StartCoroutine(Shoot());

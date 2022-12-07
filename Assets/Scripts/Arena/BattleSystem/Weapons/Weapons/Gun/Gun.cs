@@ -11,7 +11,15 @@ public class Gun : Weapon
     public float attackCooldown;
     public uint bulletCount;
     public uint extraShoots = 0;
+
+    AudioSource tickSource;
     
+    void Awake()
+    {
+        tickSource = GetComponent<AudioSource>();
+    }
+
+
     public override void Start()
     {
         base.Start();
@@ -31,6 +39,8 @@ public class Gun : Weapon
 
     public IEnumerator Fire()
     {
+        tickSource.Play();
+
         attacking = true;        
       
         StartCoroutine(Shoot());

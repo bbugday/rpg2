@@ -11,6 +11,12 @@ public class FireBall : Projectile
     private float characterAttackDamage;
     private float fireBallDamage;
 
+    AudioSource tickSource;
+
+    void Awake()
+    {
+        tickSource = GetComponent<AudioSource>();
+    }
     
     public void Update()
     {
@@ -26,6 +32,7 @@ public class FireBall : Projectile
         {
             target.GetHit(this);
             FireExplosion explosion = Instantiate(explosionAnim, gameObject.transform.position, Quaternion.identity).GetComponent<FireExplosion>();
+            tickSource.Play();
             explosion.SetUp(explosionArea, fireBallDamage + characterAttackDamage * 0.5f);
 
             gameObject.SetActive(false);
