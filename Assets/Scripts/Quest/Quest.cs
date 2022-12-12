@@ -64,4 +64,9 @@ public class Quest
     {
         get {return questData.nextQuests;}
     }
+
+    public QuestPart GetCurrentPart
+    {
+        get {return questParts[currentPart];}
+    } 
 }

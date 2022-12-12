@@ -119,13 +119,13 @@ public class UiManager : MonoBehaviour
         {
             showedQuest = 0;
             questWindowCanvas.gameObject.SetActive(true);
-            InstantiateQuestText(QuestManager.Instance.activeQuests[0].questData);
+            InstantiateQuestText(QuestManager.Instance.activeQuests[0].GetCurrentPart.detail);//currentquestpart.
         }
         else if(showedQuest + 1 < questCount)
         {
             foreach (Transform child in questWindowCanvas.transform.GetChild(0).transform)
                 Destroy(child.gameObject);
-            InstantiateQuestText(QuestManager.Instance.activeQuests[++showedQuest].questData);
+            InstantiateQuestText(QuestManager.Instance.activeQuests[++showedQuest].GetCurrentPart.detail);
         }
         else
         {
@@ -135,10 +135,10 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    private void InstantiateQuestText(QuestSO questData)
+    private void InstantiateQuestText(string details)
     {
         GameObject obj = Instantiate(questTextPrefab);
-        obj.GetComponent<Text>().text = questData.questTitle;  
+        obj.GetComponent<Text>().text = details;  
         obj.transform.SetParent(questWindowCanvas.transform.GetChild(0), false);
         obj.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,0,0); //- Vector3.up * pos * 62;
     }
