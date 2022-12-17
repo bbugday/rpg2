@@ -9,6 +9,8 @@ public class EnemySpawner : MonoBehaviour
 
     private int spawningEnemyCount = 0;
 
+    private const int arenaTimeAsMinute = 15;
+
     void Start() 
     {
         spawningEnemies.Add(enemyList[spawningEnemyCount++]);
@@ -26,7 +28,8 @@ public class EnemySpawner : MonoBehaviour
         // Invoke("AddEnemy", 1);
         // Invoke("AddEnemy", 1);
 
-        InvokeRepeating("SpawnEnemy", 1f, 4f);  //1s delay, repeat every 1s
+        InvokeRepeating("SpawnEnemy", 1f, 4f);  //1s delay, repeat every 4s
+        Invoke("StopSpawnEnemy", arenaTimeAsMinute * 60f);
     }
 
     void OutputTime() 
@@ -41,6 +44,12 @@ public class EnemySpawner : MonoBehaviour
         //Instantiate(enemyList[0], gameObject.transform.position, Quaternion.identity);
         Instantiate(spawningEnemies[Random.Range(0, spawningEnemies.Count)], gameObject.transform.position, Quaternion.identity);
     }
+
+    void StopSpawnEnemy()
+    {
+        CancelInvoke("SpawnEnemy");
+    }
+
 
     void AddEnemy() 
     {

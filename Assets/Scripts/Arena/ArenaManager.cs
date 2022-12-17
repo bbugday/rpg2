@@ -22,7 +22,7 @@ public class ArenaManager : MonoBehaviour
     public FinishEvent clearEvent;
     public FinishEvent dieEvent;
 
-    private const int arenaTimeAsMinute = 15;
+    private const int arenaTimeAsMinute = 1;
 
     void Awake()
     {
@@ -52,7 +52,9 @@ public class ArenaManager : MonoBehaviour
 
         state = State.Battle;
 
-        Invoke("TimeOver", arenaTimeAsMinute * 60f);
+
+        InvokeRepeating("TimeOver", arenaTimeAsMinute * 60f, 1f);  //1s delay, repeat every 1s
+        //Invoke("TimeOver", arenaTimeAsMinute * 60f);
         //Invoke("TimeOver", 10f);
     }
 
@@ -85,6 +87,7 @@ public class ArenaManager : MonoBehaviour
 
     void TimeOver()
     {
+        if(!CheckCleared()) return;
         state = State.Finish;
         clearEvent();
     }
