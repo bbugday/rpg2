@@ -12,7 +12,7 @@
 	Stranger: You don't look like one.
 	**> Not everything is as it seems. [] I've been in more horrible places than you can imagine. Now will you tell me what happened here?
 	**> I'm actually a very skilled warrior. You want me to prove it to you?
-	-- Stranger: Ok then, take this road head north and seek out the chief. He will tell you more.
+	-- Stranger: Ok then, i have no time. Take this road head north and seek out the chief. He will tell you more.
 *  "That's not your business." [] I replied.
     Stranger: Anyway. If you're a warrior, seek out the chief in village. 
 

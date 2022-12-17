@@ -57,7 +57,7 @@ public class Quest
     void Finished()
     {
         QuestManager.Instance.QuestDone(this);
-        //quest reward
+        PlayerDataManager.Instance.AddGold(questData.questGold);
     }
 
     public List<QuestSO> NextQuests

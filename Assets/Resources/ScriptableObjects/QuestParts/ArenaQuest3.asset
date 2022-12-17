@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada660e26e729de4984c96eac6f1bbb2, type: 3}
   m_Name: ArenaQuest3
   m_EditorClassIdentifier: 
+  detail: On the north side of this forest there is an abandoned house with a green
+    roof. Creatures have been seen coming from there. Go over there and clean up
+    the creatures. To get stronger, you can go to the store next to that building
+    and shop.
   entryPointName: Arena3EntryPoint

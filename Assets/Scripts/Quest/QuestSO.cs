@@ -15,6 +15,7 @@ public class QuestSO : ScriptableObject
 
     public int questId;
     public string questTitle;
+    public int questGold;
 
     public List<QuestPart> questParts;
 
