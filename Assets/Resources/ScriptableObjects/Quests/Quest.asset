@@ -20,6 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 585707d6ae07dd543afd45f075a726a6, type: 2}
   - {fileID: 11400000, guid: 0bb4c163383d0da409950c620d7a36e6, type: 2}
   - {fileID: 11400000, guid: 3ae6bda4637175d46b46962579f27e79, type: 2}
+  - {fileID: 11400000, guid: a2815fc517a52bb498700c15999dd3d4, type: 2}
   prevQuests: []
   nextQuests:
   - {fileID: 11400000, guid: e5b52ced0b21e614c971c281fff9d31a, type: 2}

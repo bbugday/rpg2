@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c4d372dfdb4c642990e1fe4b5529f3, type: 3}
+  m_Name: AntonQuest
+  m_EditorClassIdentifier: 
+  questId: 1
+  questTitle: iki
+  questGold: 0
+  questParts:
+  - {fileID: 11400000, guid: af3329718bbdc814a9855a706f460a75, type: 2}
+  - {fileID: 11400000, guid: 6366f0a8bec54ab45835221d4d626c61, type: 2}
+  - {fileID: 11400000, guid: 9626390bc6eb3b248a7a109798df52de, type: 2}
+  - {fileID: 11400000, guid: c8c3df98c1d701244a8b2c13d6520d36, type: 2}
+  - {fileID: 11400000, guid: 888b8dc470bc91148b4ae1fc39697727, type: 2}
+  prevQuests: []
+  nextQuests:
+  - {fileID: 11400000, guid: 499d59f44eef3dd448e3b417a66f6840, type: 2}
+  position:
+    serializedVersion: 2
+    x: 313
+    y: -4
+    width: 241
+    height: 121

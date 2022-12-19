@@ -1,0 +1,3 @@
+There's a broken monument here.
+I'm trying to read the writing on it...
+It talks about a secret passage in a tomb, but the place where the tomb is located is broken. I must find this tomb.
