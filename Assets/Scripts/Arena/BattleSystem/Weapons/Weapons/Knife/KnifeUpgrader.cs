@@ -8,11 +8,11 @@ public class KnifeUpgrader : WeaponUpgrader
 
     public KnifeUpgrader(GameObject prefab, MainCharacter character) : base(prefab, character)
     {
-        descriptions = new string[] {"Bıçak oluştur", "Bıçak sayısını arttır", "Ekstra atış", "Bıçak hasarını 20 arttır",
-                                         "Bıçak sayısını arttır", "Ekstra atış", "Bıçak hasarını 25 arttır",
-                                         "Bıçak sayısını arttır", "Ekstra atış", "Bıçak hasarını 30 arttır"};
+        descriptions = new string[] {"Create knife thrower", "Increase knife count", "Extra shoot", "Increase damage",
+                                         "Increase knife count", "Extra shoot", "Increase damage",
+                                         "Increase knife count", "Extra shoot", "Increase damage"};
         maxWeaponLevel = 10;
-        weaponName = "Knife";
+        weaponName = "Knife Thrower";
         sprite = Resources.Load<Sprite>("images/knife");
     }
 

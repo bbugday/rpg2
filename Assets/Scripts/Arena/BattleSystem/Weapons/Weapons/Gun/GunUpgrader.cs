@@ -8,11 +8,11 @@ public class GunUpgrader : WeaponUpgrader
 
     public GunUpgrader(GameObject prefab, MainCharacter character) : base(prefab, character)
     {
-        descriptions = new string[] {"Gun oluştur", "Ok sayısını arttır", "Ekstra atış", "Ok hasarını 20 arttır",
-                                         "Ok sayısını arttır", "Ekstra atış", "Ok hasarını 25 arttır",
-                                         "Ok sayısını arttır", "Ekstra atış", "Ok hasarını 30 arttır"};
+        descriptions = new string[] {"Create arrow", "Increase arrow count", "Extra shoot", "Increase damage",
+                                         "Increase arrow count", "Extra shoot", "Increase damage",
+                                         "Increase arrow count", "Extra shoot", "Increase damage"};
         maxWeaponLevel = 10;
-        weaponName = "Gun";
+        weaponName = "Arrow";
         sprite = Resources.Load<Sprite>("images/arrow");
     }
 

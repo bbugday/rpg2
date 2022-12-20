@@ -9,9 +9,9 @@ public class FireWeaponUpgrader : WeaponUpgrader
     
     public FireWeaponUpgrader(GameObject prefab, MainCharacter character) : base(prefab, character)
     {
-        descriptions = new string[] {"Fireweapon oluştur", "Hasarı 5 arttır", "Ekstra atış", "Patlama alanını büyüt",
-                                         "Hasarı 5 arttır", "Ekstra atış", "Patlama alanını büyüt",
-                                         "Hasarı 5 arttır", "Ekstra atış", "Patlama alanını büyüt"};
+        descriptions = new string[] {"Create Fire Weapon", "Increase damage", "Extra shoot", "Increase area",
+                                         "Increase damage", "Extra shoot", "Increase area",
+                                         "Increase damage", "Extra shoot", "Increase area"};
         maxWeaponLevel = 10;
         weaponName = "Fire Weapon";
         sprite = Resources.Load<Sprite>("images/fireball3");
