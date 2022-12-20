@@ -55,7 +55,7 @@ public class ArenaManager : MonoBehaviour
 
         //InvokeRepeating("TimeOver", arenaTimeAsMinute * 60f, 1f);  //1s delay, repeat every 1s
         //Invoke("TimeOver", arenaTimeAsMinute * 60f);
-        Invoke("TimeOver", 10f);
+        Invoke("TimeOver", 5f);
     }
 
     void Update()
@@ -87,6 +87,8 @@ public class ArenaManager : MonoBehaviour
 
     void TimeOver()
     {
+        // COMMENTED FOR DEBUG, GET IT UNCOMMENTED FOR BUILD
+
         //if(!CheckCleared()) return;
         state = State.Finish;
         clearEvent();

@@ -7,8 +7,13 @@ public class CustomSceneManager : Singleton<CustomSceneManager>
 {
     [SerializeField] GameObject essentialObjects;
 
+    bool loading = false;
+
     public IEnumerator SwitchToArena(string arenaName)
     {
+        if(loading) yield break;
+
+        loading = true;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(arenaName);
 
         asyncLoad.allowSceneActivation = false;
@@ -25,6 +30,7 @@ public class CustomSceneManager : Singleton<CustomSceneManager>
         essentialObjects.SetActive(false);
         GameManager.Instance.gameObject.SetActive(false);
         asyncLoad.allowSceneActivation = true;
+        loading = false;
     }
 
     //SwitchArenaToFreeroam

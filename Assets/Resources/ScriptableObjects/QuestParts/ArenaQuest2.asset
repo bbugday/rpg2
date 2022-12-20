@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada660e26e729de4984c96eac6f1bbb2, type: 3}
   m_Name: ArenaQuest2
   m_EditorClassIdentifier: 
-  detail: Search where you found the bodies and the monument and find the tomb with
-    the secret passage.
+  detail: Kawa mentioned a monument and a well in the west of the village. Investigate
+    these.
   entryPointName: Arena2EntryPoint

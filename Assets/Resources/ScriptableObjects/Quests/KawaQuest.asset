@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questId: 2
   questTitle: uc
+  questGold: 4000
   questParts:
-  - {fileID: 11400000, guid: febd1760c1d87824eaac539798d56ec1, type: 2}
-  prevQuests: []
+  - {fileID: 11400000, guid: 41c612337e7d1bd4c80bbdb58eed57e4, type: 2}
+  - {fileID: 11400000, guid: ab001c9a1087e374083d882d7f8040f7, type: 2}
+  prevQuests:
+  - {fileID: 11400000, guid: 5c8c12b49c76feb4392c9440469db71f, type: 2}
   nextQuests:
   - {fileID: 11400000, guid: 499d59f44eef3dd448e3b417a66f6840, type: 2}
   position:

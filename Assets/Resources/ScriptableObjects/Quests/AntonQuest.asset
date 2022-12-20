@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questId: 1
   questTitle: iki
-  questGold: 0
+  questGold: 4000
   questParts:
   - {fileID: 11400000, guid: af3329718bbdc814a9855a706f460a75, type: 2}
   - {fileID: 11400000, guid: 6366f0a8bec54ab45835221d4d626c61, type: 2}
   - {fileID: 11400000, guid: 9626390bc6eb3b248a7a109798df52de, type: 2}
   - {fileID: 11400000, guid: c8c3df98c1d701244a8b2c13d6520d36, type: 2}
   - {fileID: 11400000, guid: 888b8dc470bc91148b4ae1fc39697727, type: 2}
-  prevQuests: []
+  prevQuests:
+  - {fileID: 11400000, guid: 5c8c12b49c76feb4392c9440469db71f, type: 2}
   nextQuests:
   - {fileID: 11400000, guid: 499d59f44eef3dd448e3b417a66f6840, type: 2}
   position:

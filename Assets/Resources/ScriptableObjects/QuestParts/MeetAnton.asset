@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eddf2da893e1434da4023660649f824, type: 3}
   m_Name: MeetAnton
   m_EditorClassIdentifier: 
-  detail: Find Anton in the camp east of this forest. He will give you some clues
-    about new creature point.
+  detail: Find Anton in the camp east of forest
   inkDialogue: {fileID: 4900000, guid: 9e7850edd4b975a41b30581b3ead7e13, type: 3}
   npcName: Anton
